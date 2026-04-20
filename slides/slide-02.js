@@ -1,3 +1,5 @@
+const fs = require("fs");
+const path = require("path");
 const { addPageBadge, addSectionTitle } = require("./helpers");
 const { bodyFont, displayFont } = require("./theme");
 const { createSlideCanvas } = require("./validation");
@@ -52,6 +54,11 @@ function addQuestionCard(canvas, pres, theme, x, y, title, text, group) {
 function createSlide(pres, theme, options = {}) {
   const canvas = createSlideCanvas(pres, slideConfig, options);
   const { slide } = canvas;
+  const briePhotoCandidates = [
+    path.join(__dirname, "imgs", "lee_2-cheese-630511_1920.jpg"),
+    path.join(__dirname, "imgs", "pixabay-brie-lee_2.jpg")
+  ];
+  const briePhotoPath = briePhotoCandidates.find((candidate) => fs.existsSync(candidate));
   slide.background = { color: "FFFDFC" };
 
   addSectionTitle(
@@ -62,6 +69,16 @@ function createSlide(pres, theme, options = {}) {
     "A single customer request already contains ambiguity, interpretation work, and competing assumptions about what a good answer means."
   );
 
+  if (briePhotoPath) {
+    slide.addImage({
+      path: briePhotoPath,
+      x: 0.62,
+      y: 2.06,
+      w: 3.72,
+      h: 2.55
+    });
+  }
+
   canvas.addShape("quote-panel", pres.ShapeType.roundRect, {
     x: 0.62,
     y: 2.06,
@@ -69,7 +86,7 @@ function createSlide(pres, theme, options = {}) {
     h: 2.55,
     rectRadius: 0.08,
     line: { color: theme.secondary, transparency: 100 },
-    fill: { color: theme.secondary }
+    fill: { color: theme.secondary, transparency: briePhotoPath ? 24 : 0 }
   }, {
     group: "quote-panel"
   });
@@ -112,6 +129,22 @@ function createSlide(pres, theme, options = {}) {
   }, {
     group: "quote-panel"
   });
+
+  if (briePhotoPath) {
+    canvas.addText("quote-photo-attribution", "Photo: lee_2 / Pixabay", {
+      x: 2.34,
+      y: 4.42,
+      w: 1.72,
+      h: 0.12,
+      fontFace: bodyFont,
+      fontSize: 7.4,
+      color: "FFF8ED",
+      align: "right",
+      margin: 0
+    }, {
+      group: "quote-panel"
+    });
+  }
 
   addQuestionCard(canvas, pres, theme, 4.78, 2.08, "Similarity", "Texture, milk type,\nregion, serving context", "question-similarity");
   addQuestionCard(canvas, pres, theme, 6.78, 2.08, "Strength", "Age, aroma,\npungency, salt", "question-strength");

@@ -1,3 +1,5 @@
+const fs = require("fs");
+const path = require("path");
 const { bodyFont, displayFont } = require("./theme");
 const { createSlideCanvas } = require("./validation");
 
@@ -10,6 +12,11 @@ const slideConfig = {
 function createSlide(pres, theme, options = {}) {
   const canvas = createSlideCanvas(pres, slideConfig, options);
   const { slide } = canvas;
+  const coverPhotoCandidates = [
+    path.join(__dirname, "imgs", "jackmac34-normandy-2068748_1920.jpg"),
+    path.join(__dirname, "imgs", "pixabay-normandy-camembert-jackmac34.jpg")
+  ];
+  const coverPhotoPath = coverPhotoCandidates.find((candidate) => fs.existsSync(candidate));
   slide.background = { color: theme.bg };
 
   canvas.addShape("cover-base", pres.ShapeType.rect, {
@@ -65,6 +72,31 @@ function createSlide(pres, theme, options = {}) {
     skipBounds: true,
     skipOverlap: true
   });
+
+  if (coverPhotoPath) {
+    slide.addImage({
+      path: coverPhotoPath,
+      x: 6.95,
+      y: 2.24,
+      w: 2.1,
+      h: 1.56
+    });
+
+    canvas.addText("cover-photo-attribution", "Photo: jackmac34 / Pixabay", {
+      x: 7.02,
+      y: 3.62,
+      w: 1.88,
+      h: 0.14,
+      fontFace: bodyFont,
+      fontSize: 7.4,
+      color: "FFF7EC",
+      align: "right",
+      margin: 0
+    }, {
+      group: "cover-photo",
+      skipOverlap: true
+    });
+  }
 
   canvas.addText("cover-eyebrow", "French Cheese Shop", {
     x: 0.72,
