@@ -28,7 +28,7 @@ function addComparisonPanel(canvas, pres, x, title, bullets, colors, group) {
     x,
     y: 2.02,
     w: 4.02,
-    h: 2.66,
+    h: 2.36,
     rectRadius: 0.06,
     line: { color: colors.line, pt: 1.1 },
     fill: { color: colors.fill }
@@ -53,7 +53,7 @@ function addComparisonPanel(canvas, pres, x, title, bullets, colors, group) {
     x: x + 0.26,
     y: 2.7,
     w: 3.24,
-    h: 1.38,
+    h: 1.16,
     fontFace: bodyFont,
     fontSize: 11,
     color: colors.body,
@@ -106,9 +106,9 @@ function createComparisonSlide(pres, theme, options, visiblePanels, showBanner, 
   if (showBanner) {
     canvas.addShape("shift-banner", pres.ShapeType.roundRect, {
       x: 1.18,
-      y: 4.88,
+      y: 4.5,
       w: 7.64,
-      h: 0.38,
+      h: 0.42,
       rectRadius: 0.05,
       line: { color: theme.primary, transparency: 100 },
       fill: { color: theme.primary }
@@ -118,9 +118,9 @@ function createComparisonSlide(pres, theme, options, visiblePanels, showBanner, 
 
     canvas.addText("shift-banner-text", "Requirements are no longer just functions. They also define how the system interprets, learns, and is evaluated.", {
       x: 1.44,
-      y: 4.92,
+      y: 4.56,
       w: 7.1,
-      h: 0.34,
+      h: 0.3,
       fontFace: bodyFont,
       fontSize: 9.2,
       bold: true,
