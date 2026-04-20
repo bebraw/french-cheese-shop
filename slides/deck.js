@@ -34,6 +34,9 @@ function createPresentation(options = {}) {
     if (result && result.report) {
       reports.push(result.report);
     }
+    if (result && Array.isArray(result.reports)) {
+      reports.push(...result.reports);
+    }
   }
 
   return { pres, reports };

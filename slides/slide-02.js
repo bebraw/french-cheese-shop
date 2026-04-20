@@ -10,6 +10,37 @@ const slideConfig = {
   title: "The Hook: One Customer Utterance"
 };
 
+const questionCards = [
+  {
+    x: 4.78,
+    y: 2.08,
+    title: "Similarity",
+    text: "Texture, milk type,\nregion, serving context",
+    group: "question-similarity"
+  },
+  {
+    x: 6.78,
+    y: 2.08,
+    title: "Strength",
+    text: "Age, aroma,\npungency, salt",
+    group: "question-strength"
+  },
+  {
+    x: 4.78,
+    y: 3.38,
+    title: "Constraints",
+    text: "Budget, stock,\nallergies, pairings",
+    group: "question-constraints"
+  },
+  {
+    x: 6.78,
+    y: 3.38,
+    title: "Success",
+    text: "Best match, shortlist,\nor clear explanation",
+    group: "question-success"
+  }
+];
+
 function addQuestionCard(canvas, pres, theme, x, y, title, text, group) {
   canvas.addShape(`${group}-card`, pres.ShapeType.roundRect, {
     x,
@@ -51,8 +82,8 @@ function addQuestionCard(canvas, pres, theme, x, y, title, text, group) {
   });
 }
 
-function createSlide(pres, theme, options = {}) {
-  const canvas = createSlideCanvas(pres, slideConfig, options);
+function createCustomerQuerySlide(pres, theme, options, visibleCards, slideIndex) {
+  const canvas = createSlideCanvas(pres, { ...slideConfig, index: slideIndex }, options);
   const { slide } = canvas;
   const briePhotoCandidates = [
     path.join(__dirname, "imgs", "lee_2-cheese-630511_1920.jpg"),
@@ -146,13 +177,31 @@ function createSlide(pres, theme, options = {}) {
     });
   }
 
-  addQuestionCard(canvas, pres, theme, 4.78, 2.08, "Similarity", "Texture, milk type,\nregion, serving context", "question-similarity");
-  addQuestionCard(canvas, pres, theme, 6.78, 2.08, "Strength", "Age, aroma,\npungency, salt", "question-strength");
-  addQuestionCard(canvas, pres, theme, 4.78, 3.38, "Constraints", "Budget, stock,\nallergies, pairings", "question-constraints");
-  addQuestionCard(canvas, pres, theme, 6.78, 3.38, "Success", "Best match, shortlist,\nor clear explanation", "question-success");
+  for (const card of questionCards.slice(0, visibleCards)) {
+    addQuestionCard(canvas, pres, theme, card.x, card.y, card.title, card.text, card.group);
+  }
 
-  addPageBadge(canvas, pres, theme, slideConfig.index);
+  addPageBadge(canvas, pres, theme, slideIndex);
   return canvas.finalize();
+}
+
+function createSlide(pres, theme, options = {}) {
+  const reports = [];
+
+  for (let visibleCards = 1; visibleCards <= questionCards.length; visibleCards += 1) {
+    const result = createCustomerQuerySlide(
+      pres,
+      theme,
+      options,
+      visibleCards,
+      slideConfig.index + visibleCards - 1
+    );
+    if (result && result.report) {
+      reports.push(result.report);
+    }
+  }
+
+  return { reports };
 }
 
 module.exports = { createSlide, slideConfig };

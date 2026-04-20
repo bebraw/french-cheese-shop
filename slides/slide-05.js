@@ -4,7 +4,7 @@ const { createSlideCanvas } = require("./validation");
 
 const slideConfig = {
   type: "content",
-  index: 5,
+  index: 8,
   title: "Challenge 1: Latent Requirements"
 };
 

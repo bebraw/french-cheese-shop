@@ -4,7 +4,7 @@ const { createSlideCanvas } = require("./validation");
 
 const slideConfig = {
   type: "content",
-  index: 4,
+  index: 7,
   title: "Classical RE vs AI-Era RE"
 };
 

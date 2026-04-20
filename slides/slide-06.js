@@ -4,7 +4,7 @@ const { createSlideCanvas } = require("./validation");
 
 const slideConfig = {
   type: "content",
-  index: 6,
+  index: 9,
   title: "Challenge 2: Data Becomes Requirement"
 };
 
