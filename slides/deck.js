@@ -5,7 +5,6 @@ const slideModules = [
   require("./slide-01"),
   require("./slide-01a"),
   require("./slide-02"),
-  require("./slide-03"),
   require("./slide-04"),
   require("./slide-05"),
   require("./slide-06"),

@@ -4,7 +4,7 @@ const { createSlideCanvas } = require("./validation");
 
 const slideConfig = {
   type: "content",
-  index: 19,
+  index: 16,
   title: "ADRs as Control Points"
 };
 

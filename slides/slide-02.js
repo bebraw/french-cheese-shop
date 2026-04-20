@@ -7,7 +7,7 @@ const { createSlideCanvas } = require("./validation");
 const slideConfig = {
   type: "content",
   index: 6,
-  title: "The Hook: One Customer Utterance"
+  title: "One Customer Utterance"
 };
 
 const questionCards = [
@@ -97,7 +97,7 @@ function createCustomerQuerySlide(pres, theme, options, visibleCards, slideIndex
     theme,
     "Customer Query",
     slideConfig.title,
-    "A single customer request already contains ambiguity, interpretation work, and competing assumptions about what a good answer means."
+    null
   );
 
   if (briePhotoPath) {
@@ -201,13 +201,13 @@ function createCustomerQuerySlide(pres, theme, options, visibleCards, slideIndex
 function createSlide(pres, theme, options = {}) {
   const reports = [];
 
-  for (let visibleCards = 1; visibleCards <= questionCards.length; visibleCards += 1) {
+  for (let visibleCards = 0; visibleCards <= questionCards.length; visibleCards += 1) {
     const result = createCustomerQuerySlide(
       pres,
       theme,
       options,
       visibleCards,
-      slideConfig.index + visibleCards - 1
+      slideConfig.index + visibleCards
     );
     if (result && result.report) {
       reports.push(result.report);

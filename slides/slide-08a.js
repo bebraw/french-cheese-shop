@@ -4,7 +4,7 @@ const { createSlideCanvas } = require("./validation");
 
 const slideConfig = {
   type: "content",
-  index: 20,
+  index: 17,
   title: "AI Changes RE"
 };
 
@@ -18,7 +18,7 @@ function createSlide(pres, theme, options = {}) {
     theme,
     "Main Claim",
     slideConfig.title,
-    "This is the central change in the talk."
+    "The cheese-shop example makes the shift visible across interpretation, data, evaluation, and control."
   );
 
   canvas.addShape("claim-card", pres.ShapeType.roundRect, {

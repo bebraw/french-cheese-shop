@@ -120,7 +120,7 @@ function createLearningOutcomesSlide(pres, theme, options, visibleCards, slideIn
     theme,
     "Session Focus",
     slideConfig.title,
-    "By the end of the presentation, the audience should be able to connect AI capabilities to concrete changes in requirements work."
+    "One cheese-shop example connects ambiguity, data, evaluation, and control to changing requirements work."
   );
 
   for (const card of outcomeCards.slice(0, visibleCards)) {
