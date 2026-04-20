@@ -8,6 +8,21 @@ const slideConfig = {
   title: "Classical RE vs AI-Era RE"
 };
 
+const panels = [
+  {
+    x: 0.62,
+    title: "Traditional",
+    bullets: "• Search cheeses by type\n• Validate fields and stock\n• Fixed outputs for fixed inputs\n• Success = feature works",
+    group: "panel-traditional"
+  },
+  {
+    x: 5.0,
+    title: "AI-augmented",
+    bullets: "• Recommend from vague language\n• Use data and domain models\n• Outputs depend on interpretation\n• Success = relevance, trust, fit",
+    group: "panel-ai"
+  }
+];
+
 function addComparisonPanel(canvas, pres, x, title, bullets, colors, group) {
   canvas.addShape(`${group}-panel`, pres.ShapeType.roundRect, {
     x,
@@ -49,8 +64,8 @@ function addComparisonPanel(canvas, pres, x, title, bullets, colors, group) {
   });
 }
 
-function createSlide(pres, theme, options = {}) {
-  const canvas = createSlideCanvas(pres, slideConfig, options);
+function createComparisonSlide(pres, theme, options, visiblePanels, slideIndex) {
+  const canvas = createSlideCanvas(pres, { ...slideConfig, index: slideIndex }, options);
   const { slide } = canvas;
   slide.background = { color: "FFFDFC" };
 
@@ -62,35 +77,31 @@ function createSlide(pres, theme, options = {}) {
     "The main transition is from specifying deterministic functionality to shaping behavior under uncertainty."
   );
 
-  addComparisonPanel(
-    canvas,
-    pres,
-    0.62,
-    "Traditional",
-    "• Search cheeses by type\n• Validate fields and stock\n• Fixed outputs for fixed inputs\n• Success = feature works",
-    {
-      fill: "F8F1E8",
-      line: theme.light,
-      title: theme.primary,
-      body: "596B81"
-    },
-    "panel-traditional"
-  );
+  for (const panel of panels.slice(0, visiblePanels)) {
+    const colors = panel.group === "panel-traditional"
+      ? {
+        fill: "F8F1E8",
+        line: theme.light,
+        title: theme.primary,
+        body: "596B81"
+      }
+      : {
+        fill: "F6EAEC",
+        line: "E8CCD1",
+        title: theme.secondary,
+        body: "6F5560"
+      };
 
-  addComparisonPanel(
-    canvas,
-    pres,
-    5.0,
-    "AI-augmented",
-    "• Recommend from vague language\n• Use data and domain models\n• Outputs depend on interpretation\n• Success = relevance, trust, fit",
-    {
-      fill: "F6EAEC",
-      line: "E8CCD1",
-      title: theme.secondary,
-      body: "6F5560"
-    },
-    "panel-ai"
-  );
+    addComparisonPanel(
+      canvas,
+      pres,
+      panel.x,
+      panel.title,
+      panel.bullets,
+      colors,
+      panel.group
+    );
+  }
 
   canvas.addShape("shift-banner", pres.ShapeType.roundRect, {
     x: 1.18,
@@ -119,8 +130,27 @@ function createSlide(pres, theme, options = {}) {
     group: "shift-banner"
   });
 
-  addPageBadge(canvas, pres, theme, slideConfig.index);
+  addPageBadge(canvas, pres, theme, slideIndex);
   return canvas.finalize();
+}
+
+function createSlide(pres, theme, options = {}) {
+  const reports = [];
+
+  for (let visiblePanels = 1; visiblePanels <= panels.length; visiblePanels += 1) {
+    const result = createComparisonSlide(
+      pres,
+      theme,
+      options,
+      visiblePanels,
+      slideConfig.index + visiblePanels - 1
+    );
+    if (result && result.report) {
+      reports.push(result.report);
+    }
+  }
+
+  return { reports };
 }
 
 module.exports = { createSlide, slideConfig };

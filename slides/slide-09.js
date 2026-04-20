@@ -4,7 +4,7 @@ const { createSlideCanvas } = require("./validation");
 
 const slideConfig = {
   type: "summary",
-  index: 16,
+  index: 17,
   title: "Closing Synthesis"
 };
 
