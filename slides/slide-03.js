@@ -8,7 +8,7 @@ const slideConfig = {
   title: "Key Topics and Timing"
 };
 
-function addTimelineCard(canvas, pres, theme, x, y, minutes, title, body, group) {
+function addTimelineCard(canvas, pres, theme, x, y, title, body, group) {
   canvas.addShape(`${group}-card`, pres.ShapeType.roundRect, {
     x,
     y,
@@ -21,24 +21,10 @@ function addTimelineCard(canvas, pres, theme, x, y, minutes, title, body, group)
     group
   });
 
-  canvas.addText(`${group}-minutes`, minutes, {
+  canvas.addText(`${group}-title`, title, {
     x: x + 0.22,
     y: y + 0.18,
-    w: 0.75,
-    h: 0.22,
-    fontFace: bodyFont,
-    fontSize: 12,
-    bold: true,
-    color: theme.accent,
-    margin: 0
-  }, {
-    group
-  });
-
-  canvas.addText(`${group}-title`, title, {
-    x: x + 1.06,
-    y: y + 0.16,
-    w: 2.45,
+    w: 2.9,
     h: 0.28,
     fontFace: displayFont,
     fontSize: 16,
@@ -49,9 +35,9 @@ function addTimelineCard(canvas, pres, theme, x, y, minutes, title, body, group)
   });
 
   canvas.addText(`${group}-body`, body, {
-    x: x + 1.06,
-    y: y + 0.46,
-    w: 2.62,
+    x: x + 0.22,
+    y: y + 0.48,
+    w: 3.16,
     h: 0.36,
     fontFace: bodyFont,
     fontSize: 10,
@@ -75,10 +61,10 @@ function createSlide(pres, theme, options = {}) {
     "The presentation moves from one ambiguous customer request to the broader requirements questions raised by AI-enabled systems."
   );
 
-  addTimelineCard(canvas, pres, theme, 0.62, 2.04, "02 min", "Ambiguous request", "What does 'like Brie, but stronger' actually mean?", "roadmap-hook");
-  addTimelineCard(canvas, pres, theme, 5.02, 2.04, "04 min", "RE shift", "From deterministic functions to uncertain behavior.", "roadmap-shift");
-  addTimelineCard(canvas, pres, theme, 0.62, 3.36, "08 min", "Three challenges", "Latent meaning, domain data, and evaluation quality.", "roadmap-challenges");
-  addTimelineCard(canvas, pres, theme, 5.02, 3.36, "06 min", "Architectural control", "ADRs, guardrails, and continuous evaluation.", "roadmap-close");
+  addTimelineCard(canvas, pres, theme, 0.62, 2.04, "Ambiguous request", "What does 'like Brie, but stronger' actually mean?", "roadmap-hook");
+  addTimelineCard(canvas, pres, theme, 5.02, 2.04, "RE shift", "From deterministic functions to uncertain behavior.", "roadmap-shift");
+  addTimelineCard(canvas, pres, theme, 0.62, 3.36, "Three challenges", "Latent meaning, domain data, and evaluation quality.", "roadmap-challenges");
+  addTimelineCard(canvas, pres, theme, 5.02, 3.36, "Architectural control", "ADRs, guardrails, and continuous evaluation.", "roadmap-close");
 
   canvas.addText("roadmap-footer", "Running example: French cheese shop recommendations.", {
     x: 0.68,
