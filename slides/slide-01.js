@@ -153,6 +153,20 @@ function createSlide(pres, theme, options = {}) {
     group: "cover-copy"
   });
 
+  canvas.addText("cover-author", "Juho Vepsäläinen", {
+    x: 0.74,
+    y: 4.44,
+    w: 2.6,
+    h: 0.22,
+    fontFace: bodyFont,
+    fontSize: 11.5,
+    bold: true,
+    color: theme.secondary,
+    margin: 0
+  }, {
+    group: "cover-copy"
+  });
+
   canvas.addText("cover-side-number", "01", {
     x: 6.96,
     y: 4.38,
