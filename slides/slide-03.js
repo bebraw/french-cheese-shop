@@ -72,7 +72,7 @@ function createSlide(pres, theme, options = {}) {
     theme,
     "Structure",
     slideConfig.title,
-    "The argument moves from one ambiguous utterance to a broader account of interpretation, data, evaluation, and architectural control."
+    "The core themes are interpretation, data, evaluation, and architectural control in AI-enabled requirements engineering."
   );
 
   addTimelineCard(canvas, pres, theme, 0.62, 2.04, "02 min", "Hook", "Cheese request reveals ambiguity.", "roadmap-hook");
