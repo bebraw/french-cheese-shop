@@ -5,7 +5,7 @@ const { createSlideCanvas } = require("./validation");
 const slideConfig = {
   type: "content",
   index: 14,
-  title: "Challenge 2: Data Becomes Requirement"
+  title: "Challenge 2: Data Shapes Requirements"
 };
 
 function addSourceCard(canvas, pres, x, y, title, body, group) {
@@ -59,12 +59,12 @@ function createSlide(pres, theme, options = {}) {
     theme,
     "Challenge 2",
     slideConfig.title,
-    "The system cannot reason about cheese by prompt alone. It needs curated knowledge, domain distinctions, and an explicit representation of meaning."
+    "The prompt is not enough. The system also needs good data, domain knowledge, and clear links between concepts."
   );
 
   addSourceCard(canvas, pres, 0.62, 2.08, "Product catalog", "Milk, region, age,\ntexture, rind, stock", "source-catalog");
   addSourceCard(canvas, pres, 0.62, 3.18, "Interaction data", "Accepted choices,\nrejections, profiles", "source-interaction");
-  addSourceCard(canvas, pres, 0.62, 4.28, "Expert knowledge", "Shopkeeper heuristics\nand pairings", "source-expert");
+  addSourceCard(canvas, pres, 0.62, 4.28, "Shop knowledge", "Common advice\nand pairings", "source-expert");
 
   canvas.addShape("graph-panel", pres.ShapeType.roundRect, {
     x: 4.06,
@@ -79,7 +79,7 @@ function createSlide(pres, theme, options = {}) {
     skipOverlap: true
   });
 
-  canvas.addText("graph-title", "Ontology / knowledge graph lens", {
+  canvas.addText("graph-title", "Knowledge graph view", {
     x: 4.34,
     y: 2.2,
     w: 4.18,
@@ -196,7 +196,7 @@ function createSlide(pres, theme, options = {}) {
     group: "graph-choice"
   });
 
-  canvas.addText("graph-caption", "In AI-enabled RE, the data model is not peripheral. It is part of the requirement artifact.", {
+  canvas.addText("graph-caption", "For AI systems, the data structure is part of the requirement, not just background material.", {
     x: 4.36,
     y: 4.56,
     w: 4.28,

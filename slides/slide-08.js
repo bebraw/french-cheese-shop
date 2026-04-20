@@ -58,12 +58,12 @@ function createSlide(pres, theme, options = {}) {
     theme,
     "Architecture",
     slideConfig.title,
-    "Here they matter not as static records, but as evolving control points for uncertain behavior."
+    "Here they work as living design notes that capture key choices for an uncertain system."
   );
 
-  addListItem(canvas, pres, theme, 2.04, "Reframe the artifact", "Capture assumptions, evaluation, and guardrails, not only a tool choice.", "adr-item-1");
-  addListItem(canvas, pres, theme, 3.06, "Connect RE to implementation", "Link quality goals to prompts, ranking logic, and validation criteria.", "adr-item-2");
-  addListItem(canvas, pres, theme, 4.08, "Keep it falsifiable", "Accepted means acceptable under current evaluation, not correct forever.", "adr-item-3");
+  addListItem(canvas, pres, theme, 2.04, "Record key assumptions", "Write down the system goals, checks, and limits, not only the chosen tool.", "adr-item-1");
+  addListItem(canvas, pres, theme, 3.06, "Connect goals to code", "Link quality goals to prompts, ranking logic, and test criteria.", "adr-item-2");
+  addListItem(canvas, pres, theme, 4.08, "Keep it testable", "Acceptable means it meets today's tests, not that it is always correct.", "adr-item-3");
 
   canvas.addShape("adr-card", pres.ShapeType.roundRect, {
     x: 5.28,
@@ -77,7 +77,7 @@ function createSlide(pres, theme, options = {}) {
     group: "adr-card"
   });
 
-  canvas.addText("adr-title", "ADR: matching strategy", {
+  canvas.addText("adr-title", "Example design record", {
     x: 5.56,
     y: 2.24,
     w: 2.62,
@@ -90,7 +90,7 @@ function createSlide(pres, theme, options = {}) {
     group: "adr-card"
   });
 
-  canvas.addText("adr-body", "Context: ambiguous requests\nDecision: embeddings + reranking\nEvaluation: Top-3 relevance >= 80%\nGuardrails: stock and domain fit", {
+  canvas.addText("adr-body", "Context: request is vague\nDecision: semantic search + reranking\nEvaluation: Top-3 fit >= 80%\nChecks: stock and domain fit", {
     x: 5.56,
     y: 2.62,
     w: 2.72,
@@ -103,7 +103,7 @@ function createSlide(pres, theme, options = {}) {
     group: "adr-card"
   });
 
-  canvas.addText("adr-footer", "Accepted under current evaluation.", {
+  canvas.addText("adr-footer", "Good enough under current tests.", {
     x: 5.56,
     y: 4.56,
     w: 2.62,

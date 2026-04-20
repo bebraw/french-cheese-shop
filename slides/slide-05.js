@@ -5,7 +5,7 @@ const { createSlideCanvas } = require("./validation");
 const slideConfig = {
   type: "content",
   index: 13,
-  title: "Challenge 1: Latent Requirements"
+  title: "Challenge 1: Hidden Requirements"
 };
 
 function addLayer(canvas, pres, x, y, title, text, color, group) {
@@ -59,7 +59,7 @@ function createSlide(pres, theme, options = {}) {
     theme,
     "Challenge 1",
     slideConfig.title,
-    "The requirement is not written directly in the sentence. It is hidden in the interpretation layers underneath it."
+    "The sentence does not say everything the system needs to know. Some requirements are hidden in how we interpret it."
   );
 
   canvas.addShape("left-utterance", pres.ShapeType.roundRect, {
@@ -101,7 +101,7 @@ function createSlide(pres, theme, options = {}) {
     group: "left-utterance"
   });
 
-  canvas.addText("utterance-note", "Humans fill in context.\nAI needs that context modeled.", {
+  canvas.addText("utterance-note", "People infer context.\nSoftware needs it stated.", {
     x: 0.94,
     y: 4.02,
     w: 2.2,
@@ -116,9 +116,9 @@ function createSlide(pres, theme, options = {}) {
 
   addLayer(canvas, pres, 4.32, 2.02, "Like", "texture, milk type,\nserving context", theme.primary, "layer-like");
   addLayer(canvas, pres, 4.32, 2.96, "Stronger", "age, aroma,\npungency, salt", theme.secondary, "layer-stronger");
-  addLayer(canvas, pres, 4.32, 3.9, "Suitable", "budget, stock,\nprofile, explanation", theme.accent, "layer-suitable");
+  addLayer(canvas, pres, 4.32, 3.9, "Good fit", "budget, stock,\nprofile, explanation", theme.accent, "layer-suitable");
 
-  canvas.addText("latent-summary", "AI requirements include hidden semantic variables that must be elicited, represented, and tested.", {
+  canvas.addText("latent-summary", "For AI systems, teams must identify, describe, and test the hidden meanings inside user requests.", {
     x: 4.32,
     y: 4.92,
     w: 4.2,

@@ -58,12 +58,12 @@ function createSlide(pres, theme, options = {}) {
     theme,
     "Closing",
     slideConfig.title,
-    "The takeaway is how this shift changes what counts as a requirement artifact and how success is judged."
+    "The main takeaway is that AI changes both what teams must describe and how they decide whether the system works well."
   );
 
-  addTakeaway(canvas, pres, theme, 0.62, "Interpretation", "Requirements must surface latent meaning, not only explicit feature requests.", "takeaway-interpretation");
-  addTakeaway(canvas, pres, theme, 3.64, "Artifacts", "Data models, ontologies, prompts, and ADRs all become part of RE practice.", "takeaway-artifacts");
-  addTakeaway(canvas, pres, theme, 6.66, "Evaluation", "Correctness shifts toward relevance, trust, and measurable behavioral quality.", "takeaway-evaluation");
+  addTakeaway(canvas, pres, theme, 0.62, "Interpretation", "Requirements must describe the hidden meaning inside user requests, not only the words on the screen.", "takeaway-interpretation");
+  addTakeaway(canvas, pres, theme, 3.64, "Artifacts", "Data structures, prompts, and design records all become part of the requirements work.", "takeaway-artifacts");
+  addTakeaway(canvas, pres, theme, 6.66, "Evaluation", "Success shifts from simple correctness toward usefulness, trust, and observable quality.", "takeaway-evaluation");
 
   addPageBadge(canvas, pres, theme, slideConfig.index);
   return canvas.finalize();

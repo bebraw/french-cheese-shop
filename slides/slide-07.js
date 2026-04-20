@@ -100,16 +100,16 @@ function createSlide(pres, theme, options = {}) {
     theme,
     "Challenge 3",
     slideConfig.title,
-    "The question is no longer only whether the feature runs. It is whether the behavior is relevant, trusted, and good enough."
+    "The question is not only whether the feature runs. We also need to ask whether the answer is useful, trusted, and good enough."
   );
 
   addPipelineNode(canvas, pres, 0.58, "User input", "vague language", "FFFFFF", theme.secondary, "pipeline-input");
-  addPipelineNode(canvas, pres, 2.2, "Interpret", "latent meaning", "F7F1E7", theme.primary, "pipeline-interpret");
-  addPipelineNode(canvas, pres, 3.82, "Knowledge", "catalog + ontology", "FFFFFF", "A15D32", "pipeline-knowledge");
-  addPipelineNode(canvas, pres, 5.44, "Recommend", "rank + explain", "F7F1E7", theme.secondary, "pipeline-recommend");
+  addPipelineNode(canvas, pres, 2.2, "Interpret", "what user means", "F7F1E7", theme.primary, "pipeline-interpret");
+  addPipelineNode(canvas, pres, 3.82, "Knowledge", "catalog + graph", "FFFFFF", "A15D32", "pipeline-knowledge");
+  addPipelineNode(canvas, pres, 5.44, "Recommend", "pick + explain", "F7F1E7", theme.secondary, "pipeline-recommend");
   addPipelineNode(canvas, pres, 7.06, "Feedback", "accept or reject", "FFFFFF", theme.primary, "pipeline-feedback");
 
-  canvas.addText("pipeline-question", "Was the system wrong if it recommended Roquefort and the user hated it?", {
+  canvas.addText("pipeline-question", "If the user hates the recommendation, what exactly failed?", {
     x: 0.8,
     y: 2.08,
     w: 7.2,
@@ -122,10 +122,10 @@ function createSlide(pres, theme, options = {}) {
     group: "pipeline-question"
   });
 
-  addMetric(canvas, pres, theme, 0.76, "precision", "Top-3", "metric-precision");
-  addMetric(canvas, pres, theme, 2.9, "relevance", "fit", "metric-relevance");
-  addMetric(canvas, pres, theme, 5.04, "trust", "why", "metric-trust");
-  addMetric(canvas, pres, theme, 7.18, "reuse", "repeat", "metric-satisfaction");
+  addMetric(canvas, pres, theme, 0.76, "shortlist", "Top-3", "metric-precision");
+  addMetric(canvas, pres, theme, 2.9, "match", "fit", "metric-relevance");
+  addMetric(canvas, pres, theme, 5.04, "explanation", "why", "metric-trust");
+  addMetric(canvas, pres, theme, 7.18, "reuse", "again", "metric-satisfaction");
 
   addPageBadge(canvas, pres, theme, slideConfig.index);
   return canvas.finalize();

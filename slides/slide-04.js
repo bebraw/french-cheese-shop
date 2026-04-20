@@ -5,20 +5,20 @@ const { createSlideCanvas } = require("./validation");
 const slideConfig = {
   type: "content",
   index: 11,
-  title: "Classical RE vs AI-Era RE"
+  title: "Traditional RE vs AI-Supported RE"
 };
 
 const panels = [
   {
     x: 0.62,
     title: "Traditional",
-    bullets: "• Search cheeses by type\n• Validate fields and stock\n• Fixed outputs for fixed inputs\n• Success = feature works",
+    bullets: "• Search cheeses by type\n• Validate fields and stock\n• Same input, same output\n• Success = feature works",
     group: "panel-traditional"
   },
   {
     x: 5.0,
     title: "AI-augmented",
-    bullets: "• Recommend from vague language\n• Use data and domain models\n• Outputs depend on interpretation\n• Success = relevance, trust, fit",
+    bullets: "• Recommend from vague language\n• Use data and domain knowledge\n• Outputs depend on interpretation\n• Success = useful, trusted fit",
     group: "panel-ai"
   }
 ];
@@ -74,7 +74,7 @@ function createComparisonSlide(pres, theme, options, visiblePanels, slideIndex) 
     theme,
     "Conceptual Shift",
     slideConfig.title,
-    "The main transition is from specifying deterministic functionality to shaping behavior under uncertainty."
+    "The key shift is from building fixed features to guiding behavior when the system must interpret uncertain input."
   );
 
   for (const panel of panels.slice(0, visiblePanels)) {
@@ -115,7 +115,7 @@ function createComparisonSlide(pres, theme, options, visiblePanels, slideIndex) 
     group: "shift-banner"
   });
 
-  canvas.addText("shift-banner-text", "Requirements are no longer just functions. They also define how the system interprets, learns, and is evaluated.", {
+  canvas.addText("shift-banner-text", "Requirements now include how the system interprets user input, uses knowledge, and is judged in practice.", {
     x: 1.44,
     y: 4.92,
     w: 7.1,

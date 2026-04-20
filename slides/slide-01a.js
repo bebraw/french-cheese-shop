@@ -14,7 +14,7 @@ const outcomeCards = [
     y: 2.08,
     index: 1,
     title: "Interpret vague requests",
-    body: "Show why natural language creates latent requirements that must be made explicit.",
+    body: "See why a short sentence can hide extra requirements the system still needs.",
     group: "outcome-interpret"
   },
   {
@@ -22,7 +22,7 @@ const outcomeCards = [
     y: 2.08,
     index: 2,
     title: "Treat data as artifact",
-    body: "Show why domain knowledge, data, and ontologies belong in requirement work.",
+    body: "See why domain data and product knowledge become part of the requirements.",
     group: "outcome-data"
   },
   {
@@ -30,7 +30,7 @@ const outcomeCards = [
     y: 3.52,
     index: 3,
     title: "Evaluate uncertainty",
-    body: "Move beyond binary correctness toward relevance, trust, and user satisfaction.",
+    body: "Judge AI by fit, trust, and usefulness, not only by right or wrong answers.",
     group: "outcome-evaluate"
   },
   {
@@ -38,7 +38,7 @@ const outcomeCards = [
     y: 3.52,
     index: 4,
     title: "Use controls",
-    body: "Explain how guardrails, ADRs, and evaluation support AI-enabled systems.",
+    body: "Understand how design decisions, checks, and evaluation keep AI manageable.",
     group: "outcome-control"
   }
 ];
@@ -120,7 +120,7 @@ function createLearningOutcomesSlide(pres, theme, options, visibleCards, slideIn
     theme,
     "Session Focus",
     slideConfig.title,
-    "One cheese-shop example connects ambiguity, data, evaluation, and control to changing requirements work."
+    "One cheese-shop example shows how AI changes what software teams need to specify, test, and maintain."
   );
 
   for (const card of outcomeCards.slice(0, visibleCards)) {
