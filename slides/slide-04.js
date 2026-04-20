@@ -1,4 +1,4 @@
-const { addPageBadge, addSectionTitle } = require("./helpers");
+const { addPageBadge, addReferenceNote, addSectionTitle } = require("./helpers");
 const { bodyFont, displayFont } = require("./theme");
 const { createSlideCanvas } = require("./validation");
 
@@ -132,6 +132,7 @@ function createComparisonSlide(pres, theme, options, visiblePanels, showBanner, 
     });
   }
 
+  addReferenceNote(canvas, theme, "Refs: [1]");
   addPageBadge(canvas, pres, theme, slideIndex);
   return canvas.finalize();
 }

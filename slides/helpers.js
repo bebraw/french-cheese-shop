@@ -76,7 +76,34 @@ function addSectionTitle(canvas, theme, eyebrow, title, body) {
   }
 }
 
+function addReferenceNote(canvas, theme, text, options = {}) {
+  const {
+    x = 7.02,
+    y = 5.08,
+    w = 1.88,
+    h = 0.16,
+    align = "right",
+    group = "reference-note"
+  } = options;
+
+  canvas.addText(`${group}-text`, text, {
+    x,
+    y,
+    w,
+    h,
+    fontFace: bodyFont,
+    fontSize: 8.2,
+    color: theme.secondary,
+    align,
+    margin: 0
+  }, {
+    group,
+    skipOverlap: true
+  });
+}
+
 module.exports = {
   addPageBadge,
+  addReferenceNote,
   addSectionTitle
 };

@@ -1,4 +1,4 @@
-const { addPageBadge, addSectionTitle } = require("./helpers");
+const { addPageBadge, addReferenceNote, addSectionTitle } = require("./helpers");
 const { bodyFont, displayFont } = require("./theme");
 const { createSlideCanvas } = require("./validation");
 
@@ -87,6 +87,7 @@ function createEvaluationSlide(pres, theme, options, visibleNodes, slideIndex) {
     group: "pipeline-question"
   });
 
+  addReferenceNote(canvas, theme, "Refs: [3]");
   addPageBadge(canvas, pres, theme, slideIndex);
   return canvas.finalize();
 }

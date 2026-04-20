@@ -1,4 +1,4 @@
-const { addPageBadge, addSectionTitle } = require("./helpers");
+const { addPageBadge, addReferenceNote, addSectionTitle } = require("./helpers");
 const { bodyFont, displayFont } = require("./theme");
 const { createSlideCanvas } = require("./validation");
 
@@ -77,6 +77,7 @@ function createSlide(pres, theme, options = {}) {
     group: "claim-card"
   });
 
+  addReferenceNote(canvas, theme, "Refs: [1], [3]");
   addPageBadge(canvas, pres, theme, slideConfig.index);
   return canvas.finalize();
 }
