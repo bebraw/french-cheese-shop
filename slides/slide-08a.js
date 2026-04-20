@@ -18,7 +18,7 @@ function createSlide(pres, theme, options = {}) {
     theme,
     "Main Claim",
     slideConfig.title,
-    "The cheese-shop example makes the shift visible across interpretation, data, evaluation, and control."
+    null
   );
 
   canvas.addShape("claim-card", pres.ShapeType.roundRect, {
