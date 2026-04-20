@@ -20,6 +20,7 @@ Generated output:
 
 - PPTX: `slides/output/teaching-proof-ai-re.pptx`
 - PDF: `slides/output/teaching-proof-ai-re.pdf` when PDF export succeeds locally
+- Archived PDF snapshot: `archive/teaching-proof-ai-re.pdf`
 
 ## Usage
 
@@ -57,6 +58,8 @@ npm run validate:all
 
 ```text
 .
+├── archive/
+│   └── teaching-proof-ai-re.pdf
 ├── package.json
 ├── README.md
 ├── skills/
@@ -99,5 +102,6 @@ The deck includes local cheese photos on the cover and the customer-query slide.
 
 - The deck uses `Didot` for display text and `Avenir Next` for body text.
 - `slides/output/` is git-ignored, so generated binaries stay local.
+- `archive/teaching-proof-ai-re.pdf` stores the current checked-in PDF snapshot for linking and archival.
 - PDF export depends on a locally installed converter such as LibreOffice or Keynote automation on macOS.
 - Render validation compares rasterized PDF pages against the committed baseline in `slides/render-baseline/`.
