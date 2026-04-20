@@ -1,6 +1,6 @@
 # french-cheese-shop
 
-This repository contains a PowerPoint deck generator for **AI in Requirements Engineering**, built around the running example of a French cheese shop.
+This repository contains a presentation about the usage of **AI in Requirements Engineering**, built around the running example of a French cheese shop.
 
 The presentation is authored as slide modules in `slides/` and compiled into a `.pptx` with `PptxGenJS`.
 
