@@ -112,7 +112,7 @@ function createLearningOutcomesSlide(pres, theme, options, visibleCards, slideIn
     theme,
     "Session Focus",
     slideConfig.title,
-    "One cheese-shop example shows how AI changes what software teams need to specify, test, and maintain."
+    null
   );
 
   for (const card of outcomeCards.slice(0, visibleCards)) {

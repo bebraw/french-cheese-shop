@@ -7,7 +7,7 @@ const { createSlideCanvas } = require("./validation");
 const slideConfig = {
   type: "content",
   index: 5,
-  title: "One Customer Utterance"
+  title: "A Vague Customer Request"
 };
 
 const questionCards = [

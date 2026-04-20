@@ -4,7 +4,7 @@ const { createSlideCanvas } = require("./validation");
 
 const slideConfig = {
   type: "content",
-  index: 31,
+  index: 32,
   title: "Architecture Decision Records"
 };
 

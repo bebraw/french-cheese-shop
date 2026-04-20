@@ -167,6 +167,19 @@ function createSlide(pres, theme, options = {}) {
     group: "cover-copy"
   });
 
+  canvas.addText("cover-date", "6.5.2026", {
+    x: 0.74,
+    y: 4.14,
+    w: 1.6,
+    h: 0.18,
+    fontFace: bodyFont,
+    fontSize: 10.2,
+    color: "6B7C90",
+    margin: 0
+  }, {
+    group: "cover-copy"
+  });
+
   canvas.addText("cover-side-label", "Ambiguity\nData\nEvaluation", {
     x: 7.02,
     y: 1.82,

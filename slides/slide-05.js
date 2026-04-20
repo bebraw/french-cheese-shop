@@ -73,7 +73,7 @@ function addLayer(canvas, pres, x, y, title, text, color, group) {
   });
 }
 
-function createChallengeSlide(pres, theme, options, visibleLayers, slideIndex) {
+function createChallengeSlide(pres, theme, options, visibleLayers, showSummary, slideIndex) {
   const canvas = createSlideCanvas(pres, { ...slideConfig, index: slideIndex }, options);
   const { slide } = canvas;
   slide.background = { color: theme.bg };
@@ -164,7 +164,7 @@ function createChallengeSlide(pres, theme, options, visibleLayers, slideIndex) {
     );
   }
 
-  if (visibleLayers === audienceLayers.length) {
+  if (showSummary) {
     canvas.addText("latent-summary", "AI systems need these meanings made explicit and testable.", {
       x: 4.32,
       y: 5.0,
@@ -187,6 +187,7 @@ function createChallengeSlide(pres, theme, options, visibleLayers, slideIndex) {
 
 function createSlide(pres, theme, options = {}) {
   const reports = [];
+  let slideIndex = slideConfig.index;
 
   for (let visibleLayers = 0; visibleLayers <= audienceLayers.length; visibleLayers += 1) {
     const result = createChallengeSlide(
@@ -194,11 +195,25 @@ function createSlide(pres, theme, options = {}) {
       theme,
       options,
       visibleLayers,
-      slideConfig.index + visibleLayers
+      false,
+      slideIndex
     );
     if (result && result.report) {
       reports.push(result.report);
     }
+    slideIndex += 1;
+  }
+
+  const summaryResult = createChallengeSlide(
+    pres,
+    theme,
+    options,
+    audienceLayers.length,
+    true,
+    slideIndex
+  );
+  if (summaryResult && summaryResult.report) {
+    reports.push(summaryResult.report);
   }
 
   return { reports };
