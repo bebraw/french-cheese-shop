@@ -64,7 +64,7 @@ function addComparisonPanel(canvas, pres, x, title, bullets, colors, group) {
   });
 }
 
-function createComparisonSlide(pres, theme, options, visiblePanels, slideIndex) {
+function createComparisonSlide(pres, theme, options, visiblePanels, showBanner, slideIndex) {
   const canvas = createSlideCanvas(pres, { ...slideConfig, index: slideIndex }, options);
   const { slide } = canvas;
   slide.background = { color: "FFFDFC" };
@@ -103,32 +103,34 @@ function createComparisonSlide(pres, theme, options, visiblePanels, slideIndex) 
     );
   }
 
-  canvas.addShape("shift-banner", pres.ShapeType.roundRect, {
-    x: 1.18,
-    y: 4.88,
-    w: 7.64,
-    h: 0.38,
-    rectRadius: 0.05,
-    line: { color: theme.primary, transparency: 100 },
-    fill: { color: theme.primary }
-  }, {
-    group: "shift-banner"
-  });
+  if (showBanner) {
+    canvas.addShape("shift-banner", pres.ShapeType.roundRect, {
+      x: 1.18,
+      y: 4.88,
+      w: 7.64,
+      h: 0.38,
+      rectRadius: 0.05,
+      line: { color: theme.primary, transparency: 100 },
+      fill: { color: theme.primary }
+    }, {
+      group: "shift-banner"
+    });
 
-  canvas.addText("shift-banner-text", "Requirements now include how the system interprets user input, uses knowledge, and is judged in practice.", {
-    x: 1.44,
-    y: 4.92,
-    w: 7.1,
-    h: 0.34,
-    fontFace: bodyFont,
-    fontSize: 9.2,
-    bold: true,
-    color: "FFFFFF",
-    align: "center",
-    margin: 0
-  }, {
-    group: "shift-banner"
-  });
+    canvas.addText("shift-banner-text", "Requirements are no longer just functions. They also define how the system interprets, learns, and is evaluated.", {
+      x: 1.44,
+      y: 4.92,
+      w: 7.1,
+      h: 0.34,
+      fontFace: bodyFont,
+      fontSize: 9.2,
+      bold: true,
+      color: "FFFFFF",
+      align: "center",
+      margin: 0
+    }, {
+      group: "shift-banner"
+    });
+  }
 
   addPageBadge(canvas, pres, theme, slideIndex);
   return canvas.finalize();
@@ -143,11 +145,24 @@ function createSlide(pres, theme, options = {}) {
       theme,
       options,
       visiblePanels,
+      false,
       slideConfig.index + visiblePanels - 1
     );
     if (result && result.report) {
       reports.push(result.report);
     }
+  }
+
+  const bannerResult = createComparisonSlide(
+    pres,
+    theme,
+    options,
+    panels.length,
+    true,
+    slideConfig.index + panels.length
+  );
+  if (bannerResult && bannerResult.report) {
+    reports.push(bannerResult.report);
   }
 
   return { reports };

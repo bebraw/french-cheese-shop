@@ -6,7 +6,7 @@ const { createSlideCanvas } = require("./validation");
 
 const slideConfig = {
   type: "closing",
-  index: 19,
+  index: 20,
   title: "Questions and Comments"
 };
 
