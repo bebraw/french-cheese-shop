@@ -1,3 +1,5 @@
+const fs = require("fs");
+const path = require("path");
 const { addPageBadge, addReferenceNote, addSectionTitle } = require("./helpers");
 const { bodyFont, displayFont } = require("./theme");
 const { createSlideCanvas } = require("./validation");
@@ -31,6 +33,8 @@ const sourceCards = [
     group: "source-expert"
   }
 ];
+
+const graphImagePath = path.join(__dirname, "imgs", "challenge-2-graph.png");
 
 function addSourceCard(canvas, pres, x, y, title, body, group) {
   canvas.addShape(`${group}-card`, pres.ShapeType.roundRect, {
@@ -73,7 +77,7 @@ function addSourceCard(canvas, pres, x, y, title, body, group) {
   });
 }
 
-function addGraphPanel(canvas, pres, theme) {
+function addGraphPanel(canvas, slide, pres, theme) {
   canvas.addShape("graph-panel", pres.ShapeType.roundRect, {
     x: 4.06,
     y: 2.02,
@@ -113,153 +117,37 @@ function addGraphPanel(canvas, pres, theme) {
     group: "graph-panel"
   });
 
-  canvas.addShape("node-request", pres.ShapeType.ellipse, {
-    x: 4.44,
-    y: 3.32,
-    w: 1.05,
-    h: 0.54,
-    line: { color: theme.secondary, pt: 1.1 },
-    fill: { color: "F7E5E7" }
-  }, {
-    group: "graph-request"
-  });
-
-  canvas.addText("node-request-text", "request", {
-    x: 4.7,
-    y: 3.48,
-    w: 0.52,
-    h: 0.16,
-    fontFace: bodyFont,
-    fontSize: 9.4,
-    bold: true,
-    color: theme.secondary,
-    align: "center",
-    margin: 0
-  }, {
-    group: "graph-request"
-  });
-
-  canvas.addShape("node-brie", pres.ShapeType.ellipse, {
-    x: 6.03,
-    y: 2.88,
-    w: 1.16,
-    h: 0.54,
-    line: { color: theme.primary, pt: 1.1 },
-    fill: { color: "E7EEF5" }
-  }, {
-    group: "graph-brie"
-  });
-
-  canvas.addText("node-brie-text", "Brie-like", {
-    x: 6.26,
-    y: 3.04,
-    w: 0.72,
-    h: 0.16,
-    fontFace: bodyFont,
-    fontSize: 9.2,
-    bold: true,
-    color: theme.primary,
-    align: "center",
-    margin: 0
-  }, {
-    group: "graph-brie"
-  });
-
-  canvas.addShape("node-strength", pres.ShapeType.ellipse, {
-    x: 6.08,
-    y: 4.02,
-    w: 1.12,
-    h: 0.54,
-    line: { color: theme.accent, pt: 1.1 },
-    fill: { color: "F7EEDB" }
-  }, {
-    group: "graph-strength"
-  });
-
-  canvas.addText("node-strength-text", "stronger", {
-    x: 6.3,
-    y: 4.18,
-    w: 0.68,
-    h: 0.16,
-    fontFace: bodyFont,
-    fontSize: 9.2,
-    bold: true,
-    color: "8D651A",
-    align: "center",
-    margin: 0
-  }, {
-    group: "graph-strength"
-  });
-
-  canvas.addShape("node-choice", pres.ShapeType.ellipse, {
-    x: 7.56,
-    y: 3.34,
-    w: 1.34,
-    h: 0.54,
-    line: { color: theme.secondary, pt: 1.1 },
-    fill: { color: "F7E5E7" }
-  }, {
-    group: "graph-choice"
-  });
-
-  canvas.addText("node-choice-text", "matching cheese", {
-    x: 7.72,
-    y: 3.5,
-    w: 1.02,
-    h: 0.16,
-    fontFace: bodyFont,
-    fontSize: 8.4,
-    bold: true,
-    color: theme.secondary,
-    align: "center",
-    margin: 0
-  }, {
-    group: "graph-choice"
-  });
-
-  canvas.addShape("edge-request-brie", pres.ShapeType.line, {
-    x: 5.48,
-    y: 3.56,
-    w: 0.62,
-    h: -0.28,
-    line: { color: theme.primary, pt: 1.0, beginArrowType: "none", endArrowType: "triangle" }
-  }, {
-    group: "graph-edge-1",
-    skipOverlap: true
-  });
-
-  canvas.addShape("edge-request-strength", pres.ShapeType.line, {
-    x: 5.48,
-    y: 3.62,
-    w: 0.66,
-    h: 0.46,
-    line: { color: theme.accent, pt: 1.0, beginArrowType: "none", endArrowType: "triangle" }
-  }, {
-    group: "graph-edge-2",
-    skipOverlap: true
-  });
-
-  canvas.addShape("edge-brie-choice", pres.ShapeType.line, {
-    x: 7.16,
-    y: 3.16,
-    w: 0.46,
-    h: 0.32,
-    line: { color: theme.primary, pt: 1.0, beginArrowType: "none", endArrowType: "triangle" }
-  }, {
-    group: "graph-edge-3",
-    skipOverlap: true
-  });
-
-  canvas.addShape("edge-strength-choice", pres.ShapeType.line, {
-    x: 7.18,
-    y: 4.2,
-    w: 0.44,
-    h: -0.3,
-    line: { color: theme.accent, pt: 1.0, beginArrowType: "none", endArrowType: "triangle" }
-  }, {
-    group: "graph-edge-4",
-    skipOverlap: true
-  });
+  if (fs.existsSync(graphImagePath)) {
+    slide.addImage({
+      path: graphImagePath,
+      x: 4.42,
+      y: 2.92,
+      w: 4.28,
+      h: 1.68
+    });
+    canvas.reserveGroup("graph-image", {
+      x: 4.42,
+      y: 2.92,
+      w: 4.28,
+      h: 1.68
+    }, {
+      group: "graph-image",
+      skipOverlap: true
+    });
+  } else {
+    canvas.addText("graph-missing", "Graph image missing.", {
+      x: 4.46,
+      y: 3.46,
+      w: 2.0,
+      h: 0.18,
+      fontFace: bodyFont,
+      fontSize: 9,
+      color: theme.secondary,
+      margin: 0
+    }, {
+      group: "graph-panel"
+    });
+  }
 
   canvas.addText("graph-caption", "The requirement includes how request terms connect to product data.", {
     x: 4.36,
@@ -286,7 +174,7 @@ function createDataSlide(pres, theme, options, visibleCards, showGraph, slideInd
     theme,
     "Challenge 2",
     slideConfig.title,
-    "Use the audience again: ask what data or knowledge the system would need behind the prompt."
+    "The requirement also includes the product, interaction, and domain data behind the prompt."
   );
 
   canvas.addText("data-prompt", "What data does it need?", {
@@ -306,23 +194,8 @@ function createDataSlide(pres, theme, options, visibleCards, showGraph, slideInd
     addSourceCard(canvas, pres, card.x, card.y, card.title, card.body, card.group);
   }
 
-  if (visibleCards === 0) {
-    canvas.addText("data-note", "Take 2-3 suggestions, then reveal the answer.", {
-      x: 0.74,
-      y: 4.98,
-      w: 3.1,
-      h: 0.24,
-      fontFace: bodyFont,
-      fontSize: 8.2,
-      color: theme.secondary,
-      margin: 0
-    }, {
-      group: "data-note"
-    });
-  }
-
   if (showGraph) {
-    addGraphPanel(canvas, pres, theme);
+    addGraphPanel(canvas, slide, pres, theme);
   }
 
   addReferenceNote(canvas, theme, "Source: [3] Ahmad et al. (2023)");

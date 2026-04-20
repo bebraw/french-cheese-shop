@@ -1,0 +1,58 @@
+digraph Challenge2 {
+  graph [
+    bgcolor="transparent",
+    rankdir=LR,
+    splines=polyline,
+    nodesep=0.6,
+    ranksep=0.7,
+    margin=0,
+    fontname="Avenir Next"
+  ];
+
+  node [
+    shape=ellipse,
+    style="filled,setlinewidth(2)",
+    fontname="Avenir Next",
+    fontsize=20,
+    margin="0.22,0.16"
+  ];
+
+  edge [
+    fontname="Avenir Next",
+    arrowsize=0.8,
+    penwidth=2.2
+  ];
+
+  request [
+    label="request",
+    color="#7B1E2B",
+    fillcolor="#F7E5E7",
+    fontcolor="#7B1E2B"
+  ];
+
+  brie [
+    label="Brie-like",
+    color="#1D3557",
+    fillcolor="#E7EEF5",
+    fontcolor="#1D3557"
+  ];
+
+  stronger [
+    label="stronger",
+    color="#C6933F",
+    fillcolor="#F7EEDB",
+    fontcolor="#8D651A"
+  ];
+
+  choice [
+    label="matching cheese",
+    color="#7B1E2B",
+    fillcolor="#F7E5E7",
+    fontcolor="#7B1E2B"
+  ];
+
+  request:e -> brie:w [color="#1D3557", tailclip=false];
+  request:e -> stronger:w [color="#C6933F", tailclip=false];
+  brie:e -> choice:w [color="#1D3557"];
+  stronger:e -> choice:w [color="#C6933F"];
+}
