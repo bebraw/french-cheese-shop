@@ -3,6 +3,7 @@ const { bodyFont, deckMeta, displayFont, theme } = require("./theme");
 
 const slideModules = [
   require("./slide-01"),
+  require("./slide-01a"),
   require("./slide-02"),
   require("./slide-03"),
   require("./slide-04"),
