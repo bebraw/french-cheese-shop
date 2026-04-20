@@ -74,7 +74,7 @@ function createEvaluationSlide(pres, theme, options, visibleNodes, slideIndex) {
     addPipelineNode(canvas, pres, node.x, node.title, node.body, node.fill, node.line, node.group);
   }
 
-  canvas.addText("pipeline-question", "Ask: where could the recommendation fail?", {
+  canvas.addText("pipeline-question", "Where could the recommendation fail?", {
     x: 0.8,
     y: 2.08,
     w: 7.2,
@@ -86,21 +86,6 @@ function createEvaluationSlide(pres, theme, options, visibleNodes, slideIndex) {
   }, {
     group: "pipeline-question"
   });
-
-  if (visibleNodes === 0) {
-    canvas.addText("pipeline-note", "Take 2-3 audience suggestions, then reveal the pipeline.", {
-      x: 0.82,
-      y: 4.96,
-      w: 3.86,
-      h: 0.22,
-      fontFace: bodyFont,
-      fontSize: 8.6,
-      color: theme.secondary,
-      margin: 0
-    }, {
-      group: "pipeline-note"
-    });
-  }
 
   addReferenceNote(canvas, theme, "Source: [3] Ahmad et al. (2023)");
   addPageBadge(canvas, pres, theme, slideIndex);

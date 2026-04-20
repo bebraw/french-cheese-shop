@@ -138,7 +138,7 @@ function createChallengeSlide(pres, theme, options, visibleLayers, slideIndex) {
     group: "left-utterance"
   });
 
-  canvas.addText("audience-prompt", "Ask: what does the system still need to know?", {
+  canvas.addText("audience-prompt", "What does the system still need to know?", {
     x: 4.32,
     y: 2.06,
     w: 4.3,
