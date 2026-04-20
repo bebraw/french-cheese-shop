@@ -90,7 +90,7 @@ function createSlide(pres, theme, options = {}) {
     group: "adr-card"
   });
 
-  canvas.addText("adr-body", "Context: request is vague\nDecision: semantic search + reranking\nEvaluation: Top-3 fit >= 80%\nChecks: stock and domain fit", {
+  canvas.addText("adr-body", "Context: request is vague\nDecision: semantic search + reranking\nEvaluation: useful and explainable\nChecks: stock and domain fit", {
     x: 5.56,
     y: 2.62,
     w: 2.72,
@@ -103,7 +103,7 @@ function createSlide(pres, theme, options = {}) {
     group: "adr-card"
   });
 
-  canvas.addText("adr-footer", "Good enough under current tests.", {
+  canvas.addText("adr-footer", "Good enough for the current shop context.", {
     x: 5.56,
     y: 4.56,
     w: 2.62,

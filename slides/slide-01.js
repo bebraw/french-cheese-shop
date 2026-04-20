@@ -153,22 +153,9 @@ function createSlide(pres, theme, options = {}) {
     group: "cover-copy"
   });
 
-  canvas.addText("cover-aim", "Requirements shift from fixed functions toward interpretation, data, evaluation, and evolving architectural assumptions.", {
-    x: 0.74,
-    y: 3.2,
-    w: 4.95,
-    h: 0.74,
-    fontFace: bodyFont,
-    fontSize: 11.1,
-    color: "607286",
-    margin: 0
-  }, {
-    group: "cover-copy"
-  });
-
   canvas.addText("cover-author", "Juho Vepsäläinen", {
     x: 0.74,
-    y: 4.44,
+    y: 3.88,
     w: 2.6,
     h: 0.22,
     fontFace: bodyFont,
