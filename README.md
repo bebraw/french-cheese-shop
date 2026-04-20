@@ -1,107 +1,28 @@
 # french-cheese-shop
 
-This repository contains a presentation about the usage of **AI in Requirements Engineering**, built around the running example of a French cheese shop.
+This repository contains a teaching presentation on **AI in Requirements Engineering**, built around the running example of a French cheese shop.
 
-The presentation is authored as slide modules in `slides/` and compiled into a `.pptx` with `PptxGenJS`.
+## Presentation
 
-## Deck
+- Archived PDF: `archive/teaching-proof-ai-re.pdf`
+- Current local PPTX build: `slides/output/teaching-proof-ai-re.pptx`
+- Current local PDF build: `slides/output/teaching-proof-ai-re.pdf`
 
-The current presentation is a 9-slide teaching deck covering:
+The deck focuses on:
 
-- the opening cheese-shop prompt
-- the shift from classical RE to AI-era RE
-- latent requirements
-- data and ontology as requirement artifacts
+- vague customer requests
+- hidden requirements
+- data requirements
 - evaluation under uncertainty
-- ADRs as control points
-- closing synthesis
+- how AI changes requirements engineering
 
-Generated output:
+## Media
 
-- PPTX: `slides/output/teaching-proof-ai-re.pptx`
-- PDF: `slides/output/teaching-proof-ai-re.pdf` when PDF export succeeds locally
-- Archived PDF snapshot: `archive/teaching-proof-ai-re.pdf`
+The deck includes local cheese photos on the cover and customer-request slide.
 
-## Usage
+- Image files: `slides/imgs/`
+- Attribution details: `slides/imgs/ATTRIBUTIONS.md`
 
-Install dependencies:
+## Technical Notes
 
-```bash
-npm install
-```
-
-Build the presentation:
-
-```bash
-npm run build
-```
-
-Build the presentation and attempt PDF export:
-
-```bash
-npm run build:pdf
-```
-
-Run layout and text validation:
-
-```bash
-npm run validate
-```
-
-Run the full validation suite, including render validation:
-
-```bash
-npm run validate:all
-```
-
-## Project structure
-
-```text
-.
-├── archive/
-│   └── teaching-proof-ai-re.pdf
-├── package.json
-├── README.md
-├── skills/
-│   └── pptx-generator/
-│       └── SKILL.md
-└── slides/
-    ├── compile.js
-    ├── deck.js
-    ├── export-pdf.js
-    ├── helpers.js
-    ├── imgs/
-    │   └── ATTRIBUTIONS.md
-    ├── render-baseline/
-    ├── slide-01.js
-    ├── slide-02.js
-    ├── slide-03.js
-    ├── slide-04.js
-    ├── slide-05.js
-    ├── slide-06.js
-    ├── slide-07.js
-    ├── slide-08.js
-    ├── slide-09.js
-    ├── theme.js
-    ├── update-render-baseline.js
-    ├── validate-geometry.js
-    ├── validate-render.js
-    ├── validate-text.js
-    └── validation.js
-```
-
-## Photos and attribution
-
-The deck includes local cheese photos on the cover and the customer-query slide.
-
-- Image files live in `slides/imgs/`
-- Attribution details live in `slides/imgs/ATTRIBUTIONS.md`
-- The slide code adds the image and on-slide attribution automatically when the expected files are present
-
-## Notes
-
-- The deck uses `Didot` for display text and `Avenir Next` for body text.
-- `slides/output/` is git-ignored, so generated binaries stay local.
-- `archive/teaching-proof-ai-re.pdf` stores the current checked-in PDF snapshot for linking and archival.
-- PDF export depends on a locally installed converter such as LibreOffice or Keynote automation on macOS.
-- Render validation compares rasterized PDF pages against the committed baseline in `slides/render-baseline/`.
+Build, validation, export, and repository structure details are documented in [TECHNICAL.md](TECHNICAL.md).
