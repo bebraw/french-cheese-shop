@@ -1,27 +1,25 @@
-# presentation-template
+# french-cheese-shop
 
-This repository packages the imported `pptx-generator` skill with a small runnable demo deck.
+This repository contains a PowerPoint deck generator for **AI in Requirements Engineering**, built around the running example of a French cheese shop.
 
-The project is set up around the skill's "create from scratch" workflow:
+The presentation is authored as slide modules in `slides/` and compiled into a `.pptx` with `PptxGenJS`.
 
-- `skills/pptx-generator/SKILL.md` contains the imported skill guidance.
-- `slides/slide-01.js` to `slides/slide-04.js` demonstrate the slide module pattern.
-- `slides/theme.js` centralizes the theme object expected by the slides.
-- `slides/compile.js` assembles the modules into a PowerPoint file.
-- `slides/export-pdf.js` converts the generated PPTX into PDF when a supported local converter is installed.
-- `slides/validation.js` records layout geometry and powers the slide validators.
+## Deck
 
-## Demo deck
+The current presentation is a 9-slide teaching deck covering:
 
-The demo presentation is a four-slide starter deck:
+- the opening cheese-shop prompt
+- the shift from classical RE to AI-era RE
+- latent requirements
+- data and ontology as requirement artifacts
+- evaluation under uncertainty
+- ADRs as control points
+- closing synthesis
 
-- Cover
-- Outline
-- Content with metrics and a chart
-- Summary / next steps
+Generated output:
 
-Generated output goes to `slides/output/demo-presentation.pptx`.
-PDF output goes to `slides/output/demo-presentation.pdf`.
+- PPTX: `slides/output/teaching-proof-ai-re.pptx`
+- PDF: `slides/output/teaching-proof-ai-re.pdf` when PDF export succeeds locally
 
 ## Usage
 
@@ -31,41 +29,28 @@ Install dependencies:
 npm install
 ```
 
-Build the demonstration presentation:
+Build the presentation:
 
 ```bash
 npm run build
 ```
 
-Build the presentation and export a PDF:
+Build the presentation and attempt PDF export:
 
 ```bash
 npm run build:pdf
 ```
 
-`build:pdf` first regenerates the PPTX and then converts it to PDF.
-
-Supported local converters:
-
-- LibreOffice via `soffice` or `/Applications/LibreOffice.app`
-- Keynote via AppleScript on macOS
-
-Run the code-level validators:
+Run layout and text validation:
 
 ```bash
 npm run validate
 ```
 
-Run the rendered-output validator against the committed image baseline:
+Run the full validation suite, including render validation:
 
 ```bash
-npm run validate:render
-```
-
-Refresh the committed render baseline after intentionally changing the deck design:
-
-```bash
-npm run baseline:render
+npm run validate:all
 ```
 
 ## Project structure
@@ -79,27 +64,40 @@ npm run baseline:render
 │       └── SKILL.md
 └── slides/
     ├── compile.js
+    ├── deck.js
     ├── export-pdf.js
     ├── helpers.js
+    ├── imgs/
+    │   └── ATTRIBUTIONS.md
     ├── render-baseline/
-    ├── render-utils.js
     ├── slide-01.js
     ├── slide-02.js
     ├── slide-03.js
     ├── slide-04.js
+    ├── slide-05.js
+    ├── slide-06.js
+    ├── slide-07.js
+    ├── slide-08.js
+    ├── slide-09.js
     ├── theme.js
     ├── update-render-baseline.js
     ├── validate-geometry.js
     ├── validate-render.js
     ├── validate-text.js
-    ├── validation.js
-    └── output/
+    └── validation.js
 ```
+
+## Photos and attribution
+
+The deck includes local cheese photos on the cover and the customer-query slide.
+
+- Image files live in `slides/imgs/`
+- Attribution details live in `slides/imgs/ATTRIBUTIONS.md`
+- The slide code adds the image and on-slide attribution automatically when the expected files are present
 
 ## Notes
 
-- The deck uses `Avenir Next` as the default English sans-serif font for macOS.
-- `slides/output/` is git-ignored so generated binaries stay local.
-- If you want to extend the deck, duplicate one of the existing slide modules and add it to `slides/compile.js`.
-- PDF export depends on a locally installed converter. The repository does not bundle one.
+- The deck uses `Didot` for display text and `Avenir Next` for body text.
+- `slides/output/` is git-ignored, so generated binaries stay local.
+- PDF export depends on a locally installed converter such as LibreOffice or Keynote automation on macOS.
 - Render validation compares rasterized PDF pages against the committed baseline in `slides/render-baseline/`.
