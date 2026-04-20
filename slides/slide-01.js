@@ -167,20 +167,6 @@ function createSlide(pres, theme, options = {}) {
     group: "cover-copy"
   });
 
-  canvas.addText("cover-side-number", "01", {
-    x: 6.96,
-    y: 4.38,
-    w: 1.2,
-    h: 0.42,
-    fontFace: bodyFont,
-    fontSize: 28,
-    bold: true,
-    color: "FFFFFF",
-    margin: 0
-  }, {
-    group: "cover-side"
-  });
-
   canvas.addText("cover-side-label", "Ambiguity\nData\nEvaluation", {
     x: 7.02,
     y: 1.82,
