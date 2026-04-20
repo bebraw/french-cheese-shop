@@ -8,6 +8,41 @@ const slideConfig = {
   title: "Learning Outcomes"
 };
 
+const outcomeCards = [
+  {
+    x: 0.62,
+    y: 2.08,
+    index: 1,
+    title: "Interpret vague requests",
+    body: "Show why natural language creates latent requirements that must be made explicit.",
+    group: "outcome-interpret"
+  },
+  {
+    x: 5.0,
+    y: 2.08,
+    index: 2,
+    title: "Treat data as artifact",
+    body: "Show why domain knowledge, data, and ontologies belong in requirement work.",
+    group: "outcome-data"
+  },
+  {
+    x: 0.62,
+    y: 3.52,
+    index: 3,
+    title: "Evaluate uncertainty",
+    body: "Move beyond binary correctness toward relevance, trust, and user satisfaction.",
+    group: "outcome-evaluate"
+  },
+  {
+    x: 5.0,
+    y: 3.52,
+    index: 4,
+    title: "Use controls",
+    body: "Explain how guardrails, ADRs, and evaluation support AI-enabled systems.",
+    group: "outcome-control"
+  }
+];
+
 function addOutcomeCard(canvas, pres, theme, x, y, index, title, body, group) {
   canvas.addShape(`${group}-card`, pres.ShapeType.roundRect, {
     x,
@@ -75,8 +110,8 @@ function addOutcomeCard(canvas, pres, theme, x, y, index, title, body, group) {
   });
 }
 
-function createSlide(pres, theme, options = {}) {
-  const canvas = createSlideCanvas(pres, slideConfig, options);
+function createLearningOutcomesSlide(pres, theme, options, visibleCards, slideIndex) {
+  const canvas = createSlideCanvas(pres, { ...slideConfig, index: slideIndex }, options);
   const { slide } = canvas;
   slide.background = { color: theme.bg };
 
@@ -88,56 +123,41 @@ function createSlide(pres, theme, options = {}) {
     "By the end of the presentation, the audience should be able to connect AI capabilities to concrete changes in requirements work."
   );
 
-  addOutcomeCard(
-    canvas,
-    pres,
-    theme,
-    0.62,
-    2.08,
-    1,
-    "Interpret vague requests",
-    "Show why natural language creates latent requirements that must be made explicit.",
-    "outcome-interpret"
-  );
+  for (const card of outcomeCards.slice(0, visibleCards)) {
+    addOutcomeCard(
+      canvas,
+      pres,
+      theme,
+      card.x,
+      card.y,
+      card.index,
+      card.title,
+      card.body,
+      card.group
+    );
+  }
 
-  addOutcomeCard(
-    canvas,
-    pres,
-    theme,
-    5.0,
-    2.08,
-    2,
-    "Treat data as artifact",
-    "Show why domain knowledge, data, and ontologies belong in requirement work.",
-    "outcome-data"
-  );
-
-  addOutcomeCard(
-    canvas,
-    pres,
-    theme,
-    0.62,
-    3.52,
-    3,
-    "Evaluate uncertainty",
-    "Move beyond binary correctness toward relevance, trust, and user satisfaction.",
-    "outcome-evaluate"
-  );
-
-  addOutcomeCard(
-    canvas,
-    pres,
-    theme,
-    5.0,
-    3.52,
-    4,
-    "Use controls",
-    "Explain how guardrails, ADRs, and evaluation support AI-enabled systems.",
-    "outcome-control"
-  );
-
-  addPageBadge(canvas, pres, theme, slideConfig.index);
+  addPageBadge(canvas, pres, theme, slideIndex);
   return canvas.finalize();
+}
+
+function createSlide(pres, theme, options = {}) {
+  const reports = [];
+
+  for (let visibleCards = 1; visibleCards <= outcomeCards.length; visibleCards += 1) {
+    const result = createLearningOutcomesSlide(
+      pres,
+      theme,
+      options,
+      visibleCards,
+      slideConfig.index + visibleCards - 1
+    );
+    if (result && result.report) {
+      reports.push(result.report);
+    }
+  }
+
+  return { reports };
 }
 
 module.exports = { createSlide, slideConfig };

@@ -4,7 +4,7 @@ const { createSlideCanvas } = require("./validation");
 
 const slideConfig = {
   type: "toc",
-  index: 7,
+  index: 10,
   title: "Key Topics and Timing"
 };
 

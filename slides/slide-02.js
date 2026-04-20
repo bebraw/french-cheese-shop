@@ -6,7 +6,7 @@ const { createSlideCanvas } = require("./validation");
 
 const slideConfig = {
   type: "content",
-  index: 3,
+  index: 6,
   title: "The Hook: One Customer Utterance"
 };
 
