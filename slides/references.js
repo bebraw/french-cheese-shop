@@ -9,7 +9,7 @@ const references = [
   },
   {
     id: 3,
-    text: "M. G. Seneviratne et al. “User-centred design for machine learning in health care: a case study from care management.” BMJ Health & Care Informatics, 29(1), 2022."
+    text: "K. Ahmad, M. Abdelrazek, C. Arora, M. Bano, and J. Grundy. “Requirements engineering for artificial intelligence systems: A systematic mapping study.” Information and Software Technology, 158, 2023."
   },
   {
     id: 4,

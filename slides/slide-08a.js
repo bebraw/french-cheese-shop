@@ -77,7 +77,7 @@ function createSlide(pres, theme, options = {}) {
     group: "claim-card"
   });
 
-  addReferenceNote(canvas, theme, "Sources: [1] Nuseibeh & Easterbrook (2000); [3] Seneviratne et al. (2022)");
+  addReferenceNote(canvas, theme, "Sources: [1] Nuseibeh & Easterbrook (2000); [3] Ahmad et al. (2023)");
   addPageBadge(canvas, pres, theme, slideConfig.index);
   return canvas.finalize();
 }

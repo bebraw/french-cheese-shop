@@ -87,7 +87,7 @@ function createEvaluationSlide(pres, theme, options, visibleNodes, slideIndex) {
     group: "pipeline-question"
   });
 
-  addReferenceNote(canvas, theme, "Source: [3] Seneviratne et al. (2022)");
+  addReferenceNote(canvas, theme, "Source: [3] Ahmad et al. (2023)");
   addPageBadge(canvas, pres, theme, slideIndex);
   return canvas.finalize();
 }
