@@ -4,7 +4,7 @@ const { createSlideCanvas } = require("./validation");
 
 const slideConfig = {
   type: "content",
-  index: 10,
+  index: 13,
   title: "Evaluation Under Uncertainty"
 };
 

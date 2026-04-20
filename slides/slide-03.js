@@ -8,6 +8,37 @@ const slideConfig = {
   title: "Key Topics and Timing"
 };
 
+const topicCards = [
+  {
+    x: 0.62,
+    y: 2.04,
+    title: "Ambiguous request",
+    body: "What does 'like Brie, but stronger' actually mean?",
+    group: "roadmap-hook"
+  },
+  {
+    x: 5.02,
+    y: 2.04,
+    title: "RE shift",
+    body: "From deterministic functions to uncertain behavior.",
+    group: "roadmap-shift"
+  },
+  {
+    x: 0.62,
+    y: 3.36,
+    title: "Three challenges",
+    body: "Latent meaning, domain data, and evaluation quality.",
+    group: "roadmap-challenges"
+  },
+  {
+    x: 5.02,
+    y: 3.36,
+    title: "Architectural control",
+    body: "ADRs, guardrails, and continuous evaluation.",
+    group: "roadmap-close"
+  }
+];
+
 function addTimelineCard(canvas, pres, theme, x, y, title, body, group) {
   canvas.addShape(`${group}-card`, pres.ShapeType.roundRect, {
     x,
@@ -48,8 +79,8 @@ function addTimelineCard(canvas, pres, theme, x, y, title, body, group) {
   });
 }
 
-function createSlide(pres, theme, options = {}) {
-  const canvas = createSlideCanvas(pres, slideConfig, options);
+function createOverviewSlide(pres, theme, options, visibleCards, slideIndex) {
+  const canvas = createSlideCanvas(pres, { ...slideConfig, index: slideIndex }, options);
   const { slide } = canvas;
   slide.background = { color: theme.bg };
 
@@ -61,10 +92,9 @@ function createSlide(pres, theme, options = {}) {
     "The presentation moves from one ambiguous customer request to the broader requirements questions raised by AI-enabled systems."
   );
 
-  addTimelineCard(canvas, pres, theme, 0.62, 2.04, "Ambiguous request", "What does 'like Brie, but stronger' actually mean?", "roadmap-hook");
-  addTimelineCard(canvas, pres, theme, 5.02, 2.04, "RE shift", "From deterministic functions to uncertain behavior.", "roadmap-shift");
-  addTimelineCard(canvas, pres, theme, 0.62, 3.36, "Three challenges", "Latent meaning, domain data, and evaluation quality.", "roadmap-challenges");
-  addTimelineCard(canvas, pres, theme, 5.02, 3.36, "Architectural control", "ADRs, guardrails, and continuous evaluation.", "roadmap-close");
+  for (const card of topicCards.slice(0, visibleCards)) {
+    addTimelineCard(canvas, pres, theme, card.x, card.y, card.title, card.body, card.group);
+  }
 
   canvas.addText("roadmap-footer", "Running example: French cheese shop recommendations.", {
     x: 0.68,
@@ -80,8 +110,27 @@ function createSlide(pres, theme, options = {}) {
     group: "roadmap-footer"
   });
 
-  addPageBadge(canvas, pres, theme, slideConfig.index);
+  addPageBadge(canvas, pres, theme, slideIndex);
   return canvas.finalize();
+}
+
+function createSlide(pres, theme, options = {}) {
+  const reports = [];
+
+  for (let visibleCards = 1; visibleCards <= topicCards.length; visibleCards += 1) {
+    const result = createOverviewSlide(
+      pres,
+      theme,
+      options,
+      visibleCards,
+      slideConfig.index + visibleCards - 1
+    );
+    if (result && result.report) {
+      reports.push(result.report);
+    }
+  }
+
+  return { reports };
 }
 
 module.exports = { createSlide, slideConfig };
