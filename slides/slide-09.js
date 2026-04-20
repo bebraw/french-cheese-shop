@@ -4,7 +4,7 @@ const { createSlideCanvas } = require("./validation");
 
 const slideConfig = {
   type: "summary",
-  index: 17,
+  index: 18,
   title: "Closing Synthesis"
 };
 
@@ -58,39 +58,12 @@ function createSlide(pres, theme, options = {}) {
     theme,
     "Closing",
     slideConfig.title,
-    "The central shift is from specifying fixed functions to shaping systems that interpret, learn, and are judged in context."
+    "The takeaway is how this shift changes what counts as a requirement artifact and how success is judged."
   );
 
   addTakeaway(canvas, pres, theme, 0.62, "Interpretation", "Requirements must surface latent meaning, not only explicit feature requests.", "takeaway-interpretation");
   addTakeaway(canvas, pres, theme, 3.64, "Artifacts", "Data models, ontologies, prompts, and ADRs all become part of RE practice.", "takeaway-artifacts");
   addTakeaway(canvas, pres, theme, 6.66, "Evaluation", "Correctness shifts toward relevance, trust, and measurable behavioral quality.", "takeaway-evaluation");
-
-  canvas.addShape("closing-band", pres.ShapeType.roundRect, {
-    x: 1.12,
-    y: 4.58,
-    w: 7.76,
-    h: 0.42,
-    rectRadius: 0.05,
-    line: { color: theme.secondary, transparency: 100 },
-    fill: { color: theme.secondary }
-  }, {
-    group: "closing-band"
-  });
-
-  canvas.addText("closing-quote", "AI changes requirements engineering from specifying system functions to shaping behavior, learning, and evaluation.", {
-    x: 1.26,
-    y: 4.64,
-    w: 7.46,
-    h: 0.34,
-    fontFace: bodyFont,
-    fontSize: 8.8,
-    bold: true,
-    color: "FFFFFF",
-    align: "center",
-    margin: 0
-  }, {
-    group: "closing-band"
-  });
 
   addPageBadge(canvas, pres, theme, slideConfig.index);
   return canvas.finalize();
