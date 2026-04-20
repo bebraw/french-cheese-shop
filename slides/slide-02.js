@@ -35,7 +35,7 @@ const questionCards = [
   {
     x: 6.78,
     y: 3.38,
-    title: "Success",
+    title: "Good answer",
     text: "Best match, shortlist,\nor clear explanation",
     group: "question-success"
   }

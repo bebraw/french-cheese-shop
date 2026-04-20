@@ -6,7 +6,7 @@ const { createSlideCanvas } = require("./validation");
 
 const slideConfig = {
   type: "closing",
-  index: 20,
+  index: 24,
   title: "Questions and Comments"
 };
 
@@ -43,7 +43,14 @@ function createSlide(pres, theme, options = {}) {
       x: 0.58,
       y: 0.56,
       w: 2.18,
-      h: 4.18
+      h: 4.18,
+      sizing: {
+        type: "cover",
+        x: 0.58,
+        y: 0.56,
+        w: 2.18,
+        h: 4.18
+      }
     });
   }
 
@@ -105,7 +112,14 @@ function createSlide(pres, theme, options = {}) {
       x: 7.24,
       y: 0.56,
       w: 2.18,
-      h: 4.18
+      h: 4.18,
+      sizing: {
+        type: "cover",
+        x: 7.24,
+        y: 0.56,
+        w: 2.18,
+        h: 4.18
+      }
     });
   }
 
@@ -192,7 +206,7 @@ function createSlide(pres, theme, options = {}) {
     group: "qa-center-card"
   });
 
-  canvas.addText("qa-body", "Thank you.\nI would be glad to discuss the example, the RE implications, or the teaching choices.", {
+  canvas.addText("qa-body", "Questions, comments, and discussion on the example, the RE implications, or the teaching choices.", {
     x: 3.48,
     y: 3.06,
     w: 2.94,

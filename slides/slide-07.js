@@ -8,6 +8,14 @@ const slideConfig = {
   title: "Evaluation Under Uncertainty"
 };
 
+const pipelineNodes = [
+  { x: 0.58, title: "User input", body: "vague language", fill: "FFFFFF", line: "7B1E2B", group: "pipeline-input" },
+  { x: 2.2, title: "Interpret", body: "what user means", fill: "F7F1E7", line: "1D3557", group: "pipeline-interpret" },
+  { x: 3.82, title: "Knowledge", body: "catalog + graph", fill: "FFFFFF", line: "A15D32", group: "pipeline-knowledge" },
+  { x: 5.44, title: "Recommend", body: "pick + explain", fill: "F7F1E7", line: "7B1E2B", group: "pipeline-recommend" },
+  { x: 7.06, title: "Feedback", body: "accept or reject", fill: "FFFFFF", line: "1D3557", group: "pipeline-feedback" }
+];
+
 function addPipelineNode(canvas, pres, x, title, body, fill, line, group) {
   canvas.addShape(`${group}-box`, pres.ShapeType.roundRect, {
     x,
@@ -49,49 +57,8 @@ function addPipelineNode(canvas, pres, x, title, body, fill, line, group) {
   });
 }
 
-function addMetric(canvas, pres, theme, x, title, value, group) {
-  canvas.addShape(`${group}-card`, pres.ShapeType.roundRect, {
-    x,
-    y: 4.42,
-    w: 1.85,
-    h: 0.62,
-    rectRadius: 0.05,
-    line: { color: theme.light, pt: 1.05 },
-    fill: { color: "FFFDFC" }
-  }, {
-    group
-  });
-
-  canvas.addText(`${group}-value`, value, {
-    x: x + 0.16,
-    y: 4.58,
-    w: 0.58,
-    h: 0.16,
-    fontFace: bodyFont,
-    fontSize: 12.4,
-    bold: true,
-    color: theme.secondary,
-    margin: 0
-  }, {
-    group
-  });
-
-  canvas.addText(`${group}-title`, title, {
-    x: x + 0.78,
-    y: 4.58,
-    w: 0.8,
-    h: 0.16,
-    fontFace: bodyFont,
-    fontSize: 10.2,
-    color: "5F7286",
-    margin: 0
-  }, {
-    group
-  });
-}
-
-function createSlide(pres, theme, options = {}) {
-  const canvas = createSlideCanvas(pres, slideConfig, options);
+function createEvaluationSlide(pres, theme, options, visibleNodes, slideIndex) {
+  const canvas = createSlideCanvas(pres, { ...slideConfig, index: slideIndex }, options);
   const { slide } = canvas;
   slide.background = { color: theme.bg };
 
@@ -103,11 +70,9 @@ function createSlide(pres, theme, options = {}) {
     "The question is not only whether the feature runs. We also need to ask whether the answer is useful, trusted, and good enough."
   );
 
-  addPipelineNode(canvas, pres, 0.58, "User input", "vague language", "FFFFFF", theme.secondary, "pipeline-input");
-  addPipelineNode(canvas, pres, 2.2, "Interpret", "what user means", "F7F1E7", theme.primary, "pipeline-interpret");
-  addPipelineNode(canvas, pres, 3.82, "Knowledge", "catalog + graph", "FFFFFF", "A15D32", "pipeline-knowledge");
-  addPipelineNode(canvas, pres, 5.44, "Recommend", "pick + explain", "F7F1E7", theme.secondary, "pipeline-recommend");
-  addPipelineNode(canvas, pres, 7.06, "Feedback", "accept or reject", "FFFFFF", theme.primary, "pipeline-feedback");
+  for (const node of pipelineNodes.slice(0, visibleNodes)) {
+    addPipelineNode(canvas, pres, node.x, node.title, node.body, node.fill, node.line, node.group);
+  }
 
   canvas.addText("pipeline-question", "If the user hates the recommendation, what exactly failed?", {
     x: 0.8,
@@ -122,13 +87,27 @@ function createSlide(pres, theme, options = {}) {
     group: "pipeline-question"
   });
 
-  addMetric(canvas, pres, theme, 0.76, "shortlist", "Top-3", "metric-precision");
-  addMetric(canvas, pres, theme, 2.9, "match", "fit", "metric-relevance");
-  addMetric(canvas, pres, theme, 5.04, "explanation", "why", "metric-trust");
-  addMetric(canvas, pres, theme, 7.18, "reuse", "again", "metric-satisfaction");
-
-  addPageBadge(canvas, pres, theme, slideConfig.index);
+  addPageBadge(canvas, pres, theme, slideIndex);
   return canvas.finalize();
+}
+
+function createSlide(pres, theme, options = {}) {
+  const reports = [];
+
+  for (let visibleNodes = 1; visibleNodes <= pipelineNodes.length; visibleNodes += 1) {
+    const result = createEvaluationSlide(
+      pres,
+      theme,
+      options,
+      visibleNodes,
+      slideConfig.index + visibleNodes - 1
+    );
+    if (result && result.report) {
+      reports.push(result.report);
+    }
+  }
+
+  return { reports };
 }
 
 module.exports = { createSlide, slideConfig };
