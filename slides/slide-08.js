@@ -5,7 +5,7 @@ const { createSlideCanvas } = require("./validation");
 const slideConfig = {
   type: "content",
   index: 16,
-  title: "ADRs as Control Points"
+  title: "Architecture Decision Records"
 };
 
 function addListItem(canvas, pres, theme, y, title, body, group) {
@@ -58,7 +58,7 @@ function createSlide(pres, theme, options = {}) {
     theme,
     "Architecture",
     slideConfig.title,
-    "ADRs matter here not as static architecture records, but as evolving control points for uncertain behavior."
+    "Here they matter not as static records, but as evolving control points for uncertain behavior."
   );
 
   addListItem(canvas, pres, theme, 2.04, "Reframe the artifact", "Capture assumptions, evaluation, and guardrails, not only a tool choice.", "adr-item-1");
