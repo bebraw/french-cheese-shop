@@ -5,7 +5,7 @@ const { createSlideCanvas } = require("./validation");
 const slideConfig = {
   type: "toc",
   index: 3,
-  title: "20-Minute Roadmap"
+  title: "Key Topics and Timing"
 };
 
 function addTimelineCard(canvas, pres, theme, x, y, minutes, title, body, group) {
@@ -70,17 +70,17 @@ function createSlide(pres, theme, options = {}) {
   addSectionTitle(
     canvas,
     theme,
-    "Structure",
+    "Overview",
     slideConfig.title,
-    "The core themes are interpretation, data, evaluation, and architectural control in AI-enabled requirements engineering."
+    "The presentation moves from one ambiguous customer request to the broader requirements questions raised by AI-enabled systems."
   );
 
-  addTimelineCard(canvas, pres, theme, 0.62, 2.04, "02 min", "Hook", "Cheese request reveals ambiguity.", "roadmap-hook");
-  addTimelineCard(canvas, pres, theme, 5.02, 2.04, "04 min", "Shift", "Classical RE versus AI behavior.", "roadmap-shift");
-  addTimelineCard(canvas, pres, theme, 0.62, 3.36, "08 min", "Three challenges", "Interpretation, data, evaluation.", "roadmap-challenges");
-  addTimelineCard(canvas, pres, theme, 5.02, 3.36, "06 min", "ADR + conclusion", "Manage evolving assumptions clearly.", "roadmap-close");
+  addTimelineCard(canvas, pres, theme, 0.62, 2.04, "02 min", "Ambiguous request", "What does 'like Brie, but stronger' actually mean?", "roadmap-hook");
+  addTimelineCard(canvas, pres, theme, 5.02, 2.04, "04 min", "RE shift", "From deterministic functions to uncertain behavior.", "roadmap-shift");
+  addTimelineCard(canvas, pres, theme, 0.62, 3.36, "08 min", "Three challenges", "Latent meaning, domain data, and evaluation quality.", "roadmap-challenges");
+  addTimelineCard(canvas, pres, theme, 5.02, 3.36, "06 min", "Architectural control", "ADRs, guardrails, and continuous evaluation.", "roadmap-close");
 
-  canvas.addText("roadmap-footer", "One concrete example grounds the broader RE argument.", {
+  canvas.addText("roadmap-footer", "Running example: French cheese shop recommendations.", {
     x: 0.68,
     y: 4.82,
     w: 4.3,
