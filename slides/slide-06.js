@@ -81,11 +81,11 @@ function createSlide(pres, theme, options = {}) {
 
   canvas.addText("graph-title", "Ontology / knowledge graph lens", {
     x: 4.34,
-    y: 2.26,
-    w: 4.0,
-    h: 0.4,
+    y: 2.2,
+    w: 4.18,
+    h: 0.22,
     fontFace: displayFont,
-    fontSize: 16,
+    fontSize: 14.5,
     color: theme.primary,
     margin: 0
   }, {
@@ -94,7 +94,7 @@ function createSlide(pres, theme, options = {}) {
 
   canvas.addShape("node-request", pres.ShapeType.ellipse, {
     x: 4.44,
-    y: 3.12,
+    y: 3.26,
     w: 1.05,
     h: 0.54,
     line: { color: theme.secondary, pt: 1.1 },
@@ -105,7 +105,7 @@ function createSlide(pres, theme, options = {}) {
 
   canvas.addText("node-request-text", "request", {
     x: 4.7,
-    y: 3.28,
+    y: 3.42,
     w: 0.52,
     h: 0.16,
     fontFace: bodyFont,
@@ -120,7 +120,7 @@ function createSlide(pres, theme, options = {}) {
 
   canvas.addShape("node-brie", pres.ShapeType.ellipse, {
     x: 6.03,
-    y: 2.52,
+    y: 2.72,
     w: 1.16,
     h: 0.54,
     line: { color: theme.primary, pt: 1.1 },
@@ -131,7 +131,7 @@ function createSlide(pres, theme, options = {}) {
 
   canvas.addText("node-brie-text", "Brie-like", {
     x: 6.26,
-    y: 2.68,
+    y: 2.88,
     w: 0.72,
     h: 0.16,
     fontFace: bodyFont,
@@ -146,7 +146,7 @@ function createSlide(pres, theme, options = {}) {
 
   canvas.addShape("node-strength", pres.ShapeType.ellipse, {
     x: 6.08,
-    y: 3.72,
+    y: 3.92,
     w: 1.12,
     h: 0.54,
     line: { color: theme.accent, pt: 1.1 },
@@ -157,7 +157,7 @@ function createSlide(pres, theme, options = {}) {
 
   canvas.addText("node-strength-text", "stronger", {
     x: 6.3,
-    y: 3.88,
+    y: 4.08,
     w: 0.68,
     h: 0.16,
     fontFace: bodyFont,
@@ -172,7 +172,7 @@ function createSlide(pres, theme, options = {}) {
 
   canvas.addShape("node-choice", pres.ShapeType.ellipse, {
     x: 7.72,
-    y: 3.12,
+    y: 3.26,
     w: 1.0,
     h: 0.54,
     line: { color: theme.secondary, pt: 1.1 },
@@ -183,7 +183,7 @@ function createSlide(pres, theme, options = {}) {
 
   canvas.addText("node-choice-text", "choice", {
     x: 7.98,
-    y: 3.28,
+    y: 3.42,
     w: 0.48,
     h: 0.16,
     fontFace: bodyFont,
