@@ -1,19 +1,43 @@
-const { addPageBadge, addSectionTitle } = require("./helpers");
+const { addPageBadge, addReferenceNote, addSectionTitle } = require("./helpers");
 const { bodyFont, displayFont } = require("./theme");
 const { createSlideCanvas } = require("./validation");
 
 const slideConfig = {
   type: "content",
-  index: 14,
+  index: 17,
   title: "Challenge 2: Data Shapes Requirements"
 };
+
+const sourceCards = [
+  {
+    x: 0.62,
+    y: 2.74,
+    title: "Product catalog",
+    body: "Milk, region, age,\ntexture, rind, stock",
+    group: "source-catalog"
+  },
+  {
+    x: 0.62,
+    y: 3.74,
+    title: "Interaction data",
+    body: "Accepted choices,\nrejections, profiles",
+    group: "source-interaction"
+  },
+  {
+    x: 0.62,
+    y: 4.74,
+    title: "Shop knowledge",
+    body: "Common advice\nand pairings",
+    group: "source-expert"
+  }
+];
 
 function addSourceCard(canvas, pres, x, y, title, body, group) {
   canvas.addShape(`${group}-card`, pres.ShapeType.roundRect, {
     x,
     y,
     w: 2.38,
-    h: 0.94,
+    h: 0.84,
     rectRadius: 0.05,
     line: { color: "D9C6AF", pt: 1.05 },
     fill: { color: "FFFDFC" }
@@ -23,11 +47,11 @@ function addSourceCard(canvas, pres, x, y, title, body, group) {
 
   canvas.addText(`${group}-title`, title, {
     x: x + 0.16,
-    y: y + 0.14,
+    y: y + 0.12,
     w: 1.5,
-    h: 0.2,
+    h: 0.18,
     fontFace: bodyFont,
-    fontSize: 10.8,
+    fontSize: 10.6,
     bold: true,
     color: "A15D32",
     margin: 0
@@ -37,11 +61,11 @@ function addSourceCard(canvas, pres, x, y, title, body, group) {
 
   canvas.addText(`${group}-body`, body, {
     x: x + 0.16,
-    y: y + 0.4,
+    y: y + 0.34,
     w: 1.9,
-    h: 0.36,
+    h: 0.32,
     fontFace: bodyFont,
-    fontSize: 9.8,
+    fontSize: 9.6,
     color: "607185",
     margin: 0
   }, {
@@ -49,23 +73,7 @@ function addSourceCard(canvas, pres, x, y, title, body, group) {
   });
 }
 
-function createSlide(pres, theme, options = {}) {
-  const canvas = createSlideCanvas(pres, slideConfig, options);
-  const { slide } = canvas;
-  slide.background = { color: "FFFDFC" };
-
-  addSectionTitle(
-    canvas,
-    theme,
-    "Challenge 2",
-    slideConfig.title,
-    "The prompt is not enough. The system also needs good data, domain knowledge, and clear links between concepts."
-  );
-
-  addSourceCard(canvas, pres, 0.62, 2.08, "Product catalog", "Milk, region, age,\ntexture, rind, stock", "source-catalog");
-  addSourceCard(canvas, pres, 0.62, 3.18, "Interaction data", "Accepted choices,\nrejections, profiles", "source-interaction");
-  addSourceCard(canvas, pres, 0.62, 4.28, "Shop knowledge", "Common advice\nand pairings", "source-expert");
-
+function addGraphPanel(canvas, pres, theme) {
   canvas.addShape("graph-panel", pres.ShapeType.roundRect, {
     x: 4.06,
     y: 2.02,
@@ -196,22 +204,107 @@ function createSlide(pres, theme, options = {}) {
     group: "graph-choice"
   });
 
-  canvas.addText("graph-caption", "For AI systems, the data structure is part of the requirement, not just background material.", {
+  canvas.addText("graph-caption", "For AI systems, data structure is part of the requirement.", {
     x: 4.36,
     y: 4.56,
     w: 4.28,
-    h: 0.34,
+    h: 0.24,
     fontFace: bodyFont,
-    fontSize: 10,
+    fontSize: 9.2,
     bold: true,
     color: theme.primary,
     margin: 0
   }, {
     group: "graph-caption"
   });
+}
 
-  addPageBadge(canvas, pres, theme, slideConfig.index);
+function createDataSlide(pres, theme, options, visibleCards, showGraph, slideIndex) {
+  const canvas = createSlideCanvas(pres, { ...slideConfig, index: slideIndex }, options);
+  const { slide } = canvas;
+  slide.background = { color: "FFFDFC" };
+
+  addSectionTitle(
+    canvas,
+    theme,
+    "Challenge 2",
+    slideConfig.title,
+    "Use the audience again: ask what data or knowledge the system would need behind the prompt."
+  );
+
+  canvas.addText("data-prompt", "Ask: what data does it need?", {
+    x: 0.74,
+    y: 2.08,
+    w: 3.2,
+    h: 0.3,
+    fontFace: displayFont,
+    fontSize: 12.4,
+    color: theme.primary,
+    margin: 0
+  }, {
+    group: "data-prompt"
+  });
+
+  for (const card of sourceCards.slice(0, visibleCards)) {
+    addSourceCard(canvas, pres, card.x, card.y, card.title, card.body, card.group);
+  }
+
+  if (visibleCards === 0) {
+    canvas.addText("data-note", "Take 2-3 suggestions, then reveal the answer.", {
+      x: 0.74,
+      y: 4.98,
+      w: 3.1,
+      h: 0.24,
+      fontFace: bodyFont,
+      fontSize: 8.2,
+      color: theme.secondary,
+      margin: 0
+    }, {
+      group: "data-note"
+    });
+  }
+
+  if (showGraph) {
+    addGraphPanel(canvas, pres, theme);
+  }
+
+  addReferenceNote(canvas, theme, "Source: [3] Ahmad et al. (2023)");
+  addPageBadge(canvas, pres, theme, slideIndex);
   return canvas.finalize();
+}
+
+function createSlide(pres, theme, options = {}) {
+  const reports = [];
+  let slideIndex = slideConfig.index;
+
+  for (let visibleCards = 0; visibleCards <= sourceCards.length; visibleCards += 1) {
+    const result = createDataSlide(
+      pres,
+      theme,
+      options,
+      visibleCards,
+      false,
+      slideIndex
+    );
+    if (result && result.report) {
+      reports.push(result.report);
+    }
+    slideIndex += 1;
+  }
+
+  const graphResult = createDataSlide(
+    pres,
+    theme,
+    options,
+    sourceCards.length,
+    true,
+    slideIndex
+  );
+  if (graphResult && graphResult.report) {
+    reports.push(graphResult.report);
+  }
+
+  return { reports };
 }
 
 module.exports = { createSlide, slideConfig };

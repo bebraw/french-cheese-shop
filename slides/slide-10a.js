@@ -5,7 +5,7 @@ const { createSlideCanvas } = require("./validation");
 
 const slideConfig = {
   type: "references",
-  index: 23,
+  index: 31,
   title: "References"
 };
 
@@ -60,68 +60,39 @@ function createSlide(pres, theme, options = {}) {
     theme,
     "References",
     slideConfig.title,
-    "The slides cite [1]-[3]. [4]-[5] are useful background reading for a first MSc course in requirements engineering."
+    null
   );
 
-  canvas.addShape("references-left-panel", pres.ShapeType.roundRect, {
-    x: 0.62,
-    y: 2.0,
-    w: 4.26,
-    h: 2.84,
+  canvas.addShape("references-panel", pres.ShapeType.roundRect, {
+    x: 0.86,
+    y: 1.94,
+    w: 8.28,
+    h: 3.18,
     rectRadius: 0.06,
     line: { color: theme.light, pt: 1.05 },
     fill: { color: "FFFDFC" }
   }, {
-    group: "references-left-panel",
+    group: "references-panel",
     skipOverlap: true
   });
 
-  canvas.addShape("references-right-panel", pres.ShapeType.roundRect, {
-    x: 5.02,
-    y: 2.0,
-    w: 4.0,
-    h: 2.84,
-    rectRadius: 0.06,
-    line: { color: theme.light, pt: 1.05 },
-    fill: { color: "FFFDFC" }
-  }, {
-    group: "references-right-panel",
-    skipOverlap: true
-  });
-
-  canvas.addText("references-left-title", "Cited in slides", {
-    x: 0.92,
-    y: 2.22,
-    w: 1.76,
-    h: 0.2,
-    fontFace: bodyFont,
-    fontSize: 11.2,
-    bold: true,
-    color: theme.primary,
-    margin: 0
-  }, {
-    group: "references-left-panel"
-  });
-
-  canvas.addText("references-right-title", "Background reading", {
-    x: 5.3,
-    y: 2.22,
+  canvas.addText("references-list-title", "Cited sources", {
+    x: 1.18,
+    y: 2.18,
     w: 2.04,
-    h: 0.2,
+    h: 0.22,
     fontFace: bodyFont,
     fontSize: 11.2,
     bold: true,
     color: theme.primary,
     margin: 0
   }, {
-    group: "references-right-panel"
+    group: "references-panel"
   });
 
-  addReferenceBlock(canvas, pres, theme, 0.92, 2.62, references[0], "reference-1", 3.1);
-  addReferenceBlock(canvas, pres, theme, 0.92, 3.42, references[1], "reference-2", 3.1);
-  addReferenceBlock(canvas, pres, theme, 0.92, 4.22, references[2], "reference-3", 3.1);
-  addReferenceBlock(canvas, pres, theme, 5.3, 2.62, references[3], "reference-4", 2.92);
-  addReferenceBlock(canvas, pres, theme, 5.3, 3.42, references[4], "reference-5", 2.92);
+  addReferenceBlock(canvas, pres, theme, 1.18, 2.66, references[0], "reference-1", 6.98);
+  addReferenceBlock(canvas, pres, theme, 1.18, 3.52, references[1], "reference-2", 6.98);
+  addReferenceBlock(canvas, pres, theme, 1.18, 4.38, references[2], "reference-3", 6.98);
 
   addPageBadge(canvas, pres, theme, slideConfig.index);
   return canvas.finalize();

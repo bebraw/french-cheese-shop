@@ -8,6 +8,30 @@ const slideConfig = {
   title: "Challenge 1: Hidden Requirements"
 };
 
+const audienceLayers = [
+  {
+    title: "Like",
+    text: "texture, milk type,\nserving context",
+    colorKey: "primary",
+    group: "layer-like",
+    y: 2.48
+  },
+  {
+    title: "Stronger",
+    text: "age, aroma,\npungency, salt",
+    colorKey: "secondary",
+    group: "layer-stronger",
+    y: 3.34
+  },
+  {
+    title: "Good fit",
+    text: "budget, stock,\nprofile, explanation",
+    colorKey: "accent",
+    group: "layer-suitable",
+    y: 4.2
+  }
+];
+
 function addLayer(canvas, pres, x, y, title, text, color, group) {
   canvas.addShape(`${group}-box`, pres.ShapeType.roundRect, {
     x,
@@ -49,8 +73,8 @@ function addLayer(canvas, pres, x, y, title, text, color, group) {
   });
 }
 
-function createSlide(pres, theme, options = {}) {
-  const canvas = createSlideCanvas(pres, slideConfig, options);
+function createChallengeSlide(pres, theme, options, visibleLayers, slideIndex) {
+  const canvas = createSlideCanvas(pres, { ...slideConfig, index: slideIndex }, options);
   const { slide } = canvas;
   slide.background = { color: theme.bg };
 
@@ -59,7 +83,7 @@ function createSlide(pres, theme, options = {}) {
     theme,
     "Challenge 1",
     slideConfig.title,
-    "The sentence does not say everything the system needs to know. Some requirements are hidden in how we interpret it."
+    "Use the audience first: ask what the system still needs to know before it can recommend anything."
   );
 
   canvas.addShape("left-utterance", pres.ShapeType.roundRect, {
@@ -114,27 +138,85 @@ function createSlide(pres, theme, options = {}) {
     group: "left-utterance"
   });
 
-  addLayer(canvas, pres, 4.32, 2.02, "Like", "texture, milk type,\nserving context", theme.primary, "layer-like");
-  addLayer(canvas, pres, 4.32, 2.96, "Stronger", "age, aroma,\npungency, salt", theme.secondary, "layer-stronger");
-  addLayer(canvas, pres, 4.32, 3.9, "Good fit", "budget, stock,\nprofile, explanation", theme.accent, "layer-suitable");
-
-  canvas.addText("latent-summary", "For AI systems, teams must identify, describe, and test the hidden meanings inside user requests.", {
+  canvas.addText("audience-prompt", "Ask: what does the system still need to know?", {
     x: 4.32,
-    y: 4.92,
-    w: 4.2,
-    h: 0.34,
-    fontFace: bodyFont,
-    fontSize: 10.2,
-    bold: true,
+    y: 2.06,
+    w: 4.3,
+    h: 0.26,
+    fontFace: displayFont,
+    fontSize: 13.5,
     color: theme.primary,
     margin: 0
   }, {
-    group: "latent-summary"
+    group: "audience-prompt"
   });
 
+  for (const layer of audienceLayers.slice(0, visibleLayers)) {
+    addLayer(
+      canvas,
+      pres,
+      4.32,
+      layer.y,
+      layer.title,
+      layer.text,
+      theme[layer.colorKey],
+      layer.group
+    );
+  }
+
+  if (visibleLayers === 0) {
+    canvas.addText("audience-note", "Take 2-3 audience suggestions before revealing the hidden requirements.", {
+      x: 4.34,
+      y: 4.98,
+      w: 4.28,
+      h: 0.34,
+      fontFace: bodyFont,
+      fontSize: 8.8,
+      color: theme.secondary,
+      margin: 0
+    }, {
+      group: "audience-note"
+    });
+  }
+
+  if (visibleLayers === audienceLayers.length) {
+    canvas.addText("latent-summary", "AI systems need these meanings made explicit and testable.", {
+      x: 4.32,
+      y: 5.0,
+      w: 4.2,
+      h: 0.28,
+      fontFace: bodyFont,
+      fontSize: 8.8,
+      bold: true,
+      color: theme.primary,
+      margin: 0
+    }, {
+      group: "latent-summary"
+    });
+  }
+
   addReferenceNote(canvas, theme, "Source: [2] Kiyavitskaya et al. (2008)");
-  addPageBadge(canvas, pres, theme, slideConfig.index);
+  addPageBadge(canvas, pres, theme, slideIndex);
   return canvas.finalize();
+}
+
+function createSlide(pres, theme, options = {}) {
+  const reports = [];
+
+  for (let visibleLayers = 0; visibleLayers <= audienceLayers.length; visibleLayers += 1) {
+    const result = createChallengeSlide(
+      pres,
+      theme,
+      options,
+      visibleLayers,
+      slideConfig.index + visibleLayers
+    );
+    if (result && result.report) {
+      reports.push(result.report);
+    }
+  }
+
+  return { reports };
 }
 
 module.exports = { createSlide, slideConfig };
