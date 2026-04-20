@@ -1,64 +1,122 @@
-const { addPageBadge, addReferenceNote, addSectionTitle } = require("./helpers");
+const {
+  addPageBadge,
+  addReferenceNote,
+  addSectionTitle,
+} = require("./helpers");
 const { bodyFont, displayFont } = require("./theme");
 const { createSlideCanvas } = require("./validation");
 
 const slideConfig = {
   type: "content",
   index: 23,
-  title: "Evaluation Under Uncertainty"
+  title: "Challenge 3: Evaluation Under Uncertainty",
 };
 
 const pipelineNodes = [
-  { x: 0.58, title: "User input", body: "vague language", fill: "FFFFFF", line: "7B1E2B", group: "pipeline-input" },
-  { x: 2.2, title: "Interpret", body: "what user means", fill: "F7F1E7", line: "1D3557", group: "pipeline-interpret" },
-  { x: 3.82, title: "Knowledge", body: "catalog + graph", fill: "FFFFFF", line: "A15D32", group: "pipeline-knowledge" },
-  { x: 5.44, title: "Recommend", body: "pick + explain", fill: "F7F1E7", line: "7B1E2B", group: "pipeline-recommend" },
-  { x: 7.06, title: "Feedback", body: "accept or reject", fill: "FFFFFF", line: "1D3557", group: "pipeline-feedback" }
+  {
+    x: 0.58,
+    title: "User input",
+    body: "vague language",
+    fill: "FFFFFF",
+    line: "7B1E2B",
+    group: "pipeline-input",
+  },
+  {
+    x: 2.2,
+    title: "Interpret",
+    body: "what user means",
+    fill: "F7F1E7",
+    line: "1D3557",
+    group: "pipeline-interpret",
+  },
+  {
+    x: 3.82,
+    title: "Knowledge",
+    body: "catalog + graph",
+    fill: "FFFFFF",
+    line: "A15D32",
+    group: "pipeline-knowledge",
+  },
+  {
+    x: 5.44,
+    title: "Recommend",
+    body: "pick + explain",
+    fill: "F7F1E7",
+    line: "7B1E2B",
+    group: "pipeline-recommend",
+  },
+  {
+    x: 7.06,
+    title: "Feedback",
+    body: "accept or reject",
+    fill: "FFFFFF",
+    line: "1D3557",
+    group: "pipeline-feedback",
+  },
 ];
 
 function addPipelineNode(canvas, pres, x, title, body, fill, line, group) {
-  canvas.addShape(`${group}-box`, pres.ShapeType.roundRect, {
-    x,
-    y: 2.64,
-    w: 1.52,
-    h: 1.02,
-    rectRadius: 0.05,
-    line: { color: line, pt: 1.1 },
-    fill: { color: fill }
-  }, {
-    group
-  });
+  canvas.addShape(
+    `${group}-box`,
+    pres.ShapeType.roundRect,
+    {
+      x,
+      y: 2.64,
+      w: 1.52,
+      h: 1.02,
+      rectRadius: 0.05,
+      line: { color: line, pt: 1.1 },
+      fill: { color: fill },
+    },
+    {
+      group,
+    },
+  );
 
-  canvas.addText(`${group}-title`, title, {
-    x: x + 0.16,
-    y: 2.82,
-    w: 1.1,
-    h: 0.18,
-    fontFace: bodyFont,
-    fontSize: 10.4,
-    bold: true,
-    color: line,
-    margin: 0
-  }, {
-    group
-  });
+  canvas.addText(
+    `${group}-title`,
+    title,
+    {
+      x: x + 0.16,
+      y: 2.82,
+      w: 1.1,
+      h: 0.18,
+      fontFace: bodyFont,
+      fontSize: 10.4,
+      bold: true,
+      color: line,
+      margin: 0,
+    },
+    {
+      group,
+    },
+  );
 
-  canvas.addText(`${group}-body`, body, {
-    x: x + 0.16,
-    y: 3.08,
-    w: 1.08,
-    h: 0.36,
-    fontFace: bodyFont,
-    fontSize: 9.1,
-    color: "5D6F84",
-    margin: 0
-  }, {
-    group
-  });
+  canvas.addText(
+    `${group}-body`,
+    body,
+    {
+      x: x + 0.16,
+      y: 3.08,
+      w: 1.08,
+      h: 0.36,
+      fontFace: bodyFont,
+      fontSize: 9.1,
+      color: "5D6F84",
+      margin: 0,
+    },
+    {
+      group,
+    },
+  );
 }
 
 function createEvaluationSlide(pres, theme, options, visibleNodes, slideIndex) {
-  const canvas = createSlideCanvas(pres, { ...slideConfig, index: slideIndex }, options);
+  const canvas = createSlideCanvas(
+    pres,
+    { ...slideConfig, index: slideIndex },
+    options,
+  );
   const { slide } = canvas;
   slide.background = { color: theme.bg };
 
@@ -67,25 +125,39 @@ function createEvaluationSlide(pres, theme, options, visibleNodes, slideIndex) {
     theme,
     "Challenge 3",
     slideConfig.title,
-    "Evaluation is not only about whether the feature runs, but whether the result is useful, trusted, and good enough."
+    "Evaluation is not only about whether the feature runs, but whether the result is useful, trusted, and good enough.",
   );
 
   for (const node of pipelineNodes.slice(0, visibleNodes)) {
-    addPipelineNode(canvas, pres, node.x, node.title, node.body, node.fill, node.line, node.group);
+    addPipelineNode(
+      canvas,
+      pres,
+      node.x,
+      node.title,
+      node.body,
+      node.fill,
+      node.line,
+      node.group,
+    );
   }
 
-  canvas.addText("pipeline-question", "Where could the recommendation fail?", {
-    x: 0.8,
-    y: 2.08,
-    w: 7.2,
-    h: 0.28,
-    fontFace: displayFont,
-    fontSize: 13.5,
-    color: theme.primary,
-    margin: 0
-  }, {
-    group: "pipeline-question"
-  });
+  canvas.addText(
+    "pipeline-question",
+    "Where could the recommendation fail?",
+    {
+      x: 0.8,
+      y: 2.08,
+      w: 7.2,
+      h: 0.28,
+      fontFace: displayFont,
+      fontSize: 13.5,
+      color: theme.primary,
+      margin: 0,
+    },
+    {
+      group: "pipeline-question",
+    },
+  );
 
   addReferenceNote(canvas, theme, "Source: [3] Ahmad et al. (2023)");
   addPageBadge(canvas, pres, theme, slideIndex);
@@ -95,13 +167,17 @@ function createEvaluationSlide(pres, theme, options, visibleNodes, slideIndex) {
 function createSlide(pres, theme, options = {}) {
   const reports = [];
 
-  for (let visibleNodes = 0; visibleNodes <= pipelineNodes.length; visibleNodes += 1) {
+  for (
+    let visibleNodes = 0;
+    visibleNodes <= pipelineNodes.length;
+    visibleNodes += 1
+  ) {
     const result = createEvaluationSlide(
       pres,
       theme,
       options,
       visibleNodes,
-      slideConfig.index + visibleNodes
+      slideConfig.index + visibleNodes,
     );
     if (result && result.report) {
       reports.push(result.report);
