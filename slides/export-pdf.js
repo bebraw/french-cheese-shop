@@ -1,10 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const { spawnSync } = require("child_process");
-
-const outputDir = path.join(__dirname, "output");
-const pptxFile = path.join(outputDir, "demo-presentation.pptx");
-const pdfFile = path.join(outputDir, "demo-presentation.pdf");
+const { outputDir, pdfFile, pptxFile } = require("./output-config");
 
 function fail(message) {
   process.stderr.write(`${message}\n`);
