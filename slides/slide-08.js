@@ -58,7 +58,7 @@ function createSlide(pres, theme, options = {}) {
     theme,
     "Architecture",
     slideConfig.title,
-    "The second planning thread adds a useful late-talk move: ADRs are not static records, but evolving control points for uncertain behavior."
+    "ADRs matter here not as static architecture records, but as evolving control points for uncertain behavior."
   );
 
   addListItem(canvas, pres, theme, 2.04, "Reframe the artifact", "Capture assumptions, evaluation, and guardrails, not only a tool choice.", "adr-item-1");

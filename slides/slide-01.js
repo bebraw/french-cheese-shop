@@ -66,7 +66,7 @@ function createSlide(pres, theme, options = {}) {
     skipOverlap: true
   });
 
-  canvas.addText("cover-eyebrow", "Teaching Proof Draft", {
+  canvas.addText("cover-eyebrow", "French Cheese Shop", {
     x: 0.72,
     y: 0.68,
     w: 2.8,
@@ -95,26 +95,26 @@ function createSlide(pres, theme, options = {}) {
     group: "cover-copy"
   });
 
-  canvas.addText("cover-subtitle", "A 20-minute academic presentation through the running example of a French cheese shop.", {
+  canvas.addText("cover-subtitle", "A French cheese shop exposes how AI systems must interpret vague requests, depend on domain knowledge, and be evaluated under uncertainty.", {
     x: 0.74,
     y: 2.2,
     w: 4.9,
     h: 0.64,
     fontFace: bodyFont,
-    fontSize: 13,
+    fontSize: 12.4,
     color: "4F6277",
     margin: 0
   }, {
     group: "cover-copy"
   });
 
-  canvas.addText("cover-aim", "Goal: show how AI shifts requirements from fixed functions toward interpretation, data, evaluation, and evolving architectural assumptions.", {
+  canvas.addText("cover-aim", "Requirements shift from fixed functions toward interpretation, data, evaluation, and evolving architectural assumptions.", {
     x: 0.74,
     y: 3.2,
     w: 4.95,
     h: 0.74,
     fontFace: bodyFont,
-    fontSize: 11.4,
+    fontSize: 11.1,
     color: "607286",
     margin: 0
   }, {
@@ -135,7 +135,7 @@ function createSlide(pres, theme, options = {}) {
     group: "cover-side"
   });
 
-  canvas.addText("cover-side-label", "French theme\nEditorial tone\nAI + RE", {
+  canvas.addText("cover-side-label", "Ambiguity\nData\nEvaluation", {
     x: 7.02,
     y: 1.82,
     w: 1.4,

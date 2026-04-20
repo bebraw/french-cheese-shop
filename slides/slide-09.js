@@ -58,7 +58,7 @@ function createSlide(pres, theme, options = {}) {
     theme,
     "Closing",
     slideConfig.title,
-    "End with one sentence the audience can remember and one question they can reuse when thinking about AI systems."
+    "The central shift is from specifying fixed functions to shaping systems that interpret, learn, and are judged in context."
   );
 
   addTakeaway(canvas, pres, theme, 0.62, "Interpretation", "Requirements must surface latent meaning, not only explicit feature requests.", "takeaway-interpretation");

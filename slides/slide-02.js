@@ -57,9 +57,9 @@ function createSlide(pres, theme, options = {}) {
   addSectionTitle(
     canvas,
     theme,
-    "Opening",
+    "Customer Query",
     slideConfig.title,
-    "Start with a realistic customer request. It immediately exposes ambiguity, interpretation, and stakeholder expectations."
+    "A single customer request already contains ambiguity, interpretation work, and competing assumptions about what a good answer means."
   );
 
   canvas.addShape("quote-panel", pres.ShapeType.roundRect, {

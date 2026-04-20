@@ -70,9 +70,9 @@ function createSlide(pres, theme, options = {}) {
   addSectionTitle(
     canvas,
     theme,
-    "Flow",
+    "Structure",
     slideConfig.title,
-    "Keep the pace explicit so the teaching proof feels intentional: one hook, one conceptual shift, three challenges, one synthesis."
+    "The argument moves from one ambiguous utterance to a broader account of interpretation, data, evaluation, and architectural control."
   );
 
   addTimelineCard(canvas, pres, theme, 0.62, 2.04, "02 min", "Hook", "Cheese request reveals ambiguity.", "roadmap-hook");
@@ -80,13 +80,13 @@ function createSlide(pres, theme, options = {}) {
   addTimelineCard(canvas, pres, theme, 0.62, 3.36, "08 min", "Three challenges", "Interpretation, data, evaluation.", "roadmap-challenges");
   addTimelineCard(canvas, pres, theme, 5.02, 3.36, "06 min", "ADR + conclusion", "Manage evolving assumptions clearly.", "roadmap-close");
 
-  canvas.addText("roadmap-footer", "Memorable example first, academic framing second.", {
+  canvas.addText("roadmap-footer", "One concrete example grounds the broader RE argument.", {
     x: 0.68,
     y: 4.82,
     w: 4.3,
     h: 0.3,
     fontFace: bodyFont,
-    fontSize: 10.4,
+    fontSize: 9.8,
     bold: true,
     color: theme.secondary,
     margin: 0

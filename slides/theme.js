@@ -8,10 +8,10 @@ const theme = {
 
 const deckMeta = {
   title: "AI in Requirements Engineering",
-  subtitle: "Teaching proof draft through a French cheese shop",
+  subtitle: "AI in requirements engineering through a French cheese shop",
   author: "OpenAI Codex",
   company: "french-cheese-shop",
-  subject: "Teaching proof draft on AI in requirements engineering"
+  subject: "AI in requirements engineering through a French cheese shop"
 };
 
 const displayFont = "Didot";
