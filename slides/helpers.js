@@ -78,11 +78,11 @@ function addSectionTitle(canvas, theme, eyebrow, title, body) {
 
 function addReferenceNote(canvas, theme, text, options = {}) {
   const {
-    x = 7.02,
-    y = 5.08,
-    w = 1.88,
-    h = 0.16,
-    align = "right",
+    x = 0.72,
+    y = 5.06,
+    w = 4.9,
+    h = 0.18,
+    align = "left",
     group = "reference-note"
   } = options;
 
@@ -92,7 +92,7 @@ function addReferenceNote(canvas, theme, text, options = {}) {
     w,
     h,
     fontFace: bodyFont,
-    fontSize: 8.2,
+    fontSize: 9.2,
     color: theme.secondary,
     align,
     margin: 0

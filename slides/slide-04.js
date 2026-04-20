@@ -4,7 +4,7 @@ const { createSlideCanvas } = require("./validation");
 
 const slideConfig = {
   type: "content",
-  index: 11,
+  index: 10,
   title: "Traditional RE vs AI-Supported RE"
 };
 
@@ -132,7 +132,7 @@ function createComparisonSlide(pres, theme, options, visiblePanels, showBanner, 
     });
   }
 
-  addReferenceNote(canvas, theme, "Refs: [1]");
+  addReferenceNote(canvas, theme, "Source: [1] Nuseibeh & Easterbrook (2000)");
   addPageBadge(canvas, pres, theme, slideIndex);
   return canvas.finalize();
 }

@@ -11,9 +11,8 @@ const slideModules = [
   require("./slide-07"),
   require("./slide-08"),
   require("./slide-08a"),
-  require("./slide-09"),
-  require("./slide-10a"),
-  require("./slide-10")
+  require("./slide-10"),
+  require("./slide-10a")
 ];
 
 function createPresentation(options = {}) {

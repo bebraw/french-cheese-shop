@@ -26,20 +26,12 @@ const outcomeCards = [
     group: "outcome-data"
   },
   {
-    x: 0.62,
+    x: 2.81,
     y: 3.52,
     index: 3,
     title: "Evaluate uncertainty",
     body: "Judge AI by fit, trust, and usefulness, not only by right or wrong answers.",
     group: "outcome-evaluate"
-  },
-  {
-    x: 5.0,
-    y: 3.52,
-    index: 4,
-    title: "Use controls",
-    body: "Understand how design decisions, checks, and evaluation keep AI manageable.",
-    group: "outcome-control"
   }
 ];
 

@@ -4,7 +4,7 @@ const { createSlideCanvas } = require("./validation");
 
 const slideConfig = {
   type: "content",
-  index: 22,
+  index: 21,
   title: "AI Changes RE"
 };
 
@@ -77,7 +77,7 @@ function createSlide(pres, theme, options = {}) {
     group: "claim-card"
   });
 
-  addReferenceNote(canvas, theme, "Refs: [1], [3]");
+  addReferenceNote(canvas, theme, "Sources: [1] Nuseibeh & Easterbrook (2000); [3] Seneviratne et al. (2022)");
   addPageBadge(canvas, pres, theme, slideConfig.index);
   return canvas.finalize();
 }

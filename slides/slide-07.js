@@ -4,7 +4,7 @@ const { createSlideCanvas } = require("./validation");
 
 const slideConfig = {
   type: "content",
-  index: 16,
+  index: 15,
   title: "Evaluation Under Uncertainty"
 };
 
@@ -87,7 +87,7 @@ function createEvaluationSlide(pres, theme, options, visibleNodes, slideIndex) {
     group: "pipeline-question"
   });
 
-  addReferenceNote(canvas, theme, "Refs: [3]");
+  addReferenceNote(canvas, theme, "Source: [3] Seneviratne et al. (2022)");
   addPageBadge(canvas, pres, theme, slideIndex);
   return canvas.finalize();
 }

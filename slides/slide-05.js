@@ -4,7 +4,7 @@ const { createSlideCanvas } = require("./validation");
 
 const slideConfig = {
   type: "content",
-  index: 14,
+  index: 13,
   title: "Challenge 1: Hidden Requirements"
 };
 
@@ -132,7 +132,7 @@ function createSlide(pres, theme, options = {}) {
     group: "latent-summary"
   });
 
-  addReferenceNote(canvas, theme, "Refs: [2]");
+  addReferenceNote(canvas, theme, "Source: [2] Kiyavitskaya et al. (2008)");
   addPageBadge(canvas, pres, theme, slideConfig.index);
   return canvas.finalize();
 }
