@@ -181,19 +181,6 @@ function createSlide(pres, theme, options = {}) {
     group: "cover-side"
   });
 
-  canvas.addText("cover-side-note", "Prompt:\n\"Something like Brie,\nbut stronger.\"", {
-    x: 7.16,
-    y: 2.56,
-    w: 1.55,
-    h: 0.92,
-    fontFace: bodyFont,
-    fontSize: 10.8,
-    color: "F3E7D8",
-    margin: 0
-  }, {
-    group: "cover-side"
-  });
-
   return canvas.finalize();
 }
 
