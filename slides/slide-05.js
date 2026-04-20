@@ -83,7 +83,7 @@ function createChallengeSlide(pres, theme, options, visibleLayers, slideIndex) {
     theme,
     "Challenge 1",
     slideConfig.title,
-    "Use the audience first: ask what the system still needs to know before it can recommend anything."
+    "One vague request hides several requirements that the system must make explicit."
   );
 
   canvas.addShape("left-utterance", pres.ShapeType.roundRect, {
@@ -162,21 +162,6 @@ function createChallengeSlide(pres, theme, options, visibleLayers, slideIndex) {
       theme[layer.colorKey],
       layer.group
     );
-  }
-
-  if (visibleLayers === 0) {
-    canvas.addText("audience-note", "Take 2-3 audience suggestions before revealing the hidden requirements.", {
-      x: 4.34,
-      y: 4.98,
-      w: 4.28,
-      h: 0.34,
-      fontFace: bodyFont,
-      fontSize: 8.8,
-      color: theme.secondary,
-      margin: 0
-    }, {
-      group: "audience-note"
-    });
   }
 
   if (visibleLayers === audienceLayers.length) {

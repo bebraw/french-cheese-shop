@@ -67,7 +67,7 @@ function createEvaluationSlide(pres, theme, options, visibleNodes, slideIndex) {
     theme,
     "Challenge 3",
     slideConfig.title,
-    "The question is not only whether the feature runs. We also need to ask whether the answer is useful, trusted, and good enough."
+    "Evaluation is not only about whether the feature runs, but whether the result is useful, trusted, and good enough."
   );
 
   for (const node of pipelineNodes.slice(0, visibleNodes)) {

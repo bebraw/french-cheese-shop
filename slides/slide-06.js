@@ -85,7 +85,7 @@ function addGraphPanel(canvas, slide, pres, theme) {
     h: 2.98,
     rectRadius: 0.06,
     line: { color: theme.light, pt: 1.1 },
-    fill: { color: "F7F1E7" }
+    fill: { color: "FFFFFF", transparency: 100 }
   }, {
     group: "graph-panel",
     skipOverlap: true
@@ -104,30 +104,17 @@ function addGraphPanel(canvas, slide, pres, theme) {
     group: "graph-panel"
   });
 
-  canvas.addText("graph-subtitle", "The system links request words to product traits and products.", {
-    x: 4.34,
-    y: 2.46,
-    w: 4.18,
-    h: 0.18,
-    fontFace: bodyFont,
-    fontSize: 8.6,
-    color: "607185",
-    margin: 0
-  }, {
-    group: "graph-panel"
-  });
-
   if (fs.existsSync(graphImagePath)) {
     slide.addImage({
       path: graphImagePath,
       x: 4.42,
-      y: 2.92,
+      y: 2.72,
       w: 4.28,
       h: 1.68
     });
     canvas.reserveGroup("graph-image", {
       x: 4.42,
-      y: 2.92,
+      y: 2.72,
       w: 4.28,
       h: 1.68
     }, {
@@ -149,19 +136,6 @@ function addGraphPanel(canvas, slide, pres, theme) {
     });
   }
 
-  canvas.addText("graph-caption", "The requirement includes how request terms connect to product data.", {
-    x: 4.36,
-    y: 4.74,
-    w: 4.28,
-    h: 0.24,
-    fontFace: bodyFont,
-    fontSize: 8.6,
-    bold: true,
-    color: theme.primary,
-    margin: 0
-  }, {
-    group: "graph-caption"
-  });
 }
 
 function createDataSlide(pres, theme, options, visibleCards, showGraph, slideIndex) {
