@@ -29,7 +29,7 @@ function createSlide(pres, theme, options = {}) {
     x: 0.58,
     y: 0.56,
     w: 2.18,
-    h: 4.52,
+    h: 4.18,
     rectRadius: 0.08,
     line: { color: theme.light, pt: 1.05 },
     fill: { color: "F8EFE2" }
@@ -43,7 +43,7 @@ function createSlide(pres, theme, options = {}) {
       x: 0.58,
       y: 0.56,
       w: 2.18,
-      h: 4.52
+      h: 4.18
     });
   }
 
@@ -51,7 +51,7 @@ function createSlide(pres, theme, options = {}) {
     x: 0.58,
     y: 0.56,
     w: 2.18,
-    h: 4.52,
+    h: 4.18,
     rectRadius: 0.08,
     line: { color: theme.secondary, transparency: 100 },
     fill: { color: theme.secondary, transparency: coverPhotoPath ? 34 : 0 }
@@ -59,14 +59,27 @@ function createSlide(pres, theme, options = {}) {
     group: "qa-left-frame"
   });
 
+  canvas.addShape("qa-left-credit-band", pres.ShapeType.roundRect, {
+    x: 0.58,
+    y: 4.82,
+    w: 2.18,
+    h: 0.24,
+    rectRadius: 0.04,
+    line: { color: "F1E5D7", transparency: 100 },
+    fill: { color: "F8EFE2" }
+  }, {
+    group: "qa-left-frame",
+    skipOverlap: true
+  });
+
   canvas.addText("qa-left-attribution", "Photo: jackmac34 / Pixabay", {
-    x: 0.76,
-    y: 4.78,
+    x: 0.72,
+    y: 4.88,
     w: 1.78,
     h: 0.12,
     fontFace: bodyFont,
     fontSize: 7.2,
-    color: "FFF8ED",
+    color: theme.secondary,
     align: "right",
     margin: 0
   }, {
@@ -78,7 +91,7 @@ function createSlide(pres, theme, options = {}) {
     x: 7.24,
     y: 0.56,
     w: 2.18,
-    h: 4.52,
+    h: 4.18,
     rectRadius: 0.08,
     line: { color: theme.light, pt: 1.05 },
     fill: { color: "F7E9EB" }
@@ -92,7 +105,7 @@ function createSlide(pres, theme, options = {}) {
       x: 7.24,
       y: 0.56,
       w: 2.18,
-      h: 4.52
+      h: 4.18
     });
   }
 
@@ -100,7 +113,7 @@ function createSlide(pres, theme, options = {}) {
     x: 7.24,
     y: 0.56,
     w: 2.18,
-    h: 4.52,
+    h: 4.18,
     rectRadius: 0.08,
     line: { color: theme.secondary, transparency: 100 },
     fill: { color: theme.secondary, transparency: briePhotoPath ? 38 : 0 }
@@ -108,14 +121,27 @@ function createSlide(pres, theme, options = {}) {
     group: "qa-right-frame"
   });
 
+  canvas.addShape("qa-right-credit-band", pres.ShapeType.roundRect, {
+    x: 7.24,
+    y: 4.82,
+    w: 2.18,
+    h: 0.24,
+    rectRadius: 0.04,
+    line: { color: "F2E4E6", transparency: 100 },
+    fill: { color: "F7E9EB" }
+  }, {
+    group: "qa-right-frame",
+    skipOverlap: true
+  });
+
   canvas.addText("qa-right-attribution", "Photo: lee_2 / Pixabay", {
-    x: 7.42,
-    y: 4.78,
+    x: 7.38,
+    y: 4.88,
     w: 1.78,
     h: 0.12,
     fontFace: bodyFont,
     fontSize: 7.2,
-    color: "FFF8ED",
+    color: theme.secondary,
     align: "right",
     margin: 0
   }, {

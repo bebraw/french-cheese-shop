@@ -114,7 +114,7 @@ function createCustomerQuerySlide(pres, theme, options, visibleCards, slideIndex
     x: 0.62,
     y: 2.06,
     w: 3.72,
-    h: 2.55,
+    h: 2.43,
     rectRadius: 0.08,
     line: { color: theme.secondary, transparency: 100 },
     fill: { color: theme.secondary, transparency: briePhotoPath ? 24 : 0 }
@@ -150,7 +150,7 @@ function createCustomerQuerySlide(pres, theme, options, visibleCards, slideIndex
 
   canvas.addText("quote-caption", "Easy for a shopkeeper,\nhard for a machine.", {
     x: 1.1,
-    y: 4.1,
+    y: 4.0,
     w: 2.6,
     h: 0.5,
     fontFace: bodyFont,
@@ -162,14 +162,27 @@ function createCustomerQuerySlide(pres, theme, options, visibleCards, slideIndex
   });
 
   if (briePhotoPath) {
+    canvas.addShape("quote-photo-credit-band", pres.ShapeType.roundRect, {
+      x: 0.62,
+      y: 4.5,
+      w: 3.72,
+      h: 0.24,
+      rectRadius: 0.04,
+      line: { color: "E8D9C5", transparency: 100 },
+      fill: { color: "F7F0E5" }
+    }, {
+      group: "quote-panel",
+      skipOverlap: true
+    });
+
     canvas.addText("quote-photo-attribution", "Photo: lee_2 / Pixabay", {
-      x: 2.34,
-      y: 4.42,
+      x: 2.5,
+      y: 4.56,
       w: 1.72,
       h: 0.12,
       fontFace: bodyFont,
       fontSize: 7.4,
-      color: "FFF8ED",
+      color: theme.secondary,
       align: "right",
       margin: 0
     }, {

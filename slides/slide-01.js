@@ -63,7 +63,7 @@ function createSlide(pres, theme, options = {}) {
     x: 6.95,
     y: 2.24,
     w: 2.1,
-    h: 1.56,
+    h: 1.82,
     rectRadius: 0.08,
     line: { color: "F8EFE2", transparency: 100 },
     fill: { color: "F8EFE2", transparency: 4 }
@@ -82,14 +82,27 @@ function createSlide(pres, theme, options = {}) {
       h: 1.56
     });
 
+    canvas.addShape("cover-photo-credit-band", pres.ShapeType.roundRect, {
+      x: 6.95,
+      y: 3.8,
+      w: 2.1,
+      h: 0.26,
+      rectRadius: 0.04,
+      line: { color: "F8EFE2", transparency: 100 },
+      fill: { color: "F8EFE2" }
+    }, {
+      group: "cover-photo",
+      skipOverlap: true
+    });
+
     canvas.addText("cover-photo-attribution", "Photo: jackmac34 / Pixabay", {
-      x: 7.02,
-      y: 3.62,
+      x: 7.08,
+      y: 3.87,
       w: 1.88,
-      h: 0.14,
+      h: 0.12,
       fontFace: bodyFont,
       fontSize: 7.4,
-      color: "FFF7EC",
+      color: theme.secondary,
       align: "right",
       margin: 0
     }, {
