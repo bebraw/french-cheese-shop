@@ -1,23 +1,23 @@
-const { fontFace } = require("./theme");
+const { bodyFont, displayFont } = require("./theme");
 
 function addPageBadge(canvas, pres, theme, number) {
   canvas.addShape("page-badge-circle", pres.ShapeType.ellipse, {
-    x: 9.28,
-    y: 5.03,
-    w: 0.42,
-    h: 0.42,
-    line: { color: theme.accent, transparency: 100 },
-    fill: { color: theme.accent }
+    x: 9.24,
+    y: 5.01,
+    w: 0.44,
+    h: 0.44,
+    line: { color: theme.secondary, transparency: 100 },
+    fill: { color: theme.secondary }
   }, {
     group: "page-badge"
   });
 
   canvas.addText("page-badge-label", String(number).padStart(2, "0"), {
-    x: 9.28,
-    y: 5.03,
-    w: 0.42,
-    h: 0.42,
-    fontFace,
+    x: 9.24,
+    y: 5.01,
+    w: 0.44,
+    h: 0.44,
+    fontFace: bodyFont,
     fontSize: 11,
     bold: true,
     color: "FFFFFF",
@@ -31,14 +31,14 @@ function addPageBadge(canvas, pres, theme, number) {
 
 function addSectionTitle(canvas, theme, eyebrow, title, body) {
   canvas.addText("section-eyebrow", eyebrow, {
-    x: 0.6,
-    y: 0.45,
-    w: 3.2,
-    h: 0.3,
-    fontFace,
-    fontSize: 12,
+    x: 0.62,
+    y: 0.46,
+    w: 3.8,
+    h: 0.26,
+    fontFace: bodyFont,
+    fontSize: 11.5,
     bold: true,
-    color: theme.accent,
+    color: theme.secondary,
     charSpace: 1.2,
     allCaps: true,
     margin: 0
@@ -47,13 +47,13 @@ function addSectionTitle(canvas, theme, eyebrow, title, body) {
   });
 
   canvas.addText("section-title", title, {
-    x: 0.6,
-    y: 0.82,
-    w: 5.2,
-    h: 0.52,
-    fontFace,
+    x: 0.62,
+    y: 0.78,
+    w: 6.6,
+    h: 0.64,
+    fontFace: displayFont,
     fontSize: 24,
-    bold: true,
+    bold: false,
     color: theme.primary,
     margin: 0
   }, {
@@ -62,14 +62,13 @@ function addSectionTitle(canvas, theme, eyebrow, title, body) {
 
   if (body) {
     canvas.addText("section-body", body, {
-      x: 0.6,
-      y: 1.45,
-      w: 5.2,
-      h: 0.54,
-      fontFace,
-      fontSize: 11.5,
-      color: "47627f",
-      breakLine: false,
+      x: 0.64,
+      y: 1.48,
+      w: 5.95,
+      h: 0.5,
+      fontFace: bodyFont,
+      fontSize: 11.2,
+      color: "56677C",
       margin: 0
     }, {
       group: "section-header"

@@ -1,24 +1,27 @@
 const theme = {
-  primary: "183153",
-  secondary: "275d8c",
-  accent: "f28f3b",
-  light: "d7e6f5",
-  bg: "f5f8fc"
+  primary: "1D3557",
+  secondary: "7B1E2B",
+  accent: "C6933F",
+  light: "E8D9C5",
+  bg: "FBF5EC"
 };
 
 const deckMeta = {
-  title: "Presentation Template Demo",
-  subtitle: "A small runnable deck built from the pptx-generator skill",
+  title: "AI in Requirements Engineering",
+  subtitle: "Teaching proof draft through a French cheese shop",
   author: "OpenAI Codex",
-  company: "presentation-template",
-  subject: "Demonstration presentation"
+  company: "french-cheese-shop",
+  subject: "Teaching proof draft on AI in requirements engineering"
 };
 
-const fontFace = "Avenir Next";
+const displayFont = "Didot";
+const bodyFont = "Avenir Next";
+const fontFace = bodyFont;
 
 module.exports = {
+  bodyFont,
   deckMeta,
+  displayFont,
   fontFace,
   theme
 };
-

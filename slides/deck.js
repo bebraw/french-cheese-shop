@@ -1,11 +1,16 @@
 const PptxGenJS = require("pptxgenjs");
-const { deckMeta, theme } = require("./theme");
+const { bodyFont, deckMeta, displayFont, theme } = require("./theme");
 
 const slideModules = [
   require("./slide-01"),
   require("./slide-02"),
   require("./slide-03"),
-  require("./slide-04")
+  require("./slide-04"),
+  require("./slide-05"),
+  require("./slide-06"),
+  require("./slide-07"),
+  require("./slide-08"),
+  require("./slide-09")
 ];
 
 function createPresentation(options = {}) {
@@ -17,8 +22,8 @@ function createPresentation(options = {}) {
   pres.title = deckMeta.title;
   pres.lang = "en-US";
   pres.theme = {
-    headFontFace: "Avenir Next",
-    bodyFontFace: "Avenir Next",
+    headFontFace: displayFont,
+    bodyFontFace: bodyFont,
     lang: "en-US"
   };
 
@@ -37,4 +42,3 @@ function createPresentation(options = {}) {
 module.exports = {
   createPresentation
 };
-

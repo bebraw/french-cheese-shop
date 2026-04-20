@@ -1,128 +1,98 @@
 const { addPageBadge, addSectionTitle } = require("./helpers");
-const { fontFace } = require("./theme");
+const { bodyFont, displayFont } = require("./theme");
 const { createSlideCanvas } = require("./validation");
 
 const slideConfig = {
-  type: "content",
+  type: "toc",
   index: 3,
-  title: "Why this setup works"
+  title: "20-Minute Roadmap"
 };
 
-function addMetric(canvas, theme, x, y, value, label, id) {
-  canvas.addText(`${id}-value`, value, {
+function addTimelineCard(canvas, pres, theme, x, y, minutes, title, body, group) {
+  canvas.addShape(`${group}-card`, pres.ShapeType.roundRect, {
     x,
     y,
-    w: 1.2,
-    h: 0.4,
-    fontFace,
-    fontSize: 20,
+    w: 4.05,
+    h: 1.12,
+    rectRadius: 0.06,
+    line: { color: theme.light, pt: 1.1 },
+    fill: { color: "FFFFFF" }
+  }, {
+    group
+  });
+
+  canvas.addText(`${group}-minutes`, minutes, {
+    x: x + 0.22,
+    y: y + 0.18,
+    w: 0.75,
+    h: 0.22,
+    fontFace: bodyFont,
+    fontSize: 12,
     bold: true,
+    color: theme.accent,
+    margin: 0
+  }, {
+    group
+  });
+
+  canvas.addText(`${group}-title`, title, {
+    x: x + 1.06,
+    y: y + 0.16,
+    w: 2.45,
+    h: 0.28,
+    fontFace: displayFont,
+    fontSize: 16,
     color: theme.primary,
     margin: 0
   }, {
-    group: "content-stats-panel"
+    group
   });
 
-  canvas.addText(`${id}-label`, label, {
-    x,
-    y: y + 0.42,
-    w: 1.6,
-    h: 0.3,
-    fontFace,
-    fontSize: 10.5,
-    color: "5d7591",
+  canvas.addText(`${group}-body`, body, {
+    x: x + 1.06,
+    y: y + 0.46,
+    w: 2.62,
+    h: 0.36,
+    fontFace: bodyFont,
+    fontSize: 10,
+    color: "5B6D83",
     margin: 0
   }, {
-    group: "content-stats-panel"
+    group
   });
 }
 
 function createSlide(pres, theme, options = {}) {
   const canvas = createSlideCanvas(pres, slideConfig, options);
   const { slide } = canvas;
-  slide.background = { color: "ffffff" };
+  slide.background = { color: theme.bg };
 
   addSectionTitle(
     canvas,
     theme,
-    "Signals",
+    "Flow",
     slideConfig.title,
-    "The demo emphasizes repeatability: local dependencies, explicit slide modules, and a compile command that fits CI."
+    "Keep the pace explicit so the teaching proof feels intentional: one hook, one conceptual shift, three challenges, one synthesis."
   );
 
-  canvas.addShape("content-chart-panel", pres.ShapeType.roundRect, {
-    x: 0.6,
-    y: 2,
-    w: 4.65,
-    h: 2.45,
-    rectRadius: 0.08,
-    line: { color: "dbe7f1", pt: 1 },
-    fill: { color: "f8fbfe" }
-  }, {
-    group: "content-chart-panel"
-  });
+  addTimelineCard(canvas, pres, theme, 0.62, 2.04, "02 min", "Hook", "Cheese request reveals ambiguity.", "roadmap-hook");
+  addTimelineCard(canvas, pres, theme, 5.02, 2.04, "04 min", "Shift", "Classical RE versus AI behavior.", "roadmap-shift");
+  addTimelineCard(canvas, pres, theme, 0.62, 3.36, "08 min", "Three challenges", "Interpretation, data, evaluation.", "roadmap-challenges");
+  addTimelineCard(canvas, pres, theme, 5.02, 3.36, "06 min", "ADR + conclusion", "Manage evolving assumptions clearly.", "roadmap-close");
 
-  canvas.addChart("content-chart", pres.ChartType.bar, [
-    {
-      name: "Deck setup",
-      labels: ["Skill", "Theme", "Slides", "Docs"],
-      values: [75, 82, 94, 88]
-    }
-  ], {
-    x: 0.88,
-    y: 2.28,
-    w: 3.92,
-    h: 1.62,
-    catAxisLabelFontFace: fontFace,
-    catAxisLabelFontSize: 9,
-    valAxisLabelFontFace: fontFace,
-    valAxisLabelFontSize: 9,
-    valAxisMinVal: 0,
-    valAxisMaxVal: 100,
-    valGridLine: { color: "d7e6f5", pt: 1 },
-    chartColors: [theme.secondary],
-    showLegend: false,
-    showTitle: false,
-    showValue: true,
-    dataLabelColor: theme.primary,
-    dataLabelPosition: "outEnd",
-    showCatName: false,
-    showValAxisTitle: false,
-    showCatAxisTitle: false
-  }, {
-    group: "content-chart-panel"
-  });
-
-  canvas.addShape("content-stats-panel", pres.ShapeType.roundRect, {
-    x: 5.65,
-    y: 2,
-    w: 3.75,
-    h: 2.45,
-    rectRadius: 0.08,
-    line: { color: theme.primary, transparency: 100 },
-    fill: { color: theme.primary }
-  }, {
-    group: "content-stats-panel"
-  });
-
-  canvas.addText("content-stats-title", "Key properties", {
-    x: 5.95,
-    y: 2.24,
-    w: 2,
+  canvas.addText("roadmap-footer", "Memorable example first, academic framing second.", {
+    x: 0.68,
+    y: 4.82,
+    w: 4.3,
     h: 0.3,
-    fontFace,
-    fontSize: 15,
+    fontFace: bodyFont,
+    fontSize: 10.4,
     bold: true,
-    color: "FFFFFF",
+    color: theme.secondary,
     margin: 0
   }, {
-    group: "content-stats-panel"
+    group: "roadmap-footer"
   });
-
-  addMetric(canvas, theme, 5.95, 2.9, "4", "Slide modules", "metric-modules");
-  addMetric(canvas, theme, 7.35, 2.9, "1", "Compile script", "metric-compile");
-  addMetric(canvas, theme, 5.95, 3.72, "5", "Theme keys", "metric-theme");
-  addMetric(canvas, theme, 7.35, 3.72, "1", "README guide", "metric-readme");
 
   addPageBadge(canvas, pres, theme, slideConfig.index);
   return canvas.finalize();

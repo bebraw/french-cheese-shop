@@ -1,27 +1,24 @@
-const { fontFace } = require("./theme");
+const { bodyFont, displayFont } = require("./theme");
 const { createSlideCanvas } = require("./validation");
 
 const slideConfig = {
   type: "cover",
   index: 1,
-  title: "Presentation Template Demo"
+  title: "AI in Requirements Engineering"
 };
 
 function createSlide(pres, theme, options = {}) {
   const canvas = createSlideCanvas(pres, slideConfig, options);
   const { slide } = canvas;
-  slide.background = { color: "f4f8fc" };
+  slide.background = { color: theme.bg };
 
-  canvas.addShape("cover-background", pres.ShapeType.rect, {
+  canvas.addShape("cover-base", pres.ShapeType.rect, {
     x: 0,
     y: 0,
     w: 10,
     h: 5.625,
     line: { color: theme.bg, transparency: 100 },
-    fill: {
-      color: theme.bg,
-      transparency: 0
-    }
+    fill: { color: theme.bg }
   }, {
     group: "background",
     skipBounds: true,
@@ -29,9 +26,9 @@ function createSlide(pres, theme, options = {}) {
   });
 
   canvas.addShape("cover-right-panel", pres.ShapeType.rect, {
-    x: 6.45,
+    x: 6.55,
     y: 0,
-    w: 3.55,
+    w: 3.45,
     h: 5.625,
     line: { color: theme.secondary, transparency: 100 },
     fill: { color: theme.secondary }
@@ -41,115 +38,128 @@ function createSlide(pres, theme, options = {}) {
     skipOverlap: true
   });
 
-  canvas.addShape("cover-overlay-panel", pres.ShapeType.rect, {
-    x: 5.95,
-    y: 0.4,
-    w: 3.55,
-    h: 4.85,
-    line: { color: theme.primary, transparency: 100 },
-    fill: { color: theme.primary, transparency: 6 }
+  canvas.addShape("cover-arch", pres.ShapeType.arc, {
+    x: 6.82,
+    y: 0.84,
+    w: 2.2,
+    h: 2.2,
+    line: { color: "F6EBDD", pt: 2.4 },
+    fill: { color: "F6EBDD", transparency: 100 },
+    adjustPoint: 0.23
   }, {
     group: "background",
     skipBounds: true,
     skipOverlap: true
   });
 
-  canvas.addShape("cover-accent-arc", pres.ShapeType.arc, {
-    x: 6.15,
-    y: 1.2,
-    w: 2.6,
-    h: 2.6,
-    line: { color: theme.accent, pt: 2.5 },
-    fill: { color: theme.accent, transparency: 100 },
-    adjustPoint: 0.21
+  canvas.addShape("cover-cream-block", pres.ShapeType.roundRect, {
+    x: 6.95,
+    y: 2.24,
+    w: 2.1,
+    h: 1.56,
+    rectRadius: 0.08,
+    line: { color: "F8EFE2", transparency: 100 },
+    fill: { color: "F8EFE2", transparency: 4 }
   }, {
     group: "background",
     skipBounds: true,
     skipOverlap: true
   });
 
-  canvas.addText("cover-eyebrow", "pptx-generator skill", {
-    x: 0.7,
-    y: 0.7,
+  canvas.addText("cover-eyebrow", "Teaching Proof Draft", {
+    x: 0.72,
+    y: 0.68,
     w: 2.8,
-    h: 0.3,
-    fontFace,
-    fontSize: 13,
+    h: 0.24,
+    fontFace: bodyFont,
+    fontSize: 12,
     bold: true,
-    color: theme.accent,
+    color: theme.secondary,
     charSpace: 1.4,
     allCaps: true,
     margin: 0
   }, {
-    group: "cover-header"
+    group: "cover-copy"
   });
 
   canvas.addText("cover-title", slideConfig.title, {
-    x: 0.7,
-    y: 1.15,
-    w: 4.6,
-    h: 0.88,
-    fontFace,
-    fontSize: 24,
-    bold: true,
+    x: 0.72,
+    y: 1.1,
+    w: 5.4,
+    h: 0.9,
+    fontFace: displayFont,
+    fontSize: 28,
     color: theme.primary,
     margin: 0
   }, {
-    group: "cover-header"
+    group: "cover-copy"
   });
 
-  canvas.addText("cover-summary", "A compact deck that shows the imported skill, a shared theme, and the compile flow used to emit presentation files locally.", {
-    x: 0.72,
-    y: 2.35,
-    w: 4.4,
-    h: 0.7,
-    fontFace,
-    fontSize: 12.5,
-    color: "4d657d",
-    valign: "mid",
-    margin: 0
-  }, {
-    group: "cover-summary"
-  });
-
-  canvas.addText("cover-footnote", "Slides are authored as CommonJS modules and assembled by slides/compile.js into a final PPTX.", {
-    x: 0.72,
-    y: 4.55,
+  canvas.addText("cover-subtitle", "A 20-minute academic presentation through the running example of a French cheese shop.", {
+    x: 0.74,
+    y: 2.2,
     w: 4.9,
-    h: 0.45,
-    fontFace,
-    fontSize: 10.5,
-    color: "6b8096",
+    h: 0.64,
+    fontFace: bodyFont,
+    fontSize: 13,
+    color: "4F6277",
     margin: 0
   }, {
-    group: "cover-footer"
+    group: "cover-copy"
   });
 
-  canvas.addText("cover-index", "01", {
-    x: 6.6,
-    y: 4.62,
-    w: 2.3,
-    h: 0.56,
-    fontFace,
-    fontSize: 30,
+  canvas.addText("cover-aim", "Goal: show how AI shifts requirements from fixed functions toward interpretation, data, evaluation, and evolving architectural assumptions.", {
+    x: 0.74,
+    y: 3.2,
+    w: 4.95,
+    h: 0.74,
+    fontFace: bodyFont,
+    fontSize: 11.4,
+    color: "607286",
+    margin: 0
+  }, {
+    group: "cover-copy"
+  });
+
+  canvas.addText("cover-side-number", "01", {
+    x: 6.96,
+    y: 4.38,
+    w: 1.2,
+    h: 0.42,
+    fontFace: bodyFont,
+    fontSize: 28,
     bold: true,
     color: "FFFFFF",
     margin: 0
   }, {
-    group: "cover-side-panel"
+    group: "cover-side"
   });
 
-  canvas.addText("cover-side-label", "Demo deck", {
-    x: 6.62,
-    y: 5.02,
-    w: 2.1,
-    h: 0.25,
-    fontFace,
-    fontSize: 11,
-    color: "d7e6f5",
+  canvas.addText("cover-side-label", "French theme\nEditorial tone\nAI + RE", {
+    x: 7.02,
+    y: 1.82,
+    w: 1.4,
+    h: 0.78,
+    fontFace: bodyFont,
+    fontSize: 11.5,
+    bold: true,
+    color: "FFFFFF",
     margin: 0
   }, {
-    group: "cover-side-panel"
+    group: "cover-side"
+  });
+
+  canvas.addText("cover-side-note", "Prompt:\n\"Something like Brie,\nbut stronger.\"", {
+    x: 7.16,
+    y: 2.56,
+    w: 1.55,
+    h: 0.92,
+    fontFace: bodyFont,
+    fontSize: 10.8,
+    color: "F3E7D8",
+    margin: 0
+  }, {
+    group: "cover-side"
   });
 
   return canvas.finalize();

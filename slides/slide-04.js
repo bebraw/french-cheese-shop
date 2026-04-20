@@ -1,48 +1,49 @@
 const { addPageBadge, addSectionTitle } = require("./helpers");
-const { fontFace } = require("./theme");
+const { bodyFont, displayFont } = require("./theme");
 const { createSlideCanvas } = require("./validation");
 
 const slideConfig = {
-  type: "summary",
+  type: "content",
   index: 4,
-  title: "Next steps"
+  title: "Classical RE vs AI-Era RE"
 };
 
-function createChecklistItem(canvas, pres, theme, y, title, text, group) {
-  canvas.addShape(`${group}-bullet`, pres.ShapeType.ellipse, {
-    x: 0.72,
-    y,
-    w: 0.28,
-    h: 0.28,
-    line: { color: theme.accent, transparency: 100 },
-    fill: { color: theme.accent }
+function addComparisonPanel(canvas, pres, x, title, bullets, colors, group) {
+  canvas.addShape(`${group}-panel`, pres.ShapeType.roundRect, {
+    x,
+    y: 2.02,
+    w: 4.02,
+    h: 2.66,
+    rectRadius: 0.06,
+    line: { color: colors.line, pt: 1.1 },
+    fill: { color: colors.fill }
   }, {
     group
   });
 
   canvas.addText(`${group}-title`, title, {
-    x: 1.08,
-    y: y - 0.01,
-    w: 3.2,
+    x: x + 0.24,
+    y: 2.24,
+    w: 2.6,
     h: 0.24,
-    fontFace,
-    fontSize: 13,
-    bold: true,
-    color: theme.primary,
+    fontFace: displayFont,
+    fontSize: 18,
+    color: colors.title,
     margin: 0
   }, {
     group
   });
 
-  canvas.addText(`${group}-body`, text, {
-    x: 1.08,
-    y: y + 0.28,
-    w: 4.2,
-    h: 0.42,
-    fontFace,
+  canvas.addText(`${group}-bullets`, bullets, {
+    x: x + 0.26,
+    y: 2.7,
+    w: 3.24,
+    h: 1.38,
+    fontFace: bodyFont,
     fontSize: 11,
-    color: "5e7691",
-    margin: 0
+    color: colors.body,
+    margin: 0,
+    breakLine: false
   }, {
     group
   });
@@ -51,73 +52,71 @@ function createChecklistItem(canvas, pres, theme, y, title, text, group) {
 function createSlide(pres, theme, options = {}) {
   const canvas = createSlideCanvas(pres, slideConfig, options);
   const { slide } = canvas;
-  slide.background = { color: theme.bg };
+  slide.background = { color: "FFFDFC" };
 
   addSectionTitle(
     canvas,
     theme,
-    "Summary",
+    "Conceptual Shift",
     slideConfig.title,
-    "The repository now has a complete starter path: imported skill guidance, a runnable deck, and project documentation."
+    "The main transition is from specifying deterministic functionality to shaping behavior under uncertainty."
   );
 
-  createChecklistItem(canvas, pres, theme, 2, "Install dependencies", "Run npm install once to pull in pptxgenjs locally.", "checklist-install");
-  createChecklistItem(canvas, pres, theme, 2.9, "Build the deck", "Run npm run build to emit the demo presentation.", "checklist-build");
-  createChecklistItem(canvas, pres, theme, 3.8, "Extend slide modules", "Duplicate the pattern for real cover, content, and summary slides.", "checklist-extend");
+  addComparisonPanel(
+    canvas,
+    pres,
+    0.62,
+    "Traditional",
+    "• Search cheeses by type\n• Validate fields and stock\n• Fixed outputs for fixed inputs\n• Success = feature works",
+    {
+      fill: "F8F1E8",
+      line: theme.light,
+      title: theme.primary,
+      body: "596B81"
+    },
+    "panel-traditional"
+  );
 
-  canvas.addShape("summary-output-panel", pres.ShapeType.roundRect, {
-    x: 6.15,
-    y: 2,
-    w: 3.05,
-    h: 2.6,
-    rectRadius: 0.08,
-    line: { color: theme.light, pt: 1.2 },
-    fill: { color: "ffffff" }
+  addComparisonPanel(
+    canvas,
+    pres,
+    5.0,
+    "AI-augmented",
+    "• Recommend from vague language\n• Use data and domain models\n• Outputs depend on interpretation\n• Success = relevance, trust, fit",
+    {
+      fill: "F6EAEC",
+      line: "E8CCD1",
+      title: theme.secondary,
+      body: "6F5560"
+    },
+    "panel-ai"
+  );
+
+  canvas.addShape("shift-banner", pres.ShapeType.roundRect, {
+    x: 1.18,
+    y: 4.88,
+    w: 7.64,
+    h: 0.38,
+    rectRadius: 0.05,
+    line: { color: theme.primary, transparency: 100 },
+    fill: { color: theme.primary }
   }, {
-    group: "summary-output-panel"
+    group: "shift-banner"
   });
 
-  canvas.addText("summary-output-title", "Output", {
-    x: 6.45,
-    y: 2.28,
-    w: 1.2,
-    h: 0.25,
-    fontFace,
-    fontSize: 13,
+  canvas.addText("shift-banner-text", "Requirements are no longer just functions. They also define how the system interprets, learns, and is evaluated.", {
+    x: 1.44,
+    y: 4.92,
+    w: 7.1,
+    h: 0.34,
+    fontFace: bodyFont,
+    fontSize: 9.2,
     bold: true,
-    color: theme.accent,
-    allCaps: true,
+    color: "FFFFFF",
+    align: "center",
     margin: 0
   }, {
-    group: "summary-output-panel"
-  });
-
-  canvas.addText("summary-output-path", "slides/output/\ndemo-presentation.pptx", {
-    x: 6.45,
-    y: 2.66,
-    w: 2.25,
-    h: 0.55,
-    fontFace,
-    fontSize: 13,
-    bold: true,
-    color: theme.primary,
-    breakLine: false,
-    margin: 0
-  }, {
-    group: "summary-output-panel"
-  });
-
-  canvas.addText("summary-output-body", "The output directory is git-ignored, so generated binaries stay local.", {
-    x: 6.45,
-    y: 3.48,
-    w: 2.25,
-    h: 0.6,
-    fontFace,
-    fontSize: 10.5,
-    color: "607894",
-    margin: 0
-  }, {
-    group: "summary-output-panel"
+    group: "shift-banner"
   });
 
   addPageBadge(canvas, pres, theme, slideConfig.index);

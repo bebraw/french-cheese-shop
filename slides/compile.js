@@ -8,7 +8,7 @@ async function main() {
   const outputDir = path.join(__dirname, "output");
   fs.mkdirSync(outputDir, { recursive: true });
 
-  const outputFile = path.join(outputDir, "demo-presentation.pptx");
+  const outputFile = path.join(outputDir, "teaching-proof-ai-re.pptx");
   await pres.writeFile({ fileName: outputFile });
   process.stdout.write(`${outputFile}\n`);
 }
