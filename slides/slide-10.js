@@ -1,10 +1,10 @@
-const { addPageBadge } = require("./helpers");
-const { displayFont } = require("./theme");
+const { addPageBadge, liveDemoUrl } = require("./helpers");
+const { bodyFont, displayFont } = require("./theme");
 const { createSlideCanvas } = require("./validation");
 
 const slideConfig = {
   type: "closing",
-  index: 30,
+  index: 15,
   title: "Questions and Comments"
 };
 
@@ -35,6 +35,21 @@ function createSlide(pres, theme, options = {}) {
     margin: 0
   }, {
     group: "qa-title"
+  });
+
+  canvas.addText("qa-demo-link", `Live demo: ${liveDemoUrl}`, {
+    x: 1.42,
+    y: 3.34,
+    w: 7.16,
+    h: 0.24,
+    fontFace: bodyFont,
+    fontSize: 11,
+    bold: true,
+    color: theme.secondary,
+    align: "center",
+    margin: 0
+  }, {
+    group: "qa-demo-link"
   });
 
   addPageBadge(canvas, pres, theme, slideConfig.index);

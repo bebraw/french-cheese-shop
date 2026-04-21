@@ -1,12 +1,12 @@
 const fs = require("fs");
-const { createPresentation } = require("./deck");
-const { outputDir, pptxFile } = require("./output-config");
+const { createPdfPresentation } = require("./pdf-renderer");
+const { outputDir, pdfFile } = require("./output-config");
 
 async function main() {
-  const { pres } = createPresentation();
+  const { pres } = createPdfPresentation();
   fs.mkdirSync(outputDir, { recursive: true });
-  await pres.writeFile({ fileName: pptxFile });
-  process.stdout.write(`${pptxFile}\n`);
+  await pres.writeFile({ fileName: pdfFile });
+  process.stdout.write(`${pdfFile}\n`);
 }
 
 main().catch((error) => {

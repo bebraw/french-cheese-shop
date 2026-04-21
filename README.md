@@ -5,7 +5,6 @@ This repository contains a teaching presentation on **AI in Requirements Enginee
 ## Presentation
 
 - Archived PDF: `archive/teaching-proof-ai-re.pdf`
-- Current local PPTX build: `slides/output/teaching-proof-ai-re.pptx`
 - Current local PDF build: `slides/output/teaching-proof-ai-re.pdf`
 
 The deck focuses on:
@@ -26,3 +25,4 @@ The deck includes local cheese photos on the cover and customer-request slide.
 ## Technical Notes
 
 Build, validation, export, and repository structure details are documented in [TECHNICAL.md](TECHNICAL.md).
+For presentation changes, run `npm run quality:gate` before considering the work done.

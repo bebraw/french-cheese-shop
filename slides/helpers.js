@@ -1,5 +1,7 @@
 const { bodyFont, displayFont } = require("./theme");
 
+const liveDemoUrl = "https://french-cheese-shop-demo.survivejs.workers.dev";
+
 function addPageBadge(canvas, pres, theme, number) {
   canvas.addShape("page-badge-circle", pres.ShapeType.ellipse, {
     x: 9.24,
@@ -105,5 +107,6 @@ function addReferenceNote(canvas, theme, text, options = {}) {
 module.exports = {
   addPageBadge,
   addReferenceNote,
-  addSectionTitle
+  addSectionTitle,
+  liveDemoUrl
 };

@@ -7,28 +7,13 @@ const slideModules = [
   require("./slide-02"),
   require("./slide-04"),
   require("./slide-05"),
-  require("./slide-06"),
-  require("./slide-07"),
   require("./slide-08a"),
   require("./slide-10"),
   require("./slide-10a"),
   require("./slide-08")
 ];
 
-function createPresentation(options = {}) {
-  const pres = new PptxGenJS();
-  pres.layout = "LAYOUT_16x9";
-  pres.author = deckMeta.author;
-  pres.company = deckMeta.company;
-  pres.subject = deckMeta.subject;
-  pres.title = deckMeta.title;
-  pres.lang = "en-US";
-  pres.theme = {
-    headFontFace: displayFont,
-    bodyFontFace: bodyFont,
-    lang: "en-US"
-  };
-
+function populatePresentation(pres, theme, options = {}) {
   const reports = [];
 
   for (const slideModule of slideModules) {
@@ -44,6 +29,24 @@ function createPresentation(options = {}) {
   return { pres, reports };
 }
 
+function createPresentation(options = {}) {
+  const pres = new PptxGenJS();
+  pres.layout = "LAYOUT_16x9";
+  pres.author = deckMeta.author;
+  pres.company = deckMeta.company;
+  pres.subject = deckMeta.subject;
+  pres.title = deckMeta.title;
+  pres.lang = "en-US";
+  pres.theme = {
+    headFontFace: displayFont,
+    bodyFontFace: bodyFont,
+    lang: "en-US"
+  };
+
+  return populatePresentation(pres, theme, options);
+}
+
 module.exports = {
-  createPresentation
+  createPresentation,
+  populatePresentation
 };

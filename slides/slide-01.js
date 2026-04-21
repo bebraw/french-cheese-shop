@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const { liveDemoUrl } = require("./helpers");
 const { bodyFont, displayFont } = require("./theme");
 const { createSlideCanvas } = require("./validation");
 
@@ -140,7 +141,7 @@ function createSlide(pres, theme, options = {}) {
     group: "cover-copy"
   });
 
-  canvas.addText("cover-subtitle", "A French cheese shop exposes how AI systems must interpret vague requests, depend on domain knowledge, and be evaluated under uncertainty.", {
+  canvas.addText("cover-subtitle", "A French cheese shop live demo shows how AI systems must interpret vague requests, depend on domain knowledge, and be evaluated under uncertainty.", {
     x: 0.74,
     y: 2.2,
     w: 4.9,
@@ -175,6 +176,20 @@ function createSlide(pres, theme, options = {}) {
     fontFace: bodyFont,
     fontSize: 10.2,
     color: "6B7C90",
+    margin: 0
+  }, {
+    group: "cover-copy"
+  });
+
+  canvas.addText("cover-demo-link", `Live demo: ${liveDemoUrl}`, {
+    x: 0.74,
+    y: 4.48,
+    w: 5.2,
+    h: 0.18,
+    fontFace: bodyFont,
+    fontSize: 8.8,
+    bold: true,
+    color: theme.primary,
     margin: 0
   }, {
     group: "cover-copy"

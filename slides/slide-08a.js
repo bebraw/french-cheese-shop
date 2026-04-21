@@ -4,7 +4,7 @@ const { createSlideCanvas } = require("./validation");
 
 const slideConfig = {
   type: "content",
-  index: 29,
+  index: 14,
   title: "AI Changes RE"
 };
 

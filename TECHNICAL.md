@@ -14,12 +14,6 @@ Build the presentation:
 npm run build
 ```
 
-Build the presentation and attempt PDF export:
-
-```bash
-npm run build:pdf
-```
-
 Run layout and text validation:
 
 ```bash
@@ -30,6 +24,12 @@ Run the full validation suite, including render validation:
 
 ```bash
 npm run validate:all
+```
+
+Run the project quality gate used after changes:
+
+```bash
+npm run quality:gate
 ```
 
 ## Project Structure
@@ -51,6 +51,7 @@ npm run validate:all
     ├── helpers.js
     ├── imgs/
     │   └── ATTRIBUTIONS.md
+    ├── pdf-renderer.js
     ├── render-baseline/
     ├── slide-01.js
     ├── slide-02.js
@@ -71,9 +72,11 @@ npm run validate:all
 
 ## Notes
 
-- The deck is authored as slide modules in `slides/` and compiled with `PptxGenJS`.
+- The deck is authored as slide modules in `slides/`.
+- The production build path renders PDF directly through `pdfkit`.
 - The deck uses `Didot` for display text and `Avenir Next` for body text.
 - `slides/output/` is git-ignored, so generated binaries stay local.
 - `archive/teaching-proof-ai-re.pdf` stores the checked-in PDF snapshot for linking and archival.
-- PDF export depends on a locally installed converter such as LibreOffice or Keynote automation on macOS.
+- `slides/render-baseline/` stores the approved render baseline for the current deck output.
+- `npm run quality:gate` checks the generated PDF against that baseline and is the required final validation for presentation changes.
 - Render validation compares rasterized PDF pages against the committed baseline in `slides/render-baseline/`.
