@@ -1,6 +1,6 @@
-const { addPageBadge } = require("./helpers");
-const { displayFont } = require("./theme");
-const { createSlideCanvas } = require("./validation");
+const { addPageBadge } = require("../generator/helpers");
+const { displayFont } = require("../generator/theme");
+const { createSlideCanvas } = require("../generator/validation");
 
 const slideConfig = {
   type: "closing",

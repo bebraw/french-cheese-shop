@@ -1,7 +1,7 @@
-const { addPageBadge, addSectionTitle } = require("./helpers");
-const { references } = require("./references");
-const { bodyFont } = require("./theme");
-const { createSlideCanvas } = require("./validation");
+const { addPageBadge, addSectionTitle } = require("../generator/helpers");
+const { references } = require("../generator/references");
+const { bodyFont } = require("../generator/theme");
+const { createSlideCanvas } = require("../generator/validation");
 
 const slideConfig = {
   type: "references",

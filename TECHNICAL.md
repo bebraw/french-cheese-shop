@@ -41,19 +41,31 @@ npm run quality:gate
 ├── package.json
 ├── README.md
 ├── TECHNICAL.md
+├── generator/
+│   ├── compile.js
+│   ├── deck.js
+│   ├── export-pdf.js
+│   ├── helpers.js
+│   ├── output-config.js
+│   ├── pdf-renderer.js
+│   ├── references.js
+│   ├── render-baseline/
+│   ├── render-utils.js
+│   ├── theme.js
+│   ├── update-render-baseline.js
+│   ├── validate-geometry.js
+│   ├── validate-render.js
+│   ├── validate-text.js
+│   └── validation.js
 ├── skills/
 │   └── pptx-generator/
 │       └── SKILL.md
 └── slides/
-    ├── compile.js
-    ├── deck.js
-    ├── export-pdf.js
-    ├── helpers.js
     ├── imgs/
     │   └── ATTRIBUTIONS.md
-    ├── pdf-renderer.js
-    ├── render-baseline/
+    ├── output/
     ├── slide-01.js
+    ├── slide-01a.js
     ├── slide-02.js
     ├── slide-03.js
     ├── slide-04.js
@@ -61,22 +73,19 @@ npm run quality:gate
     ├── slide-06.js
     ├── slide-07.js
     ├── slide-08.js
+    ├── slide-08a.js
     ├── slide-09.js
-    ├── theme.js
-    ├── update-render-baseline.js
-    ├── validate-geometry.js
-    ├── validate-render.js
-    ├── validate-text.js
-    └── validation.js
+    ├── slide-10.js
+    └── slide-10a.js
 ```
 
 ## Notes
 
-- The deck is authored as slide modules in `slides/`.
+- The deck is authored as slide modules in `slides/`, while the build, rendering, and validation runtime lives in `generator/`.
 - The production build path renders PDF directly through `pdfkit`.
 - The deck uses `Didot` for display text and `Avenir Next` for body text.
 - `slides/output/` is git-ignored, so generated binaries stay local.
 - `archive/teaching-proof-ai-re.pdf` stores the checked-in PDF snapshot for linking and archival.
-- `slides/render-baseline/` stores the approved render baseline for the current deck output.
+- `generator/render-baseline/` stores the approved render baseline for the current deck output.
 - `npm run quality:gate` checks the generated PDF against that baseline and is the required final validation for presentation changes.
-- Render validation compares rasterized PDF pages against the committed baseline in `slides/render-baseline/`.
+- Render validation compares rasterized PDF pages against the committed baseline in `generator/render-baseline/`.

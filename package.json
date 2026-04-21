@@ -4,13 +4,13 @@
   "private": true,
   "description": "Teaching presentation generator with native PDF output.",
   "scripts": {
-    "build": "node slides/compile.js",
+    "build": "node generator/compile.js",
     "build:all": "npm run build",
-    "validate:geometry": "node slides/validate-geometry.js",
-    "validate:text": "node slides/validate-text.js",
+    "validate:geometry": "node generator/validate-geometry.js",
+    "validate:text": "node generator/validate-text.js",
     "validate": "npm run validate:geometry && npm run validate:text",
-    "baseline:render": "npm run build && node slides/update-render-baseline.js",
-    "validate:render": "npm run build && node slides/validate-render.js",
+    "baseline:render": "npm run build && node generator/update-render-baseline.js",
+    "validate:render": "npm run build && node generator/validate-render.js",
     "validate:all": "npm run validate && npm run validate:render",
     "quality:gate": "npm run validate:render"
   },

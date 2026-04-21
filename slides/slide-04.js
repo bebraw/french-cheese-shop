@@ -1,6 +1,6 @@
-const { addPageBadge, addReferenceNote, addSectionTitle } = require("./helpers");
-const { bodyFont, displayFont } = require("./theme");
-const { createSlideCanvas } = require("./validation");
+const { addPageBadge, addReferenceNote, addSectionTitle } = require("../generator/helpers");
+const { bodyFont, displayFont } = require("../generator/theme");
+const { createSlideCanvas } = require("../generator/validation");
 
 const slideConfig = {
   type: "content",

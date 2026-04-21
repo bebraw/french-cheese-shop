@@ -2,15 +2,15 @@ const PptxGenJS = require("pptxgenjs");
 const { bodyFont, deckMeta, displayFont, theme } = require("./theme");
 
 const slideModules = [
-  require("./slide-01"),
-  require("./slide-01a"),
-  require("./slide-02"),
-  require("./slide-04"),
-  require("./slide-05"),
-  require("./slide-08a"),
-  require("./slide-10"),
-  require("./slide-10a"),
-  require("./slide-08")
+  require("../slides/slide-01"),
+  require("../slides/slide-01a"),
+  require("../slides/slide-02"),
+  require("../slides/slide-04"),
+  require("../slides/slide-05"),
+  require("../slides/slide-08a"),
+  require("../slides/slide-10"),
+  require("../slides/slide-10a"),
+  require("../slides/slide-08")
 ];
 
 function populatePresentation(pres, theme, options = {}) {
