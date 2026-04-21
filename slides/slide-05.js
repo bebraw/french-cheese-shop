@@ -1,3 +1,4 @@
+const path = require("path");
 const { addPageBadge, addSectionTitle, liveDemoUrl } = require("./helpers");
 const { bodyFont, displayFont } = require("./theme");
 const { createSlideCanvas } = require("./validation");
@@ -11,6 +12,7 @@ const slideConfig = {
 function createSlide(pres, theme, options = {}) {
   const canvas = createSlideCanvas(pres, slideConfig, options);
   const { slide } = canvas;
+  const qrImagePath = path.join(__dirname, "imgs", "live-demo-qr.png");
   slide.background = { color: theme.bg };
 
   addSectionTitle(
@@ -36,7 +38,7 @@ function createSlide(pres, theme, options = {}) {
   canvas.addText("demo-label", "Open the demo", {
     x: 1.44,
     y: 2.56,
-    w: 1.9,
+    w: 2.2,
     h: 0.24,
     fontFace: bodyFont,
     fontSize: 11.5,
@@ -47,29 +49,50 @@ function createSlide(pres, theme, options = {}) {
     group: "demo-card"
   });
 
-  canvas.addText("demo-url", liveDemoUrl.replace(/^https?:\/\//, ""), {
-    x: 1.44,
-    y: 2.96,
-    w: 6.98,
-    h: 0.5,
-    fontFace: displayFont,
-    fontSize: 21,
-    color: theme.primary,
+  canvas.addText("demo-scan-label", "Scan the QR code", {
+    x: 6.42,
+    y: 2.42,
+    w: 1.42,
+    h: 0.2,
+    fontFace: bodyFont,
+    fontSize: 9.8,
+    bold: true,
+    color: theme.secondary,
     align: "center",
     margin: 0
   }, {
     group: "demo-card"
   });
 
+  slide.addImage({
+    path: qrImagePath,
+    x: 6.26,
+    y: 2.7,
+    w: 1.72,
+    h: 1.72
+  });
+
+  canvas.addText("demo-url", liveDemoUrl.replace(/^https?:\/\//, ""), {
+    x: 1.44,
+    y: 2.96,
+    w: 4.42,
+    h: 0.78,
+    fontFace: displayFont,
+    fontSize: 18.5,
+    color: theme.primary,
+    margin: 0
+  }, {
+    group: "demo-card"
+  });
+
   canvas.addText("demo-note", "We will use the live system to surface the three challenge areas before moving to the main claim.", {
-    x: 1.54,
+    x: 1.44,
     y: 3.84,
-    w: 6.76,
-    h: 0.32,
+    w: 4.5,
+    h: 0.44,
     fontFace: bodyFont,
     fontSize: 10.4,
     color: "5E7185",
-    align: "center",
     margin: 0
   }, {
     group: "demo-card"
