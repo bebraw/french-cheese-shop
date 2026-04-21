@@ -58,7 +58,7 @@ npm run quality:gate
 │   ├── validate-text.js
 │   └── validation.js
 ├── skills/
-│   └── pptx-generator/
+│   └── pdf-slide-generator/
 │       └── SKILL.md
 └── slides/
     ├── imgs/
