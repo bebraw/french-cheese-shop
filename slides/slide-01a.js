@@ -1,4 +1,5 @@
 const { addPageBadge, addSectionTitle } = require("../generator/helpers");
+const { createFrame, insetFrame, measureTextHeight, titleStackLayout } = require("../generator/layout");
 const { bodyFont, displayFont } = require("../generator/theme");
 const { createSlideCanvas } = require("../generator/validation");
 
@@ -15,9 +16,7 @@ const outcomeCards = [
     index: 1,
     title: "Interpret vague requests",
     body: "Vague requests force the system to infer missing preferences and constraints.",
-    group: "outcome-interpret",
-    titleY: 0.2,
-    bodyY: 0.82
+    group: "outcome-interpret"
   },
   {
     x: 5.18,
@@ -33,9 +32,7 @@ const outcomeCards = [
     index: 3,
     title: "Evaluate ambiguity",
     body: "Judge how the system handles ambiguity, not only whether the answer is correct.",
-    group: "outcome-evaluate",
-    titleY: 0.2,
-    bodyY: 0.82
+    group: "outcome-evaluate"
   }
 ];
 
@@ -49,12 +46,65 @@ const outcomeLayouts = {
   ]
 };
 
-function addOutcomeCard(canvas, pres, theme, x, y, index, title, body, group, titleY = 0.14, bodyY = 0.78) {
+const OUTCOME_CARD = {
+  w: 4.02,
+  h: 1.46,
+  badgeSize: 0.38
+};
+
+function getOutcomeCardLayout(x, y, title, body) {
+  const panelFrame = createFrame({
+    x,
+    y,
+    w: OUTCOME_CARD.w,
+    h: OUTCOME_CARD.h
+  });
+  const contentFrame = insetFrame(panelFrame, {
+    top: 0.2,
+    right: 0.38,
+    bottom: 0.18,
+    left: 0.76
+  });
+  const titleHeight = measureTextHeight(title, {
+    fontFace: displayFont,
+    fontSize: 14.2,
+    w: contentFrame.w
+  }) + 0.03;
+  const bodyHeight = measureTextHeight(body, {
+    fontFace: bodyFont,
+    fontSize: 9.8,
+    w: contentFrame.w
+  }) + 0.03;
+  const stack = titleStackLayout(contentFrame, {
+    titleHeight,
+    titleGap: 0.14,
+    items: [{ height: bodyHeight }],
+    justify: "center"
+  });
+  const badgeY = Math.min(
+    y + OUTCOME_CARD.h - 0.18 - OUTCOME_CARD.badgeSize,
+    Math.max(y + 0.18, stack.titleY + Math.max((titleHeight - OUTCOME_CARD.badgeSize) / 2, 0))
+  );
+
+  return {
+    badgeY,
+    contentX: contentFrame.x,
+    contentW: contentFrame.w,
+    titleY: stack.titleY,
+    titleH: titleHeight,
+    bodyY: stack.items[0].y,
+    bodyH: bodyHeight
+  };
+}
+
+function addOutcomeCard(canvas, pres, theme, x, y, index, title, body, group) {
+  const layout = getOutcomeCardLayout(x, y, title, body);
+
   canvas.addShape(`${group}-card`, pres.ShapeType.roundRect, {
     x,
     y,
-    w: 4.02,
-    h: 1.46,
+    w: OUTCOME_CARD.w,
+    h: OUTCOME_CARD.h,
     rectRadius: 0.06,
     line: { color: theme.light, pt: 1.05 },
     fill: { color: "FFFDFC" }
@@ -64,9 +114,9 @@ function addOutcomeCard(canvas, pres, theme, x, y, index, title, body, group, ti
 
   canvas.addShape(`${group}-badge`, pres.ShapeType.ellipse, {
     x: x + 0.22,
-    y: y + 0.18,
-    w: 0.38,
-    h: 0.38,
+    y: layout.badgeY,
+    w: OUTCOME_CARD.badgeSize,
+    h: OUTCOME_CARD.badgeSize,
     line: { color: theme.secondary, transparency: 100 },
     fill: { color: theme.secondary }
   }, {
@@ -75,9 +125,9 @@ function addOutcomeCard(canvas, pres, theme, x, y, index, title, body, group, ti
 
   canvas.addText(`${group}-index`, String(index), {
     x: x + 0.22,
-    y: y + 0.18,
-    w: 0.38,
-    h: 0.38,
+    y: layout.badgeY,
+    w: OUTCOME_CARD.badgeSize,
+    h: OUTCOME_CARD.badgeSize,
     fontFace: bodyFont,
     fontSize: 10.5,
     bold: true,
@@ -90,10 +140,10 @@ function addOutcomeCard(canvas, pres, theme, x, y, index, title, body, group, ti
   });
 
   canvas.addText(`${group}-title`, title, {
-    x: x + 0.76,
-    y: y + titleY,
-    w: 2.88,
-    h: 0.54,
+    x: layout.contentX,
+    y: layout.titleY,
+    w: layout.contentW,
+    h: layout.titleH,
     fontFace: displayFont,
     fontSize: 14.2,
     color: theme.primary,
@@ -103,10 +153,10 @@ function addOutcomeCard(canvas, pres, theme, x, y, index, title, body, group, ti
   });
 
   canvas.addText(`${group}-body`, body, {
-    x: x + 0.76,
-    y: y + bodyY,
-    w: 2.88,
-    h: 0.42,
+    x: layout.contentX,
+    y: layout.bodyY,
+    w: layout.contentW,
+    h: layout.bodyH,
     fontFace: bodyFont,
     fontSize: 9.8,
     color: "5B6D83",
@@ -142,9 +192,7 @@ function createLearningOutcomesSlide(pres, theme, options, visibleCards, slideIn
       card.index,
       card.title,
       card.body,
-      card.group,
-      card.titleY,
-      card.bodyY
+      card.group
     );
   }
 
