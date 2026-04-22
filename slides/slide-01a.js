@@ -29,8 +29,8 @@ const outcomeCards = [
     x: 2.81,
     y: 3.52,
     index: 3,
-    title: "Evaluate uncertainty",
-    body: "Judge AI by fit, trust, and usefulness, not only by right or wrong answers.",
+    title: "Evaluate ambiguity",
+    body: "Judge how the system handles ambiguity, not only whether the answer is correct.",
     group: "outcome-evaluate"
   }
 ];
