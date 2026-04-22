@@ -15,42 +15,46 @@ const outcomeCards = [
     index: 1,
     title: "Interpret vague requests",
     body: "Vague requests force the system to infer missing preferences and constraints.",
-    group: "outcome-interpret"
+    group: "outcome-interpret",
+    titleY: 0.2,
+    bodyY: 0.82
   },
   {
     x: 5.18,
     y: 2.08,
     index: 2,
-    title: "Specify domain context",
+    title: "Specify domain and operational context",
     body: "The system needs domain and operational context for fitting, feasible recommendations.",
     group: "outcome-data"
   },
   {
     x: 2.81,
-    y: 3.52,
+    y: 3.66,
     index: 3,
     title: "Evaluate ambiguity",
     body: "Judge how the system handles ambiguity, not only whether the answer is correct.",
-    group: "outcome-evaluate"
+    group: "outcome-evaluate",
+    titleY: 0.2,
+    bodyY: 0.82
   }
 ];
 
 const outcomeLayouts = {
   1: [
-    { x: 2.99, y: 2.72 }
+    { x: 2.99, y: 2.58 }
   ],
   2: [
-    { x: 0.8, y: 2.72 },
-    { x: 5.18, y: 2.72 }
+    { x: 0.8, y: 2.58 },
+    { x: 5.18, y: 2.58 }
   ]
 };
 
-function addOutcomeCard(canvas, pres, theme, x, y, index, title, body, group) {
+function addOutcomeCard(canvas, pres, theme, x, y, index, title, body, group, titleY = 0.14, bodyY = 0.78) {
   canvas.addShape(`${group}-card`, pres.ShapeType.roundRect, {
     x,
     y,
     w: 4.02,
-    h: 1.24,
+    h: 1.46,
     rectRadius: 0.06,
     line: { color: theme.light, pt: 1.05 },
     fill: { color: "FFFDFC" }
@@ -87,11 +91,11 @@ function addOutcomeCard(canvas, pres, theme, x, y, index, title, body, group) {
 
   canvas.addText(`${group}-title`, title, {
     x: x + 0.76,
-    y: y + 0.16,
-    w: 2.7,
-    h: 0.32,
+    y: y + titleY,
+    w: 2.88,
+    h: 0.54,
     fontFace: displayFont,
-    fontSize: 15.5,
+    fontSize: 14.2,
     color: theme.primary,
     margin: 0
   }, {
@@ -100,9 +104,9 @@ function addOutcomeCard(canvas, pres, theme, x, y, index, title, body, group) {
 
   canvas.addText(`${group}-body`, body, {
     x: x + 0.76,
-    y: y + 0.56,
-    w: 2.84,
-    h: 0.38,
+    y: y + bodyY,
+    w: 2.88,
+    h: 0.42,
     fontFace: bodyFont,
     fontSize: 9.8,
     color: "5B6D83",
@@ -138,7 +142,9 @@ function createLearningOutcomesSlide(pres, theme, options, visibleCards, slideIn
       card.index,
       card.title,
       card.body,
-      card.group
+      card.group,
+      card.titleY,
+      card.bodyY
     );
   }
 

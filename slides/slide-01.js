@@ -143,7 +143,7 @@ function createSlide(pres, theme, options = {}) {
     group: "cover-copy"
   });
 
-  canvas.addText("cover-subtitle", "A French cheese shop demo surfaces three AI RE challenges: interpreting vague requests, using cheese knowledge and shop context, and handling uncertainty.", {
+  canvas.addText("cover-subtitle", "A French cheese shop demo surfaces three AI RE challenges: interpreting vague requests, using cheese knowledge and shop context, and evaluating behavior under ambiguity.", {
     x: 0.74,
     y: 2.2,
     w: 4.9,
