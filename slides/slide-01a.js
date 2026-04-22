@@ -21,8 +21,8 @@ const outcomeCards = [
     x: 5.18,
     y: 2.08,
     index: 2,
-    title: "Treat data as artifact",
-    body: "See why domain data and product knowledge become part of the requirements.",
+    title: "Specify domain context",
+    body: "The system needs domain and operational context to answer well.",
     group: "outcome-data"
   },
   {
