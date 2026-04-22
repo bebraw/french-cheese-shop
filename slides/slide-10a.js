@@ -58,7 +58,7 @@ function createSlide(pres, theme, options = {}) {
   addSectionTitle(
     canvas,
     theme,
-    "References",
+    null,
     slideConfig.title,
     null
   );
