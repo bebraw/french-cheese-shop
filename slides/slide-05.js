@@ -20,7 +20,7 @@ function createSlide(pres, theme, options = {}) {
     theme,
     "Demo",
     slideConfig.title,
-    "We will walk the hidden requirements, data requirements, and evaluation questions through the deployed cheese shop demo."
+    "The demo surfaces three issues: vague requests, real shop context, and uncertainty handling."
   );
 
   canvas.addShape("demo-card", pres.ShapeType.roundRect, {
