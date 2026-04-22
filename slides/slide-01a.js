@@ -14,7 +14,7 @@ const outcomeCards = [
     y: 2.08,
     index: 1,
     title: "Interpret vague requests",
-    body: "See why a short sentence can hide extra requirements the system still needs.",
+    body: "Vague requests force the system to infer missing preferences and constraints.",
     group: "outcome-interpret"
   },
   {
