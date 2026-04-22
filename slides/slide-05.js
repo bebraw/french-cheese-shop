@@ -18,7 +18,7 @@ function createSlide(pres, theme, options = {}) {
   addSectionTitle(
     canvas,
     theme,
-    "Demo",
+    null,
     slideConfig.title,
     "The demo surfaces three issues: vague requests, real shop context, and uncertainty handling."
   );
@@ -83,19 +83,6 @@ function createSlide(pres, theme, options = {}) {
     fontFace: displayFont,
     fontSize: 18.5,
     color: theme.primary,
-    margin: 0
-  }, {
-    group: "demo-card"
-  });
-
-  canvas.addText("demo-note", "We will use the live system to surface the three challenge areas before moving to the main claim.", {
-    x: 1.44,
-    y: 3.84,
-    w: 4.5,
-    h: 0.44,
-    fontFace: bodyFont,
-    fontSize: 10.4,
-    color: "5E7185",
     margin: 0
   }, {
     group: "demo-card"

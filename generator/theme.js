@@ -8,7 +8,7 @@ const theme = {
   panel: "FFFDFC",
   progressTrack: "E8D9C5",
   progressFill: "7B1E2B",
-  slideCount: 17
+  slideCount: 16
 };
 
 const deckMeta = {

@@ -35,6 +35,16 @@ const outcomeCards = [
   }
 ];
 
+const outcomeLayouts = {
+  1: [
+    { x: 2.99, y: 2.72 }
+  ],
+  2: [
+    { x: 0.98, y: 2.72 },
+    { x: 5.0, y: 2.72 }
+  ]
+};
+
 function addOutcomeCard(canvas, pres, theme, x, y, index, title, body, group) {
   canvas.addShape(`${group}-card`, pres.ShapeType.roundRect, {
     x,
@@ -115,13 +125,16 @@ function createLearningOutcomesSlide(pres, theme, options, visibleCards, slideIn
     null
   );
 
-  for (const card of outcomeCards.slice(0, visibleCards)) {
+  const layout = outcomeLayouts[visibleCards];
+
+  for (const [idx, card] of outcomeCards.slice(0, visibleCards).entries()) {
+    const placement = layout ? layout[idx] : card;
     addOutcomeCard(
       canvas,
       pres,
       theme,
-      card.x,
-      card.y,
+      placement.x,
+      placement.y,
       card.index,
       card.title,
       card.body,

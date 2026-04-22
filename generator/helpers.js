@@ -285,33 +285,6 @@ function addPageBadge(canvas, pres, theme, number, options = {}) {
     group: "slide-progress",
     skipOverlap: true
   });
-
-  canvas.addShape("page-badge-circle", pres.ShapeType.ellipse, {
-    x: 9.24,
-    y: 5.01,
-    w: 0.44,
-    h: 0.44,
-    line: { color: theme.secondary, transparency: 100 },
-    fill: { color: theme.secondary }
-  }, {
-    group: "page-badge"
-  });
-
-  canvas.addText("page-badge-label", String(number).padStart(2, "0"), {
-    x: 9.24,
-    y: 5.01,
-    w: 0.44,
-    h: 0.44,
-    fontFace: bodyFont,
-    fontSize: 11,
-    bold: true,
-    color: "FFFFFF",
-    align: "center",
-    valign: "middle",
-    margin: 0
-  }, {
-    group: "page-badge"
-  });
 }
 
 function addSectionTitle(canvas, theme, eyebrow, title, body) {
