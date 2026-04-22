@@ -1,4 +1,4 @@
-const { addPageBadge, addReferenceNote, addSectionTitle } = require("../generator/helpers");
+const { addPageBadge, addReferenceNote } = require("../generator/helpers");
 const { bodyFont, displayFont } = require("../generator/theme");
 const { createSlideCanvas } = require("../generator/validation");
 
@@ -13,17 +13,9 @@ function createSlide(pres, theme, options = {}) {
   const { slide } = canvas;
   slide.background = { color: theme.bg };
 
-  addSectionTitle(
-    canvas,
-    theme,
-    "Main Claim",
-    slideConfig.title,
-    null
-  );
-
   canvas.addShape("claim-card", pres.ShapeType.roundRect, {
     x: 1.02,
-    y: 2.12,
+    y: 1.58,
     w: 7.94,
     h: 2.56,
     rectRadius: 0.08,
@@ -33,43 +25,13 @@ function createSlide(pres, theme, options = {}) {
     group: "claim-card"
   });
 
-  canvas.addText("claim-line-1", "AI changes requirements engineering", {
+  canvas.addText("claim-line-1", "For AI systems, requirements should specify behavior under uncertainty.", {
     x: 1.44,
-    y: 2.62,
+    y: 2.56,
     w: 7.08,
-    h: 0.46,
+    h: 0.74,
     fontFace: displayFont,
-    fontSize: 22,
-    color: theme.primary,
-    align: "center",
-    margin: 0
-  }, {
-    group: "claim-card"
-  });
-
-  canvas.addText("claim-line-2", "from specifying system functions", {
-    x: 1.52,
-    y: 3.16,
-    w: 6.92,
-    h: 0.34,
-    fontFace: bodyFont,
-    fontSize: 14,
-    bold: true,
-    color: theme.secondary,
-    align: "center",
-    margin: 0
-  }, {
-    group: "claim-card"
-  });
-
-  canvas.addText("claim-line-3", "to shaping behavior, learning, and evaluation.", {
-    x: 1.36,
-    y: 3.58,
-    w: 7.24,
-    h: 0.4,
-    fontFace: bodyFont,
-    fontSize: 14,
-    bold: true,
+    fontSize: 18.5,
     color: theme.primary,
     align: "center",
     margin: 0
