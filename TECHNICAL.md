@@ -58,7 +58,11 @@ npm run quality:gate
 │   ├── validate-text.js
 │   └── validation.js
 ├── skills/
-│   └── pdf-slide-generator/
+│   ├── pdf-slide-generator/
+│   │   └── SKILL.md
+│   └── slide-clarity-drill/
+│       ├── agents/
+│       │   └── openai.yaml
 │       └── SKILL.md
 └── slides/
     ├── imgs/
@@ -82,6 +86,7 @@ npm run quality:gate
 ## Notes
 
 - The deck is authored as slide modules in `slides/`, while the build, rendering, and validation runtime lives in `generator/`.
+- Repository-local skills live in `skills/` and capture recurring deck workflows such as slide generation and wording refinement.
 - The production build path renders PDF directly through `pdfkit`.
 - The deck uses `Didot` for display text and `Avenir Next` for body text.
 - `slides/output/` is git-ignored, so generated binaries stay local.
