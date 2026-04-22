@@ -10,7 +10,7 @@ const slideConfig = {
 
 const outcomeCards = [
   {
-    x: 0.62,
+    x: 0.8,
     y: 2.08,
     index: 1,
     title: "Interpret vague requests",
@@ -18,7 +18,7 @@ const outcomeCards = [
     group: "outcome-interpret"
   },
   {
-    x: 5.0,
+    x: 5.18,
     y: 2.08,
     index: 2,
     title: "Treat data as artifact",
@@ -40,8 +40,8 @@ const outcomeLayouts = {
     { x: 2.99, y: 2.72 }
   ],
   2: [
-    { x: 0.98, y: 2.72 },
-    { x: 5.0, y: 2.72 }
+    { x: 0.8, y: 2.72 },
+    { x: 5.18, y: 2.72 }
   ]
 };
 
