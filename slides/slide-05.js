@@ -64,12 +64,15 @@ function createSlide(pres, theme, options = {}) {
     group: "demo-card"
   });
 
-  slide.addImage({
+  canvas.addImage("demo-qr", {
     path: qrImagePath,
     x: 6.26,
     y: 2.7,
     w: 1.72,
     h: 1.72
+  }, {
+    group: "demo-card",
+    skipOverlap: true
   });
 
   canvas.addText("demo-url", liveDemoUrl.replace(/^https?:\/\//, ""), {

@@ -3,7 +3,12 @@ const theme = {
   secondary: "7B1E2B",
   accent: "C6933F",
   light: "E8D9C5",
-  bg: "FBF5EC"
+  bg: "FBF5EC",
+  muted: "5E7185",
+  panel: "FFFDFC",
+  progressTrack: "E8D9C5",
+  progressFill: "7B1E2B",
+  slideCount: 17
 };
 
 const deckMeta = {

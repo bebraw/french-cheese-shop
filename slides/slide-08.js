@@ -24,7 +24,7 @@ function addListItem(canvas, pres, theme, y, title, body, group) {
     x: 1.08,
     y: y - 0.01,
     w: 2.5,
-    h: 0.18,
+    h: 0.22,
     fontFace: bodyFont,
     fontSize: 11.6,
     bold: true,

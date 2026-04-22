@@ -75,12 +75,15 @@ function createSlide(pres, theme, options = {}) {
   });
 
   if (coverPhotoPath) {
-    slide.addImage({
+    canvas.addImage("cover-photo", {
       path: coverPhotoPath,
       x: 6.95,
       y: 2.24,
       w: 2.1,
-      h: 1.56
+      h: 1.41
+    }, {
+      group: "cover-photo",
+      skipOverlap: true
     });
 
     canvas.addShape("cover-photo-credit-band", pres.ShapeType.roundRect, {
@@ -98,9 +101,9 @@ function createSlide(pres, theme, options = {}) {
 
     canvas.addText("cover-photo-attribution", "Photo: jackmac34 / Pixabay", {
       x: 7.08,
-      y: 3.87,
+      y: 3.86,
       w: 1.88,
-      h: 0.12,
+      h: 0.14,
       fontFace: bodyFont,
       fontSize: 7.4,
       color: theme.secondary,
@@ -132,7 +135,7 @@ function createSlide(pres, theme, options = {}) {
     x: 0.72,
     y: 1.1,
     w: 5.4,
-    h: 0.9,
+    h: 1.02,
     fontFace: displayFont,
     fontSize: 28,
     color: theme.primary,
@@ -145,7 +148,7 @@ function createSlide(pres, theme, options = {}) {
     x: 0.74,
     y: 2.2,
     w: 4.9,
-    h: 0.64,
+    h: 0.74,
     fontFace: bodyFont,
     fontSize: 12.4,
     color: "4F6277",
@@ -172,7 +175,7 @@ function createSlide(pres, theme, options = {}) {
     x: 0.74,
     y: 4.14,
     w: 1.6,
-    h: 0.18,
+    h: 0.2,
     fontFace: bodyFont,
     fontSize: 10.2,
     color: "6B7C90",
@@ -197,7 +200,7 @@ function createSlide(pres, theme, options = {}) {
 
   canvas.addText("cover-side-label", "Ambiguity\nData\nEvaluation", {
     x: 7.02,
-    y: 1.82,
+    y: 1.42,
     w: 1.4,
     h: 0.78,
     fontFace: bodyFont,

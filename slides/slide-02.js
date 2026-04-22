@@ -58,9 +58,9 @@ function addQuestionCard(canvas, pres, theme, x, y, title, text, group) {
     x: x + 0.16,
     y: y + 0.14,
     w: 1.45,
-    h: 0.2,
+    h: 0.24,
     fontFace: bodyFont,
-    fontSize: 11.5,
+    fontSize: 10.8,
     bold: true,
     color: theme.secondary,
     margin: 0
@@ -101,12 +101,15 @@ function createCustomerQuerySlide(pres, theme, options, visibleCards, slideIndex
   );
 
   if (briePhotoPath) {
-    slide.addImage({
+    canvas.addImage("quote-photo", {
       path: briePhotoPath,
       x: 0.62,
       y: 2.06,
       w: 3.72,
       h: 2.55
+    }, {
+      group: "quote-panel",
+      skipOverlap: true
     });
   }
 
@@ -126,7 +129,7 @@ function createCustomerQuerySlide(pres, theme, options, visibleCards, slideIndex
     x: 0.94,
     y: 2.28,
     w: 0.36,
-    h: 0.38,
+    h: 0.54,
     fontFace: displayFont,
     fontSize: 30,
     color: "F4E9DC",
@@ -177,9 +180,9 @@ function createCustomerQuerySlide(pres, theme, options, visibleCards, slideIndex
 
     canvas.addText("quote-photo-attribution", "Photo: lee_2 / Pixabay", {
       x: 2.5,
-      y: 4.56,
+      y: 4.55,
       w: 1.72,
-      h: 0.12,
+      h: 0.14,
       fontFace: bodyFont,
       fontSize: 7.4,
       color: theme.secondary,

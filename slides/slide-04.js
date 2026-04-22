@@ -40,9 +40,9 @@ function addComparisonPanel(canvas, pres, x, title, bullets, colors, group) {
     x: x + 0.24,
     y: 2.24,
     w: 2.6,
-    h: 0.24,
+    h: 0.32,
     fontFace: displayFont,
-    fontSize: 18,
+    fontSize: 16.4,
     color: colors.title,
     margin: 0
   }, {
@@ -51,9 +51,9 @@ function addComparisonPanel(canvas, pres, x, title, bullets, colors, group) {
 
   canvas.addText(`${group}-bullets`, bullets, {
     x: x + 0.26,
-    y: 2.7,
+    y: 2.74,
     w: 3.24,
-    h: 1.16,
+    h: 1.12,
     fontFace: bodyFont,
     fontSize: 11,
     color: colors.body,
