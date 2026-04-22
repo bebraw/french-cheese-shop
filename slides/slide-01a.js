@@ -22,7 +22,7 @@ const outcomeCards = [
     y: 2.08,
     index: 2,
     title: "Specify domain context",
-    body: "The system needs domain and operational context to answer well.",
+    body: "The system needs domain and operational context for fitting, feasible recommendations.",
     group: "outcome-data"
   },
   {
