@@ -1,6 +1,5 @@
 const fs = require("fs");
 const path = require("path");
-const { liveDemoUrl } = require("../generator/helpers");
 const { bodyFont, displayFont } = require("../generator/theme");
 const { createSlideCanvas } = require("../generator/validation");
 
@@ -179,20 +178,6 @@ function createSlide(pres, theme, options = {}) {
     fontFace: bodyFont,
     fontSize: 10.2,
     color: "6B7C90",
-    margin: 0
-  }, {
-    group: "cover-copy"
-  });
-
-  canvas.addText("cover-demo-link", `Live demo: ${liveDemoUrl}`, {
-    x: 0.74,
-    y: 4.48,
-    w: 5.2,
-    h: 0.18,
-    fontFace: bodyFont,
-    fontSize: 8.8,
-    bold: true,
-    color: theme.primary,
     margin: 0
   }, {
     group: "cover-copy"
