@@ -151,13 +151,13 @@ function createCustomerQuerySlide(pres, theme, options, visibleCards, slideIndex
     group: "quote-panel"
   });
 
-  canvas.addText("quote-caption", "Easy for a shopkeeper,\nhard for a machine.", {
+  canvas.addText("quote-caption", "Easy for a shopkeeper who knows the cheeses\nand the customer. Hard for a system without both.", {
     x: 1.1,
     y: 4.0,
-    w: 2.6,
-    h: 0.5,
+    w: 3.0,
+    h: 0.44,
     fontFace: bodyFont,
-    fontSize: 10,
+    fontSize: 9.4,
     color: "F1E5D7",
     margin: 0
   }, {

@@ -74,7 +74,7 @@ function createComparisonSlide(pres, theme, options, visiblePanels, showBanner, 
     theme,
     "Conceptual Shift",
     slideConfig.title,
-    "The key shift is from building fixed features to guiding behavior when the system must interpret uncertain input."
+    "The key shift is from specifying functions to defining behavior under uncertainty."
   );
 
   for (const panel of panels.slice(0, visiblePanels)) {
@@ -116,7 +116,7 @@ function createComparisonSlide(pres, theme, options, visiblePanels, showBanner, 
       group: "shift-banner"
     });
 
-    canvas.addText("shift-banner-text", "Requirements are no longer just functions. They also define how the system interprets, learns, and is evaluated.", {
+    canvas.addText("shift-banner-text", "Requirements go beyond functions to specify how the system interprets vague requests.", {
       x: 1.44,
       y: 4.56,
       w: 7.1,
