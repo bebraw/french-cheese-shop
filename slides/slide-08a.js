@@ -27,7 +27,7 @@ function createSlide(pres, theme, options = {}) {
 
   canvas.addText("claim-line-1", "For AI systems, requirements should specify behavior under uncertainty.", {
     x: 1.44,
-    y: 2.56,
+    y: 2.2,
     w: 7.08,
     h: 0.74,
     fontFace: displayFont,
@@ -39,7 +39,23 @@ function createSlide(pres, theme, options = {}) {
     group: "claim-card"
   });
 
-  addReferenceNote(canvas, theme, "Sources: [1] Nuseibeh & Easterbrook (2000); [3] Ahmad et al. (2023)");
+  canvas.addText("claim-line-2", "Executable requirements and design records can guide agentic implementation.", {
+    x: 1.58,
+    y: 3.16,
+    w: 6.8,
+    h: 0.56,
+    fontFace: bodyFont,
+    fontSize: 11.8,
+    color: "5B6D83",
+    align: "center",
+    margin: 0
+  }, {
+    group: "claim-card"
+  });
+
+  addReferenceNote(canvas, theme, "Sources: [1] Nuseibeh & Easterbrook (2000); [3] Ahmad et al. (2023); [4] Lipsanen et al. (2026)", {
+    w: 7.4
+  });
   addPageBadge(canvas, pres, theme, slideConfig.index);
   return canvas.finalize();
 }

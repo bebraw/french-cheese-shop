@@ -13,7 +13,7 @@ const references = [
   },
   {
     id: 4,
-    text: "I. Sommerville and P. Sawyer. Requirements Engineering: A Good Practice Guide. Wiley, 1997."
+    text: "P. Lipsanen, L. Rannikko, F. Christophe, K. Kalliokoski, V. Stirbu, and T. Mikkonen. “Shift-Up: A Framework for Software Engineering Guardrails in AI-native Software Development - Initial Findings.” arXiv:2604.20436, 2026."
   },
   {
     id: 5,
