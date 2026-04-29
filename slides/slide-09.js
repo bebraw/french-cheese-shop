@@ -4,9 +4,30 @@ const { createSlideCanvas } = require("../generator/validation");
 
 const slideConfig = {
   type: "summary",
-  index: 23,
+  index: 15,
   title: "Closing Synthesis"
 };
+
+const takeawayCards = [
+  {
+    x: 0.62,
+    title: "Interpretation",
+    body: "Vague requests hide preferences, constraints, and context.",
+    group: "takeaway-interpretation"
+  },
+  {
+    x: 3.64,
+    title: "Context",
+    body: "Domain data, prompts, and design records become requirements artifacts.",
+    group: "takeaway-artifacts"
+  },
+  {
+    x: 6.66,
+    title: "Evaluation",
+    body: "Judge usefulness, trust, and behavior under uncertainty.",
+    group: "takeaway-evaluation"
+  }
+];
 
 function addTakeaway(canvas, pres, theme, x, title, body, group) {
   canvas.addShape(`${group}-card`, pres.ShapeType.roundRect, {
@@ -25,7 +46,7 @@ function addTakeaway(canvas, pres, theme, x, title, body, group) {
     x: x + 0.18,
     y: 2.52,
     w: 1.9,
-    h: 0.22,
+    h: 0.34,
     fontFace: displayFont,
     fontSize: 17,
     color: theme.primary,
@@ -36,7 +57,7 @@ function addTakeaway(canvas, pres, theme, x, title, body, group) {
 
   canvas.addText(`${group}-body`, body, {
     x: x + 0.18,
-    y: 2.9,
+    y: 2.96,
     w: 2.16,
     h: 0.7,
     fontFace: bodyFont,
@@ -48,8 +69,8 @@ function addTakeaway(canvas, pres, theme, x, title, body, group) {
   });
 }
 
-function createSlide(pres, theme, options = {}) {
-  const canvas = createSlideCanvas(pres, slideConfig, options);
+function createClosingSlide(pres, theme, options, visibleCards, slideIndex) {
+  const canvas = createSlideCanvas(pres, { ...slideConfig, index: slideIndex }, options);
   const { slide } = canvas;
   slide.background = { color: theme.bg };
 
@@ -58,15 +79,34 @@ function createSlide(pres, theme, options = {}) {
     theme,
     "Closing",
     slideConfig.title,
-    "The main takeaway is that AI changes both what teams must describe and how they decide whether the system works well."
+    null
   );
 
-  addTakeaway(canvas, pres, theme, 0.62, "Interpretation", "Requirements must describe the hidden meaning inside user requests, not only the words on the screen.", "takeaway-interpretation");
-  addTakeaway(canvas, pres, theme, 3.64, "Artifacts", "Data structures, prompts, and design records all become part of the requirements work.", "takeaway-artifacts");
-  addTakeaway(canvas, pres, theme, 6.66, "Evaluation", "Success shifts from simple correctness toward usefulness, trust, and observable quality.", "takeaway-evaluation");
+  for (const card of takeawayCards.slice(0, visibleCards)) {
+    addTakeaway(canvas, pres, theme, card.x, card.title, card.body, card.group);
+  }
 
-  addPageBadge(canvas, pres, theme, slideConfig.index);
+  addPageBadge(canvas, pres, theme, slideIndex);
   return canvas.finalize();
+}
+
+function createSlide(pres, theme, options = {}) {
+  const reports = [];
+
+  for (let visibleCards = 1; visibleCards <= takeawayCards.length; visibleCards += 1) {
+    const result = createClosingSlide(
+      pres,
+      theme,
+      options,
+      visibleCards,
+      slideConfig.index + visibleCards - 1
+    );
+    if (result && result.report) {
+      reports.push(result.report);
+    }
+  }
+
+  return { reports };
 }
 
 module.exports = { createSlide, slideConfig };

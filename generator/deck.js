@@ -8,6 +8,7 @@ const slideModules = [
   require("../slides/slide-04"),
   require("../slides/slide-05"),
   require("../slides/slide-08a"),
+  require("../slides/slide-09"),
   require("../slides/slide-10"),
   require("../slides/slide-10a")
 ];
