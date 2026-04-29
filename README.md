@@ -7,6 +7,7 @@ This repository contains a teaching presentation on **AI in Requirements Enginee
 - Archived PDF: `archive/teaching-proof-ai-re.pdf`
 - Current local PDF build: `slides/output/teaching-proof-ai-re.pdf`
 - Best Aalto CS fit: `CS-E4940 Requirements Engineering` (1st-year MSc, Software and Service Engineering)
+- Best lecture fit: a later RE-for-AI, emerging RE challenges, or requirements validation/quality lecture after students know elicitation, specification, ambiguity, and validation basics.
 
 The deck focuses on:
 
