@@ -13,11 +13,16 @@ const references = [
   },
   {
     id: 4,
-    text: "P. Lipsanen, L. Rannikko, F. Christophe, K. Kalliokoski, V. Stirbu, and T. Mikkonen. “Shift-Up: A Framework for Software Engineering Guardrails in AI-native Software Development - Initial Findings.” arXiv:2604.20436, 2026."
+    text: "P. Lipsanen, L. Rannikko, F. Christophe, K. Kalliokoski, V. Stirbu, and T. Mikkonen. “Shift-Up: A Framework for Software Engineering Guardrails in AI-native Software Development.” arXiv:2604.20436, 2026."
   },
   {
     id: 5,
-    text: "K. Wiegers and J. Beatty. Software Requirements, 3rd ed. Microsoft Press, 2013."
+    text: "H. Cheng, J. H. Husen, Y. Lu, T. Racharak, N. Yoshioka, N. Ubayashi, and H. Washizaki. “Generative AI for Requirements Engineering: A Systematic Literature Review.” Software: Practice and Experience, 56(2), 2026.",
+    note: "Canonical PDF: https://onlinelibrary.wiley.com/doi/pdf/10.1002/spe.70029"
+  },
+  {
+    id: 6,
+    text: "A. Ferrari and P. Spoletini. “Formal requirements engineering and large language models: A two-way roadmap.” Information and Software Technology, 181, 2025."
   }
 ];
 

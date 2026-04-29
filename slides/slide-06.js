@@ -160,7 +160,9 @@ function createDataSlide(pres, theme, options, visibleCards, showTakeaway, slide
     );
   }
 
-  addReferenceNote(canvas, theme, "Source: [3] Ahmad et al. (2023)");
+  addReferenceNote(canvas, theme, "Sources: [3] Ahmad et al. (2023); [5] Cheng et al. (2026)", {
+    w: 6.3
+  });
   addPageBadge(canvas, pres, theme, slideIndex);
   return canvas.finalize();
 }
