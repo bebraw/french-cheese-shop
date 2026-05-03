@@ -14,6 +14,12 @@ Build the presentation:
 npm run build
 ```
 
+Refresh the archived PDF:
+
+```bash
+npm run archive:update
+```
+
 Run layout and text validation:
 
 ```bash

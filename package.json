@@ -6,6 +6,7 @@
   "scripts": {
     "build": "node generator/compile.js",
     "build:all": "npm run build",
+    "archive:update": "npm run build && cp slides/output/teaching-proof-ai-re.pdf archive/teaching-proof-ai-re.pdf",
     "validate:geometry": "node generator/validate-geometry.js",
     "validate:text": "node generator/validate-text.js",
     "validate": "npm run validate:geometry && npm run validate:text",
