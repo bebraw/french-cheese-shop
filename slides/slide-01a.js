@@ -14,24 +14,24 @@ const outcomeCards = [
     x: 0.8,
     y: 2.08,
     index: 1,
-    title: "Interpret vague requests",
-    body: "Vague requests force the system to infer missing preferences and constraints.",
+    title: "Interpret the request",
+    body: "Identify what the request leaves unspecified.",
     group: "outcome-interpret"
   },
   {
     x: 5.18,
     y: 2.08,
     index: 2,
-    title: "Specify domain and operational context",
-    body: "The system needs domain and operational context for fitting, feasible recommendations.",
+    title: "Specify the context",
+    body: "Name the data and shop knowledge the system needs.",
     group: "outcome-data"
   },
   {
     x: 2.81,
     y: 3.66,
     index: 3,
-    title: "Evaluate ambiguity",
-    body: "Judge how the system handles ambiguity, not only whether the answer is correct.",
+    title: "Evaluate the response",
+    body: "Judge whether the answer is useful under ambiguity.",
     group: "outcome-evaluate"
   }
 ];

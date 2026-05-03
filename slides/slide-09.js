@@ -5,26 +5,26 @@ const { createSlideCanvas } = require("../generator/validation");
 const slideConfig = {
   type: "summary",
   index: 15,
-  title: "Closing Synthesis"
+  title: "Three Takeaways"
 };
 
 const takeawayCards = [
   {
     x: 0.62,
     title: "Interpretation",
-    body: "Vague requests hide preferences, constraints, and context.",
+    body: "Turn hidden preferences into explicit requirements.",
     group: "takeaway-interpretation"
   },
   {
     x: 3.64,
     title: "Context",
-    body: "Domain data, prompts, and design records become requirements artifacts.",
+    body: "Use product data and shop constraints, not wording alone.",
     group: "takeaway-artifacts"
   },
   {
     x: 6.66,
     title: "Evaluation",
-    body: "Judge usefulness, trust, and behavior under uncertainty.",
+    body: "Make success criteria visible as checks.",
     group: "takeaway-evaluation"
   }
 ];

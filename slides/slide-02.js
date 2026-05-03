@@ -14,29 +14,29 @@ const questionCards = [
   {
     x: 4.78,
     y: 2.08,
-    title: "Similarity",
+    title: "Similar how?",
     text: "Texture, milk type,\nregion, serving context",
     group: "question-similarity"
   },
   {
     x: 6.78,
     y: 2.08,
-    title: "Strength",
+    title: "Stronger how?",
     text: "Age, aroma,\npungency, salt",
     group: "question-strength"
   },
   {
     x: 4.78,
     y: 3.38,
-    title: "Constraints",
+    title: "What limits apply?",
     text: "Budget, stock,\nallergies, pairings",
     group: "question-constraints"
   },
   {
     x: 6.78,
     y: 3.38,
-    title: "Good answer",
-    text: "Best match, shortlist,\nor clear explanation",
+    title: "What is useful?",
+    text: "Recommend, ask,\nor explain the tradeoff",
     group: "question-success"
   }
 ];

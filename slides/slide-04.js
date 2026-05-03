@@ -12,13 +12,13 @@ const panels = [
   {
     x: 0.62,
     title: "Traditional",
-    bullets: "• Search cheeses by type\n• Validate fields and stock\n• Same input, same output\n• Success = feature works",
+    bullets: "• Specify search and filter behavior\n• Validate fields and stock\n• Define expected outputs\n• Success = feature behaves as specified",
     group: "panel-traditional"
   },
   {
     x: 5.0,
-    title: "AI-augmented",
-    bullets: "• Recommend from vague language\n• Use data and domain knowledge\n• Outputs depend on interpretation\n• Success = useful, trusted fit",
+    title: "AI-supported",
+    bullets: "• Interpret vague language\n• Use data and domain knowledge\n• Explain uncertain recommendations\n• Success = useful, defensible fit",
     group: "panel-ai"
   }
 ];

@@ -20,7 +20,7 @@ function createSlide(pres, theme, options = {}) {
     theme,
     null,
     slideConfig.title,
-    "The demo surfaces three issues: vague requests, real shop context, and uncertainty handling."
+    "Watch what the system infers, what shop data it uses, and what checks make the answer defensible."
   );
 
   canvas.addShape("demo-card", pres.ShapeType.roundRect, {

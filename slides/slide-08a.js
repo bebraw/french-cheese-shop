@@ -5,7 +5,7 @@ const { createSlideCanvas } = require("../generator/validation");
 const slideConfig = {
   type: "content",
   index: 14,
-  title: "AI Changes RE"
+  title: "Requirements Under Uncertainty"
 };
 
 function createSlide(pres, theme, options = {}) {
@@ -25,7 +25,7 @@ function createSlide(pres, theme, options = {}) {
     group: "claim-card"
   });
 
-  canvas.addText("claim-line-1", "For AI systems, requirements should specify behavior under uncertainty.", {
+  canvas.addText("claim-line-1", "The demo generalizes: when systems interpret, requirements must cover uncertainty.", {
     x: 1.44,
     y: 2.2,
     w: 7.08,
@@ -39,7 +39,7 @@ function createSlide(pres, theme, options = {}) {
     group: "claim-card"
   });
 
-  canvas.addText("claim-line-2", "Executable requirements and design records can guide agentic implementation.", {
+  canvas.addText("claim-line-2", "That means explicit needs, domain data, and visible evaluation checks.", {
     x: 1.58,
     y: 3.16,
     w: 6.8,
