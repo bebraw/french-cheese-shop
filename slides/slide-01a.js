@@ -36,16 +36,6 @@ const outcomeCards = [
   }
 ];
 
-const outcomeLayouts = {
-  1: [
-    { x: 2.99, y: 2.58 }
-  ],
-  2: [
-    { x: 0.8, y: 2.58 },
-    { x: 5.18, y: 2.58 }
-  ]
-};
-
 const OUTCOME_CARD = {
   w: 4.02,
   h: 1.46,
@@ -179,16 +169,13 @@ function createLearningOutcomesSlide(pres, theme, options, visibleCards, slideIn
     null
   );
 
-  const layout = outcomeLayouts[visibleCards];
-
-  for (const [idx, card] of outcomeCards.slice(0, visibleCards).entries()) {
-    const placement = layout ? layout[idx] : card;
+  for (const card of outcomeCards.slice(0, visibleCards)) {
     addOutcomeCard(
       canvas,
       pres,
       theme,
-      placement.x,
-      placement.y,
+      card.x,
+      card.y,
       card.index,
       card.title,
       card.body,
